@@ -1,4 +1,4 @@
-package fr.uga.miage.Entities;
+package fr.uga.miage.m1.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

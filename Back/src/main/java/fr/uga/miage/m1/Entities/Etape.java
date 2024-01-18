@@ -1,4 +1,4 @@
-package fr.uga.miage.Entities;
+package fr.uga.miage.m1.Entities;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
@@ -15,13 +15,12 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-
 @Table(name = "Etape")
 public class Etape {
-    
+
     @Id
     @Column(name = "idtrajet")
-    private Long idtrajet;
+    private long idtrajet;
 
     @Column(name = "prix", precision = 10, scale = 2)
     private BigDecimal prix;
@@ -29,22 +28,13 @@ public class Etape {
     @Column(name = "heure")
     private Timestamp heure;
 
+    @ManyToOne
     @JoinColumn(name = "idConducteur", referencedColumnName = "idConducteur")
-    private OffreCovoiturage conducteur;
+    private OffreCovoiturage offreCovoiturage;
 
+    @ManyToOne
     @JoinColumn(name = "idLieu", referencedColumnName = "idLieu")
-    private LieuCovoiturage lieu;
+    private LieuCovoiturage lieuCovoiturage;
 
-
-    public Etape() {
-    }
-
-    public Etape(Long idtrajet, BigDecimal prix, Timestamp heure, OffreCovoiturage conducteur, LieuCovoiturage lieu) {
-        this.idtrajet = idtrajet;
-        this.prix = prix;
-        this.heure = heure;
-        this.conducteur = conducteur;
-        this.lieu = lieu;
-    }
 
 }
