@@ -1,14 +1,19 @@
-package fr.uga.miage.Entities;
+package fr.uga.miage.m1.Entities;
 
 import java.io.Serializable;
 
+import jakarta.persistence.*;
+
+@Embeddable
 public class EtapeAchatId implements Serializable {
 
-    private Long numAchat;
-    private Long idtrajet;
+    @Column(name = "numAchat")
+    private long numAchat;
+
+    @Column(name = "idtrajet")
+    private long idtrajet;
 
     public EtapeAchatId() {
-    
     }
 
     public EtapeAchatId(Long numAchat, Long idtrajet) {

@@ -1,9 +1,10 @@
-package fr.uga.miage.Entities;
+package fr.uga.miage.m1.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,20 +13,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "SousDomaine")
-public class SousDomaine{
+public class SousDomaine {
     @Id
     @Column(name = "nomSousDomaine")
     private String nomSousDomaine;
 
+    @ManyToOne
     @JoinColumn(name = "nomDomaine", referencedColumnName = "nomDomaine")
-    private Domaine Domaine;
+    private Domaine domaine;
 
-    public SousDomaine(){
-
-    }
-public SousDomaine( String nomSousDomaine){
-    this.nomSousDomaine=nomSousDomaine;
-    
-}
-
+    public SousDomaine(){}
 }
