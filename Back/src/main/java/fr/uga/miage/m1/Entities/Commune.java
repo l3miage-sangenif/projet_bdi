@@ -1,9 +1,10 @@
-package fr.uga.miage.Entities;
+package fr.uga.miage.m1.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,17 +24,10 @@ public class Commune {
     @Column(name = "codePostal")
     private int codePostal;
 
+    @ManyToOne
     @JoinColumn(name = "numDepartement", referencedColumnName="numDepartement")
-    private Departement Departement;
+    private Departement departement;
 
-public Commune(){
-
-}
-public Commune(long codeINSEE, String nomCommune, int codePostal, Departement numDepartement){
-    this.codeINSEE=codeINSEE;
-    this.nomCommune=nomCommune;
-    this.codePostal=codePostal;
-    this.Departement=numDepartement;
-}
+    public Commune(){}
 
 }

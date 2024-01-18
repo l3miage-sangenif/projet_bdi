@@ -1,4 +1,4 @@
-package fr.uga.miage.Entities;
+package fr.uga.miage.m1.Entities;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,17 +11,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Region")
-
 public class Region {
     @Id
     @Column(name = "nomRegion")
     private String nomRegion;
-public Region(){
-    
-}
-    public Region(String nomRegion){
-        this.nomRegion=nomRegion;
-    }
-   
-    
+
+    public Region(){}
+
 }
