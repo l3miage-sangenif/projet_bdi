@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Festival")
-public final class FestivalEntity{
+public class FestivalEntity{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long idFestival;
 
