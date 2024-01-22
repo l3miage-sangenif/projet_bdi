@@ -3,6 +3,9 @@ package fr.uga.miage.m1.Entities;
 import java.math.BigDecimal;
 import java.sql.Date;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,7 +14,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Festival")
-public final class Festival{
+public class Festival{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long idFestival;
 
@@ -44,6 +47,11 @@ public final class Festival{
     @JoinColumn(name = "codeINSEE", referencedColumnName = "codeINSEE")
     private Commune commune;
 
-    public Festival(){}
+    @ManyToMany(mappedBy = "festivals")
+    private List<Organisateur> organisateurs;
+
+    public Festival(){
+        this.organisateurs = new ArrayList<Organisateur>();
+    }
 
 }

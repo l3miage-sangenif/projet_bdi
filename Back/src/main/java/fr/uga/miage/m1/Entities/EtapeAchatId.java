@@ -20,4 +20,5 @@ public class EtapeAchatId implements Serializable {
         this.numAchat = numAchat;
         this.idtrajet = idtrajet;
     }
+
 }

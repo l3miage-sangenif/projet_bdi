@@ -37,4 +37,5 @@ public class EtapeAchat {
         this.etape = etape;
         this.nbPlace = nbPlace;
     }
+
 }

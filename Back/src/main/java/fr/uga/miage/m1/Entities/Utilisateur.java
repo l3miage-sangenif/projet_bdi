@@ -1,6 +1,8 @@
 package fr.uga.miage.m1.Entities;
 
 
+import java.util.ArrayList;
+import java.util.List;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +10,9 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="typeUtilisateur")
+@DiscriminatorValue("Festivalier")
 @Table(name = "Utilisateur")
 public class Utilisateur {
 
@@ -28,15 +33,15 @@ public class Utilisateur {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "conducteur")
-    private Boolean conducteur;
-
-    @Column(name = "organisateur")
-    private Boolean organisateur;
-
-    @Column(name = "mdp")
-    private String mdp;
+    @ManyToMany
+    @JoinTable(
+            name = "AchatUtilisateur",
+            joinColumns = @JoinColumn(name = "userUid"),
+            inverseJoinColumns = @JoinColumn(name = "numAchat")
+    )
+    private List<Achat> achats;
 
     public Utilisateur() {
+        this.achats = new ArrayList<Achat>();
     }
 }
