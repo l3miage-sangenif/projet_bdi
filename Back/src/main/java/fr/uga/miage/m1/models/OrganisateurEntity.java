@@ -12,7 +12,7 @@ import jakarta.persistence.*;
 @Setter
 @Table(name = "Organisateur")
 @DiscriminatorValue("Organisateur")
-public class Organisateur extends Utilisateur {
+public class OrganisateurEntity extends UtilisateurEntity {
     @Column(name = "mdp")
     private String mdp;
 
@@ -22,9 +22,9 @@ public class Organisateur extends Utilisateur {
             joinColumns = @JoinColumn(name = "userUid"),
             inverseJoinColumns = @JoinColumn(name = "idFestival")
     )
-    private List<Festival> festivals;
+    private List<FestivalEntity> festivals;
 
-    public Organisateur(){
-         this.festivals = new ArrayList<Festival>();
+    public OrganisateurEntity(){
+         this.festivals = new ArrayList<FestivalEntity>();
     }
 }

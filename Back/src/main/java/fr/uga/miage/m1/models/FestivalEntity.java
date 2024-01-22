@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "Festival")
-public final class Festival{
+public final class FestivalEntity{
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private long idFestival;
 
@@ -40,17 +40,17 @@ public final class Festival{
 
     @ManyToOne
     @JoinColumn(name = "nomSousDomaine", referencedColumnName = "nomSousDomaine")
-    private SousDomaine sousDomaine;
+    private SousDomaineEntity sousDomaine;
 
     @ManyToOne
     @JoinColumn(name = "codeINSEE", referencedColumnName = "codeINSEE")
-    private Commune commune;
+    private CommuneEntity commune;
 
     @ManyToMany(mappedBy = "festivals")
-    private List<Organisateur> organisateurs;
+    private List<OrganisateurEntity> organisateurs;
 
-    public Festival(){
-        this.organisateurs = new ArrayList<Organisateur>();
+    public FestivalEntity(){
+        this.organisateurs = new ArrayList<OrganisateurEntity>();
     }
 
 }

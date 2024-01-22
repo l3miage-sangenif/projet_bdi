@@ -8,10 +8,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Domaine")
-public class Domaine {
+public class DomaineEntity {
     @Id
     @Column(name = "nomDomaine")
     private String nomDomaine;
     
-    public Domaine(){}
+    public DomaineEntity(){}
 }

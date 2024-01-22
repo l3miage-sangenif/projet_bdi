@@ -1,4 +1,4 @@
-package fr.uga.miage.m1.Entities;
+package fr.uga.miage.m1.models;
 
 
 import jakarta.persistence.*;
@@ -9,30 +9,30 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "EtapeAchat")
-public class EtapeAchat {
+public class EtapeAchatEntity {
 
     @EmbeddedId
-    private EtapeAchatId id;
+    private EtapeAchatIdEntity id;
 
     @ManyToOne
     @MapsId("numAchat")
     @JoinColumn(name = "numAchat", referencedColumnName = "numAchat")
-    private Achat achat;
+    private AchatEntity achat;
 
     @ManyToOne
     @MapsId("idtrajet")
     @JoinColumn(name = "idtrajet", referencedColumnName = "idtrajet")
-    private Etape etape;
+    private EtapeEntity etape;
 
     @Column(name = "nbPlace")
     private int nbPlace;
 
-    public EtapeAchat() {
-        this.id = new EtapeAchatId();
+    public EtapeAchatEntity() {
+        this.id = new EtapeAchatIdEntity();
     }
 
-    public EtapeAchat(Achat achat, Etape etape, int nbPlace) {
-        this.id = new EtapeAchatId(achat.getNumAchat(), etape.getIdtrajet());
+    public EtapeAchatEntity(AchatEntity achat, EtapeEntity etape, int nbPlace) {
+        this.id = new EtapeAchatIdEntity(achat.getNumAchat(), etape.getIdtrajet());
         this.achat = achat;
         this.etape = etape;
         this.nbPlace = nbPlace;

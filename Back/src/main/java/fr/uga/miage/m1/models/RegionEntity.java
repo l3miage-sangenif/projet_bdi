@@ -11,11 +11,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Region")
-public class Region {
+public class RegionEntity {
     @Id
     @Column(name = "nomRegion")
     private String nomRegion;
 
-    public Region(){}
+    public RegionEntity(){}
 
 }

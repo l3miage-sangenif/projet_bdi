@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Commune")
-public class Commune {
+public class CommuneEntity {
     @Id
     @Column(name = "codeINSEE")
     private long codeINSEE;
@@ -26,8 +26,8 @@ public class Commune {
 
     @ManyToOne
     @JoinColumn(name = "numDepartement", referencedColumnName="numDepartement")
-    private Departement departement;
+    private DepartementEntity departement;
 
-    public Commune(){}
+    public CommuneEntity(){}
 
 }

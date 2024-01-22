@@ -13,14 +13,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "SousDomaine")
-public class SousDomaine {
+public class SousDomaineEntity {
     @Id
     @Column(name = "nomSousDomaine")
     private String nomSousDomaine;
 
     @ManyToOne
     @JoinColumn(name = "nomDomaine", referencedColumnName = "nomDomaine")
-    private Domaine domaine;
+    private DomaineEntity domaine;
 
-    public SousDomaine(){}
+    public SousDomaineEntity(){}
 }

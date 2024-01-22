@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Departement")
-public class Departement {
+public class DepartementEntity {
     @Id
     @Column(name = "numDepartement")
     private long numDepartement;
@@ -18,8 +18,8 @@ public class Departement {
 
     @ManyToOne
     @JoinColumn(name = "nomRegion", referencedColumnName ="nomRegion")
-    private Region region;
+    private RegionEntity region;
 
-    public Departement (){}
+    public DepartementEntity (){}
   
 }

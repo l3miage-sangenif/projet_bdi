@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "Etape")
-public class Etape {
+public class EtapeEntity {
 
     @Id
     @Column(name = "idtrajet")
@@ -23,11 +23,11 @@ public class Etape {
 
     @ManyToOne
     @JoinColumn(name = "idConducteur", referencedColumnName = "idConducteur")
-    private OffreCovoiturage offreCovoiturage;
+    private OffreCovoiturageEntity offreCovoiturage;
 
     @ManyToOne
     @JoinColumn(name = "idLieu", referencedColumnName = "idLieu")
-    private LieuCovoiturage lieuCovoiturage;
+    private LieuCovoiturageEntity lieuCovoiturage;
 
-    public Etape(){}
+    public EtapeEntity(){}
 }

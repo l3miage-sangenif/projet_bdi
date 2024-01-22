@@ -15,7 +15,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Achat")
-public class Achat {
+public class AchatEntity {
     @Id
     @Column(name = "numAchat")
     private long numAchat;
@@ -27,9 +27,9 @@ public class Achat {
     private Boolean achatValidee;
 
     @ManyToMany(mappedBy = "achats")
-    private List<Utilisateur> utilisateurs;
+    private List<UtilisateurEntity> utilisateurs;
 
-    public Achat() {
-        this.utilisateurs = new ArrayList<Utilisateur>();
+    public AchatEntity() {
+        this.utilisateurs = new ArrayList<UtilisateurEntity>();
     }
 }

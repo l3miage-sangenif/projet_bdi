@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "OffreCovoiturage")
-public class OffreCovoiturage {
+public class OffreCovoiturageEntity {
 
     @Id
     @Column(name = "idOffreCovoiturage")
@@ -30,11 +30,11 @@ public class OffreCovoiturage {
 
     @ManyToOne
     @JoinColumn(name = "userUid", referencedColumnName = "userUid")
-    private Utilisateur utilisateur;
+    private UtilisateurEntity utilisateur;
 
     @ManyToOne
     @JoinColumn(name = "idFestival", referencedColumnName = "idFestival")
-    private Festival festival;
+    private FestivalEntity festival;
 
-    public OffreCovoiturage() {}
+    public OffreCovoiturageEntity() {}
 }

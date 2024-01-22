@@ -15,7 +15,7 @@ import lombok.Setter;
 @DiscriminatorColumn(name="typeUtilisateur")
 @DiscriminatorValue("Festivalier")
 @Table(name = "Utilisateur")
-public class Utilisateur {
+public class UtilisateurEntity {
 
     @Id
     @Column(name = "userUid")
@@ -40,9 +40,9 @@ public class Utilisateur {
             joinColumns = @JoinColumn(name = "userUid"),
             inverseJoinColumns = @JoinColumn(name = "numAchat")
     )
-    private List<Achat> achats;
+    private List<AchatEntity> achats;
 
-    public Utilisateur() {
-        this.achats = new ArrayList<Achat>();
+    public UtilisateurEntity() {
+        this.achats = new ArrayList<AchatEntity>();
     }
 }

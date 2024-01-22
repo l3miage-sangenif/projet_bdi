@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @Setter
 @Table(name = "Conducteur")
 @DiscriminatorValue("Conducteur")
-public class Conducteur extends Utilisateur {
+public class ConducteurEntity extends UtilisateurEntity {
     @Column(name = "mdp")
     private String mdp;
 

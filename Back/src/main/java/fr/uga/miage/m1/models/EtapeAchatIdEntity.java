@@ -1,11 +1,11 @@
-package fr.uga.miage.m1.Entities;
+package fr.uga.miage.m1.models;
 
 import java.io.Serializable;
 
 import jakarta.persistence.*;
 
 @Embeddable
-public class EtapeAchatId implements Serializable {
+public class EtapeAchatIdEntity implements Serializable {
 
     @Column(name = "numAchat")
     private long numAchat;
@@ -13,10 +13,10 @@ public class EtapeAchatId implements Serializable {
     @Column(name = "idtrajet")
     private long idtrajet;
 
-    public EtapeAchatId() {
+    public EtapeAchatIdEntity() {
     }
 
-    public EtapeAchatId(Long numAchat, Long idtrajet) {
+    public EtapeAchatIdEntity(Long numAchat, Long idtrajet) {
         this.numAchat = numAchat;
         this.idtrajet = idtrajet;
     }
