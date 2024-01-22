@@ -1,4 +1,4 @@
-package fr.uga.miage.m1.Entities;
+package fr.uga.miage.m1.models;
 
 import java.util.ArrayList;
 import java.util.List;
