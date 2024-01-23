@@ -38,6 +38,9 @@ public class FestivalEntity{
     @Column(name="nbPass")
     private int nbPass;
 
+    @Column(name="nbPassRestants")
+    private int nbPassRestants;
+
     @ManyToOne
     @JoinColumn(name = "nomSousDomaine", referencedColumnName = "nomSousDomaine")
     private SousDomaineEntity sousDomaine;
