@@ -13,33 +13,36 @@ DROP TABLE Region CASCADE CONSTRAINTS;
 DROP TABLE Sous_domaine CASCADE CONSTRAINTS;
 DROP TABLE Domaine CASCADE CONSTRAINTS;
 
+ALTER DATABASE CHARACTER SET UTF8;
+
+
 CREATE TABLE Domaine (
-    nomDomaine VARCHAR2(255) PRIMARY KEY
+    nom_domaine VARCHAR2(255) PRIMARY KEY
 );
 
 CREATE TABLE SousDomaine (
-    nomSousDomaine VARCHAR2(255) PRIMARY KEY,
-    nomDomaine VARCHAR2(255),
-    FOREIGN KEY (nomDomaine) REFERENCES Domaine(nomDomaine)
+    nom_sous_domaine VARCHAR2(255) PRIMARY KEY,
+    nom_domaine VARCHAR2(255),
+    FOREIGN KEY (nom_domaine) REFERENCES Domaine(nom_domaine)
 );
 
 CREATE TABLE Region (
-    nomRegion VARCHAR2(255) PRIMARY KEY
+    nom_region VARCHAR2(255) PRIMARY KEY
 );
 
 CREATE TABLE Departement (
-    numDepartement NUMBER PRIMARY KEY,
-    nomDepartement VARCHAR2(255),
-    nomRegion VARCHAR2(255),
-    FOREIGN KEY (nomRegion) REFERENCES Region(nomRegion)
+    num_departement NUMBER PRIMARY KEY,
+    nom_departement VARCHAR2(255),
+    nom_region VARCHAR2(255),
+    FOREIGN KEY (nom_region) REFERENCES Region(nom_region)
 );
 
 CREATE TABLE Commune (
-    codeINSEE VARCHAR(255) PRIMARY KEY,
-    nomCommune VARCHAR2(255),
+    codeiNSEE VARCHAR(255) PRIMARY KEY,
+    nom_commune VARCHAR2(255),
     codePostal VARCHAR2(20),
-    numDepartement NUMBER,
-    FOREIGN KEY (numDepartement) REFERENCES Departement(numDepartement)
+    num_departement NUMBER,
+    FOREIGN KEY (num_departement) REFERENCES Departement(num_departement)
 );
 
 CREATE TABLE Utilisateur (
@@ -59,8 +62,8 @@ CREATE TABLE LieuCovoiturage (
     adresseLieu VARCHAR2(255),
     longitude NUMBER(25, 20),
     latitude NUMBER(25, 20),
-    codeINSEE VARCHAR(255),
-    FOREIGN KEY (codeINSEE) REFERENCES Commune(codeINSEE)
+    i VARCHAR(255),
+    FOREIGN KEY (i) REFERENCES Commune(i)
 );
 
 CREATE TABLE Festival (
@@ -72,10 +75,10 @@ CREATE TABLE Festival (
     nbPlace NUMBER,
     tarif NUMBER(10, 2),
     nbPlaceRestante NUMBER,
-    nomSousDomaine VARCHAR2(255),
-    codeINSEE VARCHAR(255)
-    FOREIGN KEY (nomSousDomaine) REFERENCES Sous_domaine(nomSousDomaine),
-    FOREIGN KEY (codeINSEE) REFERENCES Commune(codeINSEE)
+    nom_sous_domaine VARCHAR2(255),
+    i VARCHAR(255)
+    FOREIGN KEY (nom_sous_domaine) REFERENCES Sous_domaine(nom_sous_domaine),
+    FOREIGN KEY (i) REFERENCES Commune(i)
 );
 
 CREATE TABLE Achat (
@@ -85,7 +88,7 @@ CREATE TABLE Achat (
 );
 
 CREATE TABLE OffreCovoiturage (
-    idCOffreCovoiturage NUMBER PRIMARY KEY,
+    idOffreCovoiturage NUMBER PRIMARY KEY,
     nbPlace NUMBER,
     numImmatriculation VARCHAR2(20),
     modele VARCHAR2(255),
