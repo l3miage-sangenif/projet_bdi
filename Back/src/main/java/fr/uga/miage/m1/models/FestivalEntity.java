@@ -36,7 +36,7 @@ public class FestivalEntity{
     private BigDecimal tarif;
 
     @Column(name="nbPlaceRestante")
-    private int nbPassRestants;
+    private int nbPlaceRestante;
 
     @ManyToOne
     @JoinColumn(name = "nomSousDomaine", referencedColumnName = "nomSousDomaine")
