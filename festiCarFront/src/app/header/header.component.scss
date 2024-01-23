@@ -1,0 +1,38 @@
+
+.logoFesticar {
+  width: 100px;
+  height: auto;
+  border: none;
+}
+
+.mat-toolbar {
+  background-color: white;
+  gap: 5px;
+  height: auto;
+}
+
+button.example-icon {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  overflow: hidden;
+}
+
+.header-elements{
+  gap: 2px;
+  background-color: #4AD3B8;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 60px;
+  align-items: center;
+  border: 1px solid #4AD3B8;
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.mat-tab-label {
+  border-bottom: none;
+}
+
