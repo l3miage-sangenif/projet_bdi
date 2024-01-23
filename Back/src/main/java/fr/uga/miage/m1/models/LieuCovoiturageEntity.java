@@ -19,7 +19,7 @@ public class LieuCovoiturageEntity {
 
     @Id
     @Column(name = "idLieu")
-    private long idLieu;
+    private String idLieu;
 
     @Column(name = "nomLieu")
     private String nomLieu;
