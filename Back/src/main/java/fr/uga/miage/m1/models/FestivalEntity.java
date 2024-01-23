@@ -35,10 +35,7 @@ public class FestivalEntity{
     @Column(name="tarif", precision = 10, scale = 2)
     private BigDecimal tarif;
 
-    @Column(name="nbPass")
-    private int nbPass;
-
-    @Column(name="nbPassRestants")
+    @Column(name="nbPlaceRestante")
     private int nbPassRestants;
 
     @ManyToOne
