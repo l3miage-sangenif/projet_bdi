@@ -29,8 +29,8 @@ public class OffreCovoiturageEntity {
     private String couleur;
 
     @ManyToOne
-    @JoinColumn(name = "userUid", referencedColumnName = "userUid")
-    private UtilisateurEntity utilisateur;
+    @JoinColumn(name = "idConducteur", referencedColumnName = "userUid")
+    private ConducteurEntity conducteur;
 
     @ManyToOne
     @JoinColumn(name = "idFestival", referencedColumnName = "idFestival")

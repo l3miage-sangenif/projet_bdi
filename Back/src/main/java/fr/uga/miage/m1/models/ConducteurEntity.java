@@ -12,5 +12,4 @@ public class ConducteurEntity extends UtilisateurEntity {
     @Column(name = "mdp")
     private String mdp;
 
-    public Conducteur(){}
 }

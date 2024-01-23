@@ -16,7 +16,7 @@ import lombok.Setter;
 public class CommuneEntity {
     @Id
     @Column(name = "codeINSEE")
-    private long codeINSEE;
+    private String codeINSEE;
 
     @Column(name = "nomCommune")
     private String nomCommune;
