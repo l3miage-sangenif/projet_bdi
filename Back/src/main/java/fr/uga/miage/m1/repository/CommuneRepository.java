@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import fr.uga.miage.m1.models.CommuneEntity;
 
 @Repository
-public interface CommuneRepository extends JpaRepository<CommuneEntity, Long> {
+public interface CommuneRepository extends JpaRepository<CommuneEntity, String> {
 }

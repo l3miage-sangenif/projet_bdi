@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import fr.uga.miage.m1.models.LieuCovoiturageEntity;
 
 @Repository
-public interface LieuCovoiturageRepository extends JpaRepository<LieuCovoiturageEntity, Long> {
+public interface LieuCovoiturageRepository extends JpaRepository<LieuCovoiturageEntity, String> {
 }
