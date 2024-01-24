@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "Conducteur")
 @DiscriminatorValue("Conducteur")
 public class ConducteurEntity extends UtilisateurEntity {
     @Column(name = "mdp")
