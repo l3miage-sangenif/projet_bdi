@@ -8,7 +8,6 @@ import org.mapstruct.MappingTarget;
 import org.mapstruct.factory.Mappers;
 
 import fr.uga.miage.m1.DTO.Festival;
-import fr.uga.miage.m1.mapper.utils.FestivalMapperUtils;
 import fr.uga.miage.m1.models.FestivalEntity;
 
 @Mapper
