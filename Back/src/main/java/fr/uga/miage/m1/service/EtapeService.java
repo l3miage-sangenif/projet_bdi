@@ -9,7 +9,9 @@ import fr.uga.miage.m1.models.EtapeEntity;
 import fr.uga.miage.m1.models.FestivalEntity;
 import fr.uga.miage.m1.repository.EtapeRepository;
 import fr.uga.miage.m1.repository.FestivalRepository;
+import fr.uga.miage.m1.DTO.Etape;
 import fr.uga.miage.m1.exception.EntityNotFoundRestException;
+import fr.uga.miage.m1.mapper.EtapeMapper;
 
 @Service
 @RequiredArgsConstructor
@@ -18,12 +20,12 @@ public class EtapeService {
     private final EtapeRepository repository;
 
 
-    public List<EtapeEntity> getEtapeByFestival(final Long id) {
+    public List<Etape> getEtapeByFestival(final Long id) {
         List<EtapeEntity> etapeList = repository.findAll();
-        List<EtapeEntity> newEtapeList = new ArrayList();
+        List<Etape> newEtapeList = new ArrayList();
         for (EtapeEntity etapeEntity : etapeList) {
             if(etapeEntity.getOffreCovoiturage().getFestival().getIdFestival()==id){
-                newEtapeList.add(etapeEntity);
+                newEtapeList.add(EtapeMapper.INSTANCE.toDto(etapeEntity));
             }
         }
         if (newEtapeList.isEmpty()){
