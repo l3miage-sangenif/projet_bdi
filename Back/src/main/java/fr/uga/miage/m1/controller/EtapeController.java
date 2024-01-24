@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import fr.uga.miage.m1.DTO.Etape;
 import fr.uga.miage.m1.models.EtapeEntity;
 import fr.uga.miage.m1.service.EtapeService;
 
@@ -25,7 +26,7 @@ public class EtapeController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/covoiturage/{idFestival}")
-    public List<EtapeEntity> getEtapeByFestival(@PathVariable Long idFestival) {
+    public List<Etape> getEtapeByFestival(@PathVariable Long idFestival) {
         return etapeService.getEtapeByFestival(idFestival);
     }
     
