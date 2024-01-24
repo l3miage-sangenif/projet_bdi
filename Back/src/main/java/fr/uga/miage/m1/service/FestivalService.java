@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 
 import fr.uga.miage.m1.models.FestivalEntity;
 import fr.uga.miage.m1.repository.FestivalRepository;
+import fr.uga.miage.m1.DTO.Festival;
 import fr.uga.miage.m1.exception.EntityNotFoundRestException;
+import fr.uga.miage.m1.mapper.FestivalMapper;
 
 @Service
 @RequiredArgsConstructor
@@ -18,12 +20,19 @@ public class FestivalService {
 
     private final FestivalRepository repository;
 
-    public List<FestivalEntity> getAllFestival() {
-        return repository.findAll();
+    public List<Festival> getAllFestival() {
+        List<FestivalEntity> festivalEntities = repository.findAll();
+        List<Festival> festivals = new ArrayList<>();
+        for (FestivalEntity f : festivalEntities) {
+            festivals.add(FestivalMapper.INSTANCE.toDto(f));
+        }
+        return festivals;
     }
 
-    public FestivalEntity getFestivalById(final Long id) {
-        return repository.findById(id).orElseThrow(() -> new EntityNotFoundRestException(String.format("Aucune entité n'a été trouvée pour festival [%s]", id),id.intValue()));
+    public Festival getFestivalById(final Long id) {
+        return FestivalMapper.INSTANCE.toDto(repository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundRestException(String.format("Aucune entité n'a été trouvée pour festival [%s]", id),id.intValue()))
+        );
     }
     
 }

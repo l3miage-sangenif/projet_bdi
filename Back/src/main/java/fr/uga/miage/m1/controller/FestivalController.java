@@ -25,14 +25,14 @@ public class FestivalController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/festival")
-    public List<FestivalEntity> getAllFestival() {
+    public List<Festival> getAllFestival() {
         return festivalService.getAllFestival();
     }
 
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/festival/{id}")
-    public FestivalEntity getFestivalById(@PathVariable Long id) {
+    public Festival getFestivalById(@PathVariable Long id) {
         return festivalService.getFestivalById(id);
     }
     
