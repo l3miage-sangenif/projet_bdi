@@ -24,7 +24,7 @@ public class EtapeEntity {
     private Timestamp heure;
 
     @ManyToOne
-    @JoinColumn(name = "idConducteur", referencedColumnName = "idConducteur")
+    @JoinColumn(name = "idOffreCovoiturage", referencedColumnName = "idOffreCovoiturage")
     private OffreCovoiturageEntity offreCovoiturage;
 
     @ManyToOne
