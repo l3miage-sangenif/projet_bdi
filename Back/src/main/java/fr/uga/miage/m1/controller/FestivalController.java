@@ -6,6 +6,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import fr.uga.miage.m1.service.FestivalService;
 
 @RestController
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("api/")
 public class FestivalController {
 
@@ -25,14 +27,14 @@ public class FestivalController {
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/festival")
-    public List<FestivalEntity> getAllFestival() {
+    public List<Festival> getAllFestival() {
         return festivalService.getAllFestival();
     }
 
 
     @ResponseStatus(HttpStatus.OK)
     @GetMapping("/festival/{id}")
-    public FestivalEntity getFestivalById(@PathVariable Long id) {
+    public Festival getFestivalById(@PathVariable Long id) {
         return festivalService.getFestivalById(id);
     }
     
