@@ -38,7 +38,7 @@ public class OffreCovoiturageEntity {
     @JoinColumn(name = "idFestival", referencedColumnName = "idFestival")
     private FestivalEntity festival;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "offreCovoiturage", cascade = CascadeType.ALL)
     private List<EtapeEntity> etape;
 
     public OffreCovoiturageEntity() {}

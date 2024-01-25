@@ -3,8 +3,10 @@ package fr.uga.miage.m1.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
@@ -34,6 +36,6 @@ public class AchatEntity {
         this.utilisateurs = new ArrayList<UtilisateurEntity>();
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "achat", cascade = CascadeType.ALL)
     private List<EtapeAchatEntity> etape;
 }
