@@ -1,5 +1,4 @@
 package fr.uga.miage.m1.service;
-
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -8,9 +7,9 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import fr.uga.miage.m1.DTO.Festival;
 import fr.uga.miage.m1.models.FestivalEntity;
 import fr.uga.miage.m1.repository.FestivalRepository;
-import fr.uga.miage.m1.DTO.Festival;
 import fr.uga.miage.m1.exception.EntityNotFoundRestException;
 import fr.uga.miage.m1.mapper.FestivalMapper;
 
@@ -34,5 +33,5 @@ public class FestivalService {
             .orElseThrow(() -> new EntityNotFoundRestException(String.format("Aucune entité n'a été trouvée pour festival [%s]", id),id.intValue()))
         );
     }
-    
+
 }
