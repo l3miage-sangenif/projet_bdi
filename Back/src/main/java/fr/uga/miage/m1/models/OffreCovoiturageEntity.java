@@ -1,6 +1,8 @@
 package fr.uga.miage.m1.models;
 
 
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -35,6 +37,9 @@ public class OffreCovoiturageEntity {
     @ManyToOne
     @JoinColumn(name = "idFestival", referencedColumnName = "idFestival")
     private FestivalEntity festival;
+
+    @OneToMany
+    private List<EtapeEntity> etapes;
 
     public OffreCovoiturageEntity() {}
 }

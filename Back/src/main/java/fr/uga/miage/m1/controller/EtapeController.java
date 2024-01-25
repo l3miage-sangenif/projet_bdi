@@ -24,10 +24,5 @@ public class EtapeController {
 
     private final EtapeService etapeService;
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/covoiturage/{idFestival}")
-    public List<Etape> getEtapeByFestival(@PathVariable Long idFestival) {
-        return etapeService.getEtapeByFestival(idFestival);
-    }
     
 }

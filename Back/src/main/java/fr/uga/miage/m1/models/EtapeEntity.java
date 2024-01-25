@@ -2,6 +2,8 @@ package fr.uga.miage.m1.models;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
+import java.util.List;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -28,6 +30,9 @@ public class EtapeEntity {
     @ManyToOne
     @JoinColumn(name = "idLieu", referencedColumnName = "idLieu")
     private LieuCovoiturageEntity lieuCovoiturage;
+
+    @OneToMany
+    private List<EtapeAchatEntity> achats;
 
     public EtapeEntity(){}
 }

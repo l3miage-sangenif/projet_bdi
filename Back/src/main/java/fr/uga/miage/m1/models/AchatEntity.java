@@ -7,6 +7,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,4 +33,7 @@ public class AchatEntity {
     public AchatEntity() {
         this.utilisateurs = new ArrayList<UtilisateurEntity>();
     }
+
+    @OneToMany
+    private List<EtapeAchatEntity> etapes;
 }

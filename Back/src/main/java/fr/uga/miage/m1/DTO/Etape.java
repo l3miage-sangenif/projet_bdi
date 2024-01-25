@@ -17,8 +17,6 @@ public class Etape {
 
     Timestamp heure;
 
-    OffreCovoiturageEntity offreCovoiturage;
-
     LieuCovoiturageEntity lieuCovoiturage;
     
 }
