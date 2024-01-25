@@ -10,13 +10,13 @@ import org.mapstruct.factory.Mappers;
 import fr.uga.miage.m1.DTO.OffreCovoiturage;
 import fr.uga.miage.m1.models.OffreCovoiturageEntity;
 
-@Mapper
+@Mapper(uses=EtapeMapper.class)
 public interface OffreCovoiturageMapper{
 
     OffreCovoiturageMapper INSTANCE = Mappers.getMapper(OffreCovoiturageMapper.class);
 
-    OffreCovoiturage toDto(OffreCovoiturageEntity etapeEntity);
+    OffreCovoiturage toDto(OffreCovoiturageEntity offreCovoiturageEntity);
 
-    OffreCovoiturageEntity toEntity(OffreCovoiturage etape);
+    OffreCovoiturageEntity toEntity(OffreCovoiturage offreCovoiturage);
 
 }

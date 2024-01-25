@@ -35,5 +35,5 @@ public class AchatEntity {
     }
 
     @OneToMany
-    private List<EtapeAchatEntity> etapes;
+    private List<EtapeAchatEntity> etape;
 }

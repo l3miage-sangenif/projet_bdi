@@ -39,7 +39,7 @@ public class OffreCovoiturageEntity {
     private FestivalEntity festival;
 
     @OneToMany
-    private List<EtapeEntity> etapes;
+    private List<EtapeEntity> etape;
 
     public OffreCovoiturageEntity() {}
 }

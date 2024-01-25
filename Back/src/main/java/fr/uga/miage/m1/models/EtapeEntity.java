@@ -31,8 +31,6 @@ public class EtapeEntity {
     @JoinColumn(name = "idLieu", referencedColumnName = "idLieu")
     private LieuCovoiturageEntity lieuCovoiturage;
 
-    @OneToMany
-    private List<EtapeAchatEntity> achats;
 
     public EtapeEntity(){}
 }
