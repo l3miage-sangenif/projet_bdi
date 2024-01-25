@@ -10,7 +10,6 @@ import jakarta.persistence.*;
 @Entity
 @Getter
 @Setter
-@Table(name = "Organisateur")
 @DiscriminatorValue("Organisateur")
 public class OrganisateurEntity extends UtilisateurEntity {
     @Column(name = "mdp")
