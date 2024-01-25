@@ -22,14 +22,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FestivalComponent } from './festival/festival.component';
+import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoiturages.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AccueilComponent,
-    ListeFestivalsComponent
-  ],
+    ListeFestivalsComponent,
+    FestivalComponent,
+    ListeCovoituragesComponent
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -49,6 +54,7 @@ import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.compo
   ],
   providers: [
     AuthService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

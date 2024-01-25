@@ -2,9 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HeaderComponent } from './header/header.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { FestivalComponent } from './festival/festival.component';
+import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoiturages.component';
 
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent},
+  { path: 'detailfestival', component: FestivalComponent},
+  { path: 'listcovoiturage', component: ListeCovoituragesComponent},
+
+
 ];
 
 @NgModule({
