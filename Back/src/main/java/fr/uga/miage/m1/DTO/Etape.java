@@ -2,6 +2,7 @@ package fr.uga.miage.m1.DTO;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
+import java.time.Instant;
 
 import fr.uga.miage.m1.models.LieuCovoiturageEntity;
 import fr.uga.miage.m1.models.OffreCovoiturageEntity;
@@ -21,9 +22,9 @@ public class Etape {
 
     long idtrajet;
 
-    BigDecimal prix;
+    float prix;
 
-    Timestamp heure;
+    Instant heure;
 
     LieuCovoiturageEntity lieuCovoiturage;
     

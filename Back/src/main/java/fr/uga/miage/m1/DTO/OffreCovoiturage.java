@@ -29,6 +29,6 @@ public class OffreCovoiturage {
 
     private Festival festival;
 
-    private List<Etape> etapes;
+    private List<Etape> etape;
 
 }

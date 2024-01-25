@@ -2,6 +2,7 @@ package fr.uga.miage.m1.models;
 
 import java.math.BigDecimal;
 import java.security.Timestamp;
+import java.time.Instant;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -18,10 +19,10 @@ public class EtapeEntity {
     private long idtrajet;
 
     @Column(name = "prix", precision = 10, scale = 2)
-    private BigDecimal prix;
+    private float prix;
 
     @Column(name = "heure")
-    private Timestamp heure;
+    private Instant heure;
 
     @ManyToOne
     @JoinColumn(name = "idOffreCovoiturage", referencedColumnName = "idOffreCovoiturage")
