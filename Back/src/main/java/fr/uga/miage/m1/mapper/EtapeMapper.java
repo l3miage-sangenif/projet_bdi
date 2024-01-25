@@ -19,7 +19,4 @@ public interface EtapeMapper{
 
     EtapeEntity toEntity(Etape etape);
 
-    void mergeTestEntity(@MappingTarget @NonNull EtapeEntity etapeEntity, Etape etape);
-
-    
 }

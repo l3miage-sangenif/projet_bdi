@@ -19,7 +19,4 @@ public interface FestivalMapper {
 
     FestivalEntity toEntity(Festival festival);
 
-    void mergeTestEntity(@MappingTarget @NonNull FestivalEntity festivalEntity, Festival festival);
-
-    
 }
