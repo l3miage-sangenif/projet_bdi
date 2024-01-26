@@ -22,6 +22,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.component';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { FestivalComponent } from './festival/festival.component';
+import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoiturages.component';
+import { ChoixCovoiturageComponent } from './choix-covoiturage/choix-covoiturage.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete"; 
 import {MatMenuModule} from '@angular/material/menu';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CorsInterceptor } from './cors.interceptor';
@@ -38,6 +43,11 @@ import { PaymentComponent } from './payment/payment.component';
     HeaderComponent,
     AccueilComponent,
     ListeFestivalsComponent,
+    FestivalComponent,
+    ListeCovoituragesComponent,
+    ChoixCovoiturageComponent
+    
+    ],
     PaymentComponent
   ],
   imports: [
@@ -56,6 +66,12 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,
+    GooglePlaceModule
+    
+  ],
+  providers: [
+    AuthService],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
     MatMenuModule,
     HttpClientModule,
     FormsModule,

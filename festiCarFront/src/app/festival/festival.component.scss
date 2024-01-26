@@ -1,0 +1,60 @@
+.festival-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+ 
+  }
+  
+  .festivalImage {
+    flex: 0 0 auto;
+    margin-right: 72px; 
+    margin-left: 72px; 
+  }
+  
+  .festivalImage img {
+    max-width: 100%; 
+    height: auto; 
+  }
+  
+  .festivalDetails {
+    flex: 1; 
+    margin-top: -111px ; 
+  }
+  
+ 
+  .event-title {
+    font-size: 24px;
+    font-size: 50px;
+    font-weight: bold;
+    text-transform: uppercase;
+      
+  }
+  
+  .festivalDetails ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 50px;
+  }
+  
+  .festivalDetails ul i {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+
+  
+  .search-container {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .search-covoiturage{
+    height: 56px;
+    background-color: #4AD3B8;
+  }
+ 
+  .mat-icon{
+    color: #4AD3B8;
+  }
+  
