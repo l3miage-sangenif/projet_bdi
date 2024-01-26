@@ -26,4 +26,9 @@ export class FestiCarService {
     const url = `${this.baseUrl}/festival/${idFestival}`;
     return this.http.get(url, this.httpOptions);
   }
+
+  getAllCovoituragesByFestivalId(idFestival: number): Observable<any> {
+    const url = `${this.baseUrl}/covoiturage/${idFestival}`;
+    return this.http.get(url, this.httpOptions);
+  }
 }
