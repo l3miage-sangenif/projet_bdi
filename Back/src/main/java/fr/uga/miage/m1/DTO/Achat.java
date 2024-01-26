@@ -21,6 +21,8 @@ public class Achat {
     
     Boolean achatValidee;
 
+    Utilisateur utilisateur;
+
 
     
 }

@@ -34,12 +34,7 @@ public class UtilisateurEntity {
     @Column(name = "email")
     private String email;
 
-    @ManyToMany
-    @JoinTable(
-            name = "AchatUtilisateur",
-            joinColumns = @JoinColumn(name = "userUid"),
-            inverseJoinColumns = @JoinColumn(name = "numAchat")
-    )
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "utilisateur", cascade = CascadeType.ALL)
     private List<AchatEntity> achats;
 
     public UtilisateurEntity() {
