@@ -10,13 +10,10 @@ import fr.uga.miage.m1.models.AchatEntity;
 
 @Data
 @Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class Utilisateur {
      String userUid;
      String nom;
      String prenom;
      String numTelephone;
      String email;
-     List<Achat> achats; 
 }

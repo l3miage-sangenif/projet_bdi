@@ -8,7 +8,9 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
@@ -29,11 +31,11 @@ public class AchatEntity {
     @Column(name = "achatValidee")
     private Boolean achatValidee;
 
-    @ManyToMany(mappedBy = "achats")
-    private List<UtilisateurEntity> utilisateurs;
+    @ManyToOne
+    @JoinColumn(name = "IdFestivalier", referencedColumnName = "userUid")
+    private UtilisateurEntity utilisateur;
 
     public AchatEntity() {
-        this.utilisateurs = new ArrayList<UtilisateurEntity>();
     }
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "achat", cascade = CascadeType.ALL)

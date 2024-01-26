@@ -18,7 +18,7 @@ public class EtapeEntity {
     @Column(name = "idtrajet")
     private long idtrajet;
 
-    @Column(name = "prix", precision = 10, scale = 2)
+    @Column(name = "prix")
     private float prix;
 
     @Column(name = "heure")

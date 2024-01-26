@@ -15,20 +15,20 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class OffreCovoiturage {
     
-    private long idOffreCovoiturage;
+     long idOffreCovoiturage;
 
-    private int nbPlace;
+     int nbPlace;
 
-    private String numImmatriculation;
+     String numImmatriculation;
 
-    private String modele;
+     String modele;
 
-    private String couleur;
+     String couleur;
 
-    private ConducteurEntity conducteur;
+     ConducteurEntity conducteur;
 
-    private Festival festival;
+     Festival festival;
 
-    private List<Etape> etape;
+     List<Etape> etape;
 
 }
