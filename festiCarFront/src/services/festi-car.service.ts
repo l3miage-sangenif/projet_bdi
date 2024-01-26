@@ -21,4 +21,9 @@ export class FestiCarService {
     const url = `${this.baseUrl}/festival`;
     return this.http.get(url, this.httpOptions);
   }
+
+  getAllFestivalById(idFestival: number): Observable<any> {
+    const url = `${this.baseUrl}/festival/${idFestival}`;
+    return this.http.get(url, this.httpOptions);
+  }
 }

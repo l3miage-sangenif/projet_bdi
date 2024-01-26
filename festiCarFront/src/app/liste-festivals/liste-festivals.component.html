@@ -61,7 +61,7 @@
 <mat-paginator  [pageSizeOptions]="[5, 10, 25, 100]" [length]="" [pageSize]="10" showFirstLastButtons ></mat-paginator>
 <div class="festivals-grid">
   <div *ngFor="let festival of festivalsTab" class="clickable-card" style="max-width: 450px;">
-      <mat-card  [routerLink]="'/accueil'">
+      <mat-card  [routerLink]="['/detailfestival', festival.idFestival]">
         <mat-card-header>
           <div class="header-content">
             <img src="assets/images/Musiques actuelles.png" alt="Image du festival">

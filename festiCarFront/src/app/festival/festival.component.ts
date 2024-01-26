@@ -10,7 +10,7 @@ import { Subscription } from 'rxjs';
 export class FestivalComponent {
   options: any = {
     componentRestrictions: { country: 'FR' }
-  }  
+  }
 
   handleAddressChange(address: any) {
     console.log(address.formatted_address)
@@ -19,22 +19,20 @@ export class FestivalComponent {
   }
  @ViewChild('addressText') addressText!: ElementRef;
   protected placeSubscription: Subscription;
-  
+
   googleMapService: any;
- 
+
   ngAfterViewInit(): void {
     this.googleMapService.getPlaceAutocomplete(this.addressText);
-    
-
   }
 
   onAddressChange(): void {
     this.placeSubscription =
     this.googleMapService.placeObservable.subscribe(
       (place) => { console.log('nouvelle adresse : ' +
-      place.formatted_address); 
+      place.formatted_address);
       }
-      
+
 
     );
   }

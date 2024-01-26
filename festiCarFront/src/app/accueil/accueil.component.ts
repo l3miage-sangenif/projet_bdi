@@ -55,7 +55,7 @@ export class AccueilComponent implements OnInit, OnDestroy {
           console.error('Error fetching festivals:', error);
         }
       });
-      this.router.navigate(['/listefestival']);
+      this.router.navigate(['/listfestivals']);
     }
 
 

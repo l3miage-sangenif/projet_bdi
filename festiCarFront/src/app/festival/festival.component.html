@@ -1,7 +1,7 @@
 <div class="festival-container">
     <div class="festivalImage">
         <img src="/assets/images/festival1.png" >
-    </div>  
+    </div>
         <div class="festivalDetails">
             <h1 class="event-title">Worldwide Concert Lyon </h1>
         <ul>
@@ -20,20 +20,18 @@
             <input matInput  type="text" ngx-google-places-autocomplete
             [options]="options"
             (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" />
-           
+
         </mat-form-field>
-      
+
         <mat-form-field class="pass-field">
           <input matInput type="text" placeholder="Nombre de pass" />
         </mat-form-field>
-        
 
-        <button mat-icon-button class="search-covoiturage"  >Trouver covoiturage</button>
+
+        <button mat-icon-button class="search-covoiturage" >Trouver covoiturage</button>
       </div>
-    
+
     <div>
-    
     </div>
     <app-liste-covoiturages></app-liste-covoiturages>
-    
-    
+

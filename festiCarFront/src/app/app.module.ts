@@ -1,10 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
-
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
@@ -26,7 +24,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FestivalComponent } from './festival/festival.component';
 import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoiturages.component';
 import { ChoixCovoiturageComponent } from './choix-covoiturage/choix-covoiturage.component';
-import { GooglePlaceModule } from "ngx-google-places-autocomplete"; 
+import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import {MatMenuModule} from '@angular/material/menu';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CorsInterceptor } from './cors.interceptor';
@@ -45,10 +43,9 @@ import { PaymentComponent } from './payment/payment.component';
     ListeFestivalsComponent,
     FestivalComponent,
     ListeCovoituragesComponent,
-    ChoixCovoiturageComponent
-    
-    ],
+    ChoixCovoiturageComponent,
     PaymentComponent
+
   ],
   imports: [
     BrowserModule,
@@ -66,17 +63,13 @@ import { PaymentComponent } from './payment/payment.component';
     BrowserAnimationsModule,
     MatGridListModule,
     MatCardModule,
-    GooglePlaceModule
-    
-  ],
-  providers: [
-    AuthService],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    GooglePlaceModule,
     MatMenuModule,
     HttpClientModule,
     FormsModule,
     MatPaginatorModule,
     MatListModule
+
 
   ],
   providers: [
@@ -85,9 +78,9 @@ import { PaymentComponent } from './payment/payment.component';
       provide: HTTP_INTERCEPTORS,
       useClass: CorsInterceptor,
       multi: true
-
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }
