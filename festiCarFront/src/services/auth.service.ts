@@ -1,8 +1,7 @@
 import { Injectable} from '@angular/core';
-import {FacebookAuthProvider, getAuth, getRedirectResult, signInWithPopup, signInWithRedirect} from 'firebase/auth';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
-
+import {FacebookAuthProvider, User, getAuth, signInWithPopup, signOut} from 'firebase/auth';
+import { environment } from 'src/environments/environment';
+import { initializeApp } from 'firebase/app';
 
 
 
@@ -11,29 +10,42 @@ import { Router } from '@angular/router';
 })
 export class AuthService {
 
-   provider = new FacebookAuthProvider();
+   user?: User;
+
+  photo : string | null = "";
+  userId : string | undefined;
+  userName : string | undefined;
 
   constructor(
-    private afAuth: AngularFireAuth,
-    private router : Router
   ) {}
 
   async FacebookAuth() {
-    console.log('nabou');
+    const firebaseConfig = environment.firebase;
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
     const provider = new FacebookAuthProvider();
-    const auth = getAuth();
-    signInWithPopup(auth, provider)
-    .then((result) => {
-      const user = result.user;
-      console.log('user', user);
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      this.user = result.user;
+      this.photo = this.user.photoURL;
+      this.userId = this.user.uid;
+      this.userName = this.user.displayName;
       const credential = FacebookAuthProvider.credentialFromResult(result);
       const accessToken = credential.accessToken;
-    })
-    .catch((error) => {
+    } catch (error) {
       const errorCode = error.code;
       const errorMessage = error.message;
-      const email = error.customData.email;
+      const email = error.customData?.email;
       const credential = FacebookAuthProvider.credentialFromError(error);
+    }
+  }
+  async logOut(){
+    const auth = getAuth();
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
     });
   }
 

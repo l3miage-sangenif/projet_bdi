@@ -22,13 +22,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatCardModule} from '@angular/material/card';
 import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.component';
+import {MatMenuModule} from '@angular/material/menu';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CorsInterceptor } from './cors.interceptor';
+import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatListModule} from '@angular/material/list';
+import { PaymentComponent } from './payment/payment.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     AccueilComponent,
-    ListeFestivalsComponent
+    ListeFestivalsComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
@@ -45,10 +55,23 @@ import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.compo
     MatInputModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    MatMenuModule,
+    HttpClientModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatListModule
+
   ],
   providers: [
-    AuthService],
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true
+
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

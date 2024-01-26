@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class FestiCarService {
 
-  baseUrl = 'http://localhost:8080/api';
+  baseUrl = ' http://129.88.210.61:8080/api';
 
   httpOptions = {
     headers: new HttpHeaders({

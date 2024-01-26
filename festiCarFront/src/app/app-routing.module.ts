@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HeaderComponent } from './header/header.component';
 import { AccueilComponent } from './accueil/accueil.component';
+import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.component';
 
 const routes: Routes = [
-  { path: 'accueil', component: AccueilComponent},
+  { path: '', component: AccueilComponent },
+  { path: 'accueil', component: AccueilComponent },
+  { path: 'listefestival', component: ListeFestivalsComponent},
 ];
 
 @NgModule({
