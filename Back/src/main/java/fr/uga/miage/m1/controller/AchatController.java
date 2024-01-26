@@ -17,10 +17,12 @@ import fr.uga.miage.m1.DTO.Achat;
 
 import fr.uga.miage.m1.service.AchatService;
 import fr.uga.miage.m1.request.CreateAchatRequest;
-
+import fr.uga.miage.m1.request.UpdateAchatRequest;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 
@@ -40,6 +42,16 @@ public class AchatController {
     @PostMapping("achat/{userUid}")
     public Achat postAchat(@PathVariable final String userUid,@RequestBody CreateAchatRequest entity) {
         return achatService.createAchat(entity,userUid);
+    }
+
+    @PostMapping("achat")
+    public Achat postAchatEmpty(@RequestBody CreateAchatRequest entity) {
+        return achatService.createAchatEmpty(entity);
+    }
+
+    @PutMapping("achat/{achatId}")
+    public Achat putAchat(@PathVariable int achatId, @RequestBody UpdateAchatRequest entity) {        
+        return achatService.updateAchat(entity,achatId);
     }
     
     
