@@ -32,6 +32,7 @@ import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatListModule} from '@angular/material/list';
 import { PaymentComponent } from './payment/payment.component';
+import { CartComponent } from './cart/cart.component';
 
 
 
@@ -44,7 +45,8 @@ import { PaymentComponent } from './payment/payment.component';
     FestivalComponent,
     ListeCovoituragesComponent,
     ChoixCovoiturageComponent,
-    PaymentComponent
+    PaymentComponent,
+    CartComponent
 
   ],
   imports: [
