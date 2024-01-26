@@ -17,15 +17,20 @@
     <div class="search-container">
         <mat-form-field class="location-field">
             <mat-icon matPrefix>location_on</mat-icon>
-            <input matInput type="text" placeholder="Votre dresse" />
+            <input matInput  type="text" ngx-google-places-autocomplete
+            [options]="options"
+            (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" />
+           
         </mat-form-field>
       
         <mat-form-field class="pass-field">
           <input matInput type="text" placeholder="Nombre de pass" />
         </mat-form-field>
-      
-        <button mat-icon-button class="search-covoiturage">Trouver covoiturage</button>
+        
+
+        <button mat-icon-button class="search-covoiturage"  >Trouver covoiturage</button>
       </div>
+    
     <div>
     
     </div>

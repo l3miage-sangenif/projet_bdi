@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "ngx-google-places-autocomplete": "^2.0.5"
+  }
+}

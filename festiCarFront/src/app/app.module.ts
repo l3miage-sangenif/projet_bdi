@@ -25,6 +25,8 @@ import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.compo
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FestivalComponent } from './festival/festival.component';
 import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoiturages.component';
+import { ChoixCovoiturageComponent } from './choix-covoiturage/choix-covoiturage.component';
+import { GooglePlaceModule } from "ngx-google-places-autocomplete"; 
 
 @NgModule({
   declarations: [
@@ -33,7 +35,9 @@ import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoitura
     AccueilComponent,
     ListeFestivalsComponent,
     FestivalComponent,
-    ListeCovoituragesComponent
+    ListeCovoituragesComponent,
+    ChoixCovoiturageComponent
+    
     ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoitura
     MatInputModule,
     BrowserAnimationsModule,
     MatGridListModule,
-    MatCardModule
+    MatCardModule,
+    GooglePlaceModule
+    
   ],
   providers: [
     AuthService],
