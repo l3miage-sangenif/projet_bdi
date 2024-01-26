@@ -5,6 +5,7 @@ import { FestivalComponent } from './festival/festival.component';
 import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoiturages.component';
 import { ChoixCovoiturageComponent } from './choix-covoiturage/choix-covoiturage.component';
 import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.component';
+import { CartComponent } from './cart/cart.component';
 
 const routes: Routes = [
   { path: 'accueil', component: AccueilComponent},
@@ -12,6 +13,8 @@ const routes: Routes = [
   { path: 'listcovoiturage', component: ListeCovoituragesComponent},
   { path: 'choixcovoiturages', component: ChoixCovoiturageComponent},
   { path: 'listfestivals', component: ListeFestivalsComponent},
+  { path: 'cart', component: CartComponent},
+
   { path: '**', redirectTo: '/accueil', pathMatch: 'full' },
 
 ];

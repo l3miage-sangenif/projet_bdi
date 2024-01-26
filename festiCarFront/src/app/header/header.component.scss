@@ -17,7 +17,11 @@ button.example-icon {
   cursor: pointer;
   outline: none;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 50px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: none;
+  align-items: right;
+
 }
 
 .header-elements{
@@ -29,10 +33,21 @@ button.example-icon {
   height: 90px;
   align-items: center;
   border: 1px solid #4AD3B8;
-  border-radius: 15px;
+  border-radius: 50px;
   overflow: hidden;
-}
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 
+}
+.custom-tab{
+  color: white;
+
+}
+.mat-icon{
+  color: white;
+  margin-left:  268px;
+  
+  float: right;
+}
 .mat-tab-label {
   border-bottom: none;
 }

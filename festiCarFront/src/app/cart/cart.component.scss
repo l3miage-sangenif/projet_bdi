@@ -1,0 +1,197 @@
+.cart-container{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; 
+    align-items: center;
+    text-align: center;
+
+}
+.festival-container {
+    text-align: left;
+    display: flex;
+    width: 700px;
+    height: 150px;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 20px;
+  
+  }
+  .festivalImage{
+    flex: 0 0 auto;
+    margin-right: -373px; 
+ 
+  }
+.trajet-container {
+    text-align: left;
+    display: flex;
+    width: 700px;
+    height: 200px;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 20px;
+  
+  }
+  .prix-container {
+    display: flex;
+    width: 700px;
+    height: 50px;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 10px;
+
+  }
+  .place-container {
+    display: flex;
+    width: 700px;
+    height: 50px;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 10px;
+
+  }
+  .prix-total-container {
+    display: flex;
+    width: 700px;
+    height: 50px;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 10px;
+
+  }
+  .retourner{
+    height: 56px;
+    width: max-content;
+    background-color: white;
+    color: #4AD3B8;
+    border-radius: 50px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border-color: #4AD3B8;
+
+
+  }
+  .ajouter{
+    height: 56px;
+    width: max-content;
+    background-color:#4AD3B8;
+    color: white;
+    border-radius: 50px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    border: none;
+  }
+ 
+  
+  .festivalImage img {
+    max-width: 30%; 
+    height: auto; 
+  }
+  .input-container {
+    display: flex;
+    align-items: center;
+  }
+
+  input {
+  margin: 0.4rem 0;
+}
+
+
+  button {
+    cursor: pointer;
+    padding: 5px 10px;
+  }
+
+  .radio{
+    margin: 20px ;
+
+    display: block;
+    cursor: pointer; 
+    user-select:none;
+    text-align: left;
+    &+.radio{
+      margin-top: 12px;
+    }
+}
+input{
+    display: none;
+    &+span{
+      display: inline-block; 
+      position: relative;
+      padding-left: 30px;
+      &:before{
+        content: '';
+        display: block; 
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border-radius: 50%;
+        margin-right: 5px;
+        width: 16px;
+        height: 16px;
+        border: 1px solid #ccc;
+        background: #fff;
+      }
+      &:after{
+        content: '';
+        display: block; 
+        width: 10px;
+        height: 10px;
+        background: #4AD3B8;
+        position: absolute;
+        border-radius: 50%;
+        top: 3px;
+        left: 3px;
+        opacity: 0;
+        transform: scale(0,0); 
+        transition: all .2s cubic-bezier(0.64, 0.57, 0.67, 1.53);
+      }
+    }
+    &:checked+span:after{
+      opacity: 1;
+      transform: scale(1,1);
+    }
+  }
+ 
+.input-container input {
+    margin: 0.4rem 0;
+    width: 40px; /* Set the width as needed */
+    text-align: center; /* Center the text in the input */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 16px;
+    display: inline-block; ;
+  }
+  .input-container button{
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f4f4f4;
+    font-size: 16px;
+    margin: 0 5px;
+  }
+  .event-date{
+    margin: 10px;
+  }
+  .buttons{
+    display: flex;
+    width: 700px;
+    height: 80px;
+    justify-content: space-between;
+    padding: 15px;
+    margin: 10px;
+  }
