@@ -16,9 +16,10 @@ public class EtapeEntity {
 
     @Id
     @Column(name = "idtrajet")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idtrajet;
 
-    @Column(name = "prix", precision = 10, scale = 2)
+    @Column(name = "prix")
     private float prix;
 
     @Column(name = "heure")
