@@ -16,6 +16,7 @@ public class EtapeEntity {
 
     @Id
     @Column(name = "idtrajet")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long idtrajet;
 
     @Column(name = "prix")
