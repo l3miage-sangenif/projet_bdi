@@ -1,5 +1,5 @@
 <mat-toolbar >
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+  <button mat-icon-button class="logoFesticar" aria-label="Example icon-button with menu icon">
     <img src="assets/images/logoFestiCar.png" class="logoFesticar" alt="">
   </button>
   <span class="example-spacer"></span>
@@ -7,9 +7,26 @@
   <div class="header-elements">
     <div class="custom-tab" >First</div>
     <div class="custom-tab" >Second</div>
-    <div class="custom-tab">
-      <button mat-icon-button class="example-icon" (click)="authService.FacebookAuth()"> Connexion</button>
+    <div class="user-infos" *ngIf="!authService.user">
+      <button mat-icon-button class="example-icon" (click)="authService.FacebookAuth()">SignUp</button>
     </div>
+
+    <div class="user-infos" *ngIf="authService.user">
+      <div>{{ authService.user.displayName }}</div>
+      <div  class="profil-image">
+        <button mat-icon-button [matMenuTriggerFor]="menu" title="Afficher les options">
+          <img mat-card-image src="photo" alt="Image" class="profil">
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <mat-icon aria-hidden="false" aria-label="Settings">settings</mat-icon>Settings
+          </button>
+            <!--Pour se déconnecter-->
+          <button mat-menu-item (click)="authService.logOut()"><mat-icon aria-hidden="false" aria-label="Logout">logout</mat-icon>LogOut</button>
+        </mat-menu>
+      </div>
+    </div>
+
   </div>
 </mat-toolbar>
 

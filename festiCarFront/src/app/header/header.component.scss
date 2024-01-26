@@ -3,6 +3,7 @@
   width: 100px;
   height: auto;
   border: none;
+  background-color: transparent;
 }
 
 .mat-toolbar {
@@ -13,10 +14,10 @@
 
 button.example-icon {
   background-color: transparent;
-  border: none;
   cursor: pointer;
   outline: none;
-  overflow: hidden;
+  background-color: white;
+  border-radius: 15px;
 }
 
 .header-elements{
@@ -25,7 +26,7 @@ button.example-icon {
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  height: 60px;
+  height: 90px;
   align-items: center;
   border: 1px solid #4AD3B8;
   border-radius: 15px;
@@ -35,4 +36,6 @@ button.example-icon {
 .mat-tab-label {
   border-bottom: none;
 }
+
+
 

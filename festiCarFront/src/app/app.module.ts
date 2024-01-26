@@ -27,6 +27,15 @@ import { FestivalComponent } from './festival/festival.component';
 import { ListeCovoituragesComponent } from './liste-covoiturages/liste-covoiturages.component';
 import { ChoixCovoiturageComponent } from './choix-covoiturage/choix-covoiturage.component';
 import { GooglePlaceModule } from "ngx-google-places-autocomplete"; 
+import {MatMenuModule} from '@angular/material/menu';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { CorsInterceptor } from './cors.interceptor';
+import { FormsModule } from '@angular/forms';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatListModule} from '@angular/material/list';
+import { PaymentComponent } from './payment/payment.component';
+
+
 
 @NgModule({
   declarations: [
@@ -39,6 +48,8 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
     ChoixCovoiturageComponent
     
     ],
+    PaymentComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -61,6 +72,22 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
   providers: [
     AuthService],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    MatMenuModule,
+    HttpClientModule,
+    FormsModule,
+    MatPaginatorModule,
+    MatListModule
+
+  ],
+  providers: [
+    AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: CorsInterceptor,
+      multi: true
+
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
