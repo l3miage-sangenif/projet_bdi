@@ -1,12 +1,19 @@
+
+
 <div class="liste-des-covoiturages" *ngFor="let covoiturage of covoiturageTab">
   <div class="box-container" *ngFor="let etape of covoiturage?.etape">
+
     <div class="box-location">
       <div class="time">
         <p>{{ etape?.heure }}</p>
       </div>
       <div class="trajet">
         <ul>
+
+          <i><mat-icon matPrefix>location_on</mat-icon>{{ etape?.lieuCovoiturage }}</i>
+
           <i><mat-icon matPrefix>location_on</mat-icon>{{ etape?.lieuCovoiturage.adresseLieu }}</i>
+
         </ul>
       </div>
       <div class="price">

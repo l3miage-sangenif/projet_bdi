@@ -1,4 +1,5 @@
 .cart-container{
+  margin-top: 20px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -184,7 +185,7 @@ input{
     font-size: 16px;
     margin: 0 5px;
   }
-  .event-date{
+  .festival-date{
     margin: 10px;
   }
   .buttons{
@@ -194,4 +195,84 @@ input{
     justify-content: space-between;
     padding: 15px;
     margin: 10px;
+  }
+
+  $brand-primary: #4AD3B8;
+  $white: #fff;
+  $grey-light: #ededed;
+  %remain-steps{
+    &:before {
+      content: counter(stepNum);
+      font-family: inherit;
+      font-weight: 700;
+    }
+    &:after{
+      background-color: $grey-light;
+    }
+  }
+  .multi-steps{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    > li{
+      counter-increment: stepNum;
+      text-align: center;
+      display: table-cell;
+      position: relative;
+      color: $brand-primary;
+  
+      &:before{
+        content: '\f00c';
+        content: '\2713;';
+        content: '\10003';
+        content: '\10004';
+        content: '\2713';
+        display: block;
+        margin: 0 auto 4px;
+        background-color: $white;
+        width: 36px;
+        height: 36px;
+        line-height: 32px;
+        text-align: center;
+        font-weight: bold;
+        border: {
+          width: 2px;
+          style: solid;
+          color: $brand-primary;
+          radius: 50%;
+        }
+      }
+      &:after{
+        content: '';
+        height: 2px;
+        width: 100%;
+        background-color: $brand-primary;
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        z-index: -1;
+      }
+      &:last-child{
+        &:after{
+          display: none;
+        }
+      }
+  
+      &.is-active{
+        @extend %remain-steps;
+        &:before{
+          background-color: $white;
+          border-color: $brand-primary;
+        }
+  
+        ~ li{
+          color: #808080;
+          @extend %remain-steps;
+          &:before{
+            background-color: $grey-light;
+            border-color: $grey-light;
+          }
+        }
+      }
+    }
   }
