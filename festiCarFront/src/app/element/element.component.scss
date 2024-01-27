@@ -1,0 +1,32 @@
+.details{
+    text-align: left;
+     width: 700px;
+    height: max-content;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 20px;
+  }
+  .festival-container {
+      text-align: left;
+      display: flex;
+   
+    }
+    .festivalImage{
+      flex: 0 0 auto;
+      margin-right: -373px; 
+   
+    }
+    .festivalImage img {
+      max-width: 30%; 
+      height: auto; 
+    }
+    ul, li {
+      font-style: normal;
+    }
+    .prix-total-container {
+        display: flex;
+        justify-content: space-between;
+    
+      }

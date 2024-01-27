@@ -31,8 +31,9 @@ import { CorsInterceptor } from './cors.interceptor';
 import { FormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatListModule} from '@angular/material/list';
-import { PaymentComponent } from './payment/payment.component';
-import { CartComponent } from './cart/cart.component';
+import { ChoixPointDepartComponent } from './choix-point-depart/choix-point-depart.component';
+import { PanierComponent } from './panier/panier.component';
+import { ElementComponent } from './element/element.component';
 
 
 
@@ -45,8 +46,9 @@ import { CartComponent } from './cart/cart.component';
     FestivalComponent,
     ListeCovoituragesComponent,
     ChoixCovoiturageComponent,
-    PaymentComponent,
-    CartComponent
+    ChoixPointDepartComponent,
+    PanierComponent,
+    ElementComponent
 
   ],
   imports: [
