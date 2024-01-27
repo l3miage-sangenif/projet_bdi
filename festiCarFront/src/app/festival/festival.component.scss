@@ -1,14 +1,13 @@
 
+.container-fluid{
+ padding-top: 20px;
+}
 .festival-container {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
-
     margin-top: 50px;
  
-
-
-
   }
 
   .festivalImage {
@@ -97,7 +96,7 @@
     margin-top: -42px;
   }
 
-  $brand-primary: #4AD3B8;
+$brand-primary: #4AD3B8;
 $white: #fff;
 $grey-light: #ededed;
 %remain-steps{
