@@ -3,8 +3,12 @@
     display: flex;
     align-items: center;
     margin-bottom: 20px;
+
     margin-top: 50px;
  
+
+
+
   }
 
   .festivalImage {
@@ -22,6 +26,7 @@
     flex: 1;
     margin-top: -111px ;
   }
+
 .places-restantes{
   background-color: #F1CE53; 
   color: #fff; 
@@ -33,6 +38,10 @@
 
 }
  
+
+
+
+
   .event-title {
     font-size: 24px;
     font-size: 50px;
@@ -58,10 +67,13 @@
     justify-content: center;
     gap: 10px; 
   }
+
   mat-form-field {
     width: fit-content;
 
   }
+
+
 
   .search-covoiturage{
     height: 56px;
@@ -72,6 +84,7 @@
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     border: none;
   }
+
  .places-restantes .mat-icon{
   color: rgb(243, 134, 0);
   
@@ -163,3 +176,13 @@ $grey-light: #ededed;
     }
   }
 }
+
+
+  .mat-icon{
+    color: #4AD3B8;
+  }
+
+  .covoiturage-app{
+    margin-top: 30px;
+  }
+
