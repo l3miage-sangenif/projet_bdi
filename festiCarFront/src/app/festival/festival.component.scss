@@ -5,21 +5,21 @@
     margin-top: 40px;
  
   }
-  
+
   .festivalImage {
     flex: 0 0 auto;
-    margin-right: 72px; 
-    margin-left: 72px; 
+    margin-right: 72px;
+    margin-left: 72px;
   }
-  
+
   .festivalImage img {
-    max-width: 100%; 
-    height: auto; 
+    max-width: 100%;
+    height: auto;
   }
-  
+
   .festivalDetails {
-    flex: 1; 
-    margin-top: -111px ; 
+    flex: 1;
+    margin-top: -111px ;
   }
 .places-restantes{
   background-color: #F1CE53; 
@@ -37,22 +37,20 @@
     font-size: 50px;
     font-weight: bold;
     text-transform: uppercase;
-      
+
   }
-  
+
   .festivalDetails ul {
     list-style: none;
     padding: 0;
     margin-top: 50px;
   }
-  
+
   .festivalDetails ul i {
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
   }
-  
 
-  
   .search-container {
     margin-top: 40px;
     display: flex;
@@ -63,7 +61,7 @@
     width: fit-content;
 
   }
-  
+
   .search-covoiturage{
     height: 56px;
     width: max-content;
@@ -81,82 +79,4 @@
   .mat-icon{
     color: #4AD3B8;
   }
-  $brand-primary: #4AD3B8;
-$white: #fff;
-$grey-light: #ededed;
-%remain-steps{
-  &:before {
-    content: counter(stepNum);
-    font-family: inherit;
-    font-weight: 700;
-  }
-  &:after{
-    background-color: $grey-light;
-  }
-}
-.multi-steps{
-  display: table;
-  table-layout: fixed;
-  width: 100%;
-  > li{
-    counter-increment: stepNum;
-    text-align: center;
-    display: table-cell;
-    position: relative;
-    color: $brand-primary;
-
-    &:before{
-      content: '\f00c';
-      content: '\2713;';
-      content: '\10003';
-      content: '\10004';
-      content: '\2713';
-      display: block;
-      margin: 0 auto 4px;
-      background-color: $white;
-      width: 36px;
-      height: 36px;
-      line-height: 32px;
-      text-align: center;
-      font-weight: bold;
-      border:{
-        width: 2px;
-        style: solid;
-        color: $brand-primary;
-        radius: 50%;
-      }
-    }
-    &:after{
-      content: '';
-      height: 2px;
-      width: 100%;
-      background-color: $brand-primary;
-      position: absolute;
-      top: 16px;
-      left: 50%;
-      z-index: -1;
-    }
-    &:last-child{
-      &:after{
-        display: none;
-      }
-    }
-
-    &.is-active{
-      @extend %remain-steps;
-      &:before{
-        background-color: $white;
-        border-color: $brand-primary;
-      }
-
-      ~ li{
-        color: #808080;
-        @extend %remain-steps;
-        &:before{
-          background-color: $grey-light;
-          border-color: $grey-light;
-        }
-      }
-    }
-  }
-}
+  

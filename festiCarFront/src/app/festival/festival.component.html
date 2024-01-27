@@ -4,13 +4,19 @@
         <img src="/assets/images/festival1.png" >
     </div>
         <div class="festivalDetails">
-            <h1 class="event-title">Worldwide Concert Lyon </h1>
+            <h1 class="event-title"> {{ festival.nomManifestation }} </h1>
         <ul>
             <i>Domain: </i>
             <i>Date de début: </i>
             <i>Date de fin: </i>
             <i>Lieu: </i>
             <i>Site Web: </i>
+            <i>Domain: {{festival.sousDomaine.domaine.nomDomaine}} </i>
+            <i>Date de début: {{festival.dateDebut}} </i>
+            <i>Date de fin: {{festival.dateFin}} </i>
+            <i>Lieu: {{festival.commune.nomCommune}} </i>
+            <i>Place restante: {{festival.nbPlaceRestante}} </i>
+            <i>Site Web: {{festival.siteWeb}} </i>
         </ul>
             <hr>
          <div  class="places-restantes"> <mat-icon>whatshot</mat-icon><span>x places restantes</span> </div>
@@ -22,7 +28,7 @@
             <mat-icon matPrefix>location_on</mat-icon>
             <input matInput  type="text" ngx-google-places-autocomplete
             [options]="options"
-            (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" />
+            (onAddressChange)="handleAddressChange($event)" placeholder="Your addresse" />
 
         </mat-form-field>
 
@@ -31,8 +37,12 @@
           <input matInput type="text" placeholder="Nombre de pass" />
         </mat-form-field>
         <button mat-icon-button class="search-covoiturage" >Trouver covoiturage</button>
-      </div>
+          <input matInput type="text" placeholder="Number of place" />
+        </mat-form-field>
 
+
+        <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >search covoiturage</button>
+      </div>
     <div>
     </div>
     <div class="container-fluid">
@@ -45,4 +55,9 @@
         </ul>
       </div>
     <app-liste-covoiturages></app-liste-covoiturages>
+</div>
+<div class="covoiturage-app" *ngIf="showCovoiturages">
+  <app-liste-covoiturages [covoiturageTab]="covoiturageTab" *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
+</div>
+
 

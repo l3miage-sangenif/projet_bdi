@@ -1,34 +1,22 @@
-<div class="box-container">
-    <div class="box">
-      
-        <div class="box-location">
-            <div class="time">
-              <p>  12:06</p>
-              <p>  12:06</p>
-
-            </div>
-        <div class="trajet">   
+<div *ngFor="let covoiturage of covoiturageTab">
+  <div class="box" *ngFor="let etape of covoiturage?.etape">
+    <div class="box-location">
+      <div class="time">
+        <p>{{ etape?.heure }}</p>
+      </div>
+      <div class="trajet">
         <ul>
-            <i> <mat-icon matPrefix>location_on</mat-icon>Metz</i>
-
-          <ul>
-              <i>etape 1</i> <br>
-              <i>etape 2</i>
-           </ul>
-           
-            <i><mat-icon matPrefix>location_on</mat-icon>Lille</i>
+          <i><mat-icon matPrefix>location_on</mat-icon>{{ etape?.lieuCovoiturage }}</i>
         </ul>
-    </div> 
-        <div class="price">
-            <strong>45,5 €</strong>
-        </div>
-        </div>
-       
-
+      </div>
+      <div class="price">
+        <strong>{{ etape?.prix }} €</strong>
+      </div>
+    </div>
     <hr>
     <div class="driver">
-        <p >Jhone Doe</p>   
-        <p > 2 places</p>
+      <p>{{ covoiturage?.conducteur?.nom }}</p>
+      <p>{{ covoiturage?.nbPlace }}</p>
     </div>
-    </div>
+  </div>
 </div>
