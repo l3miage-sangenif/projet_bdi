@@ -1,8 +1,11 @@
 <div class="festival-container">
-    <div class="festivalImage">
-        <img src="/assets/images/festival1.png" >
+    <div class="festivalImage" *ngIf="festival">
+      <a [href]="festival.siteWeb" target="_blank">
+        <img [src]="festiCarService.getUrl(festival)" >
+      </a>
+      {{festival.siteWeb}}
     </div>
-        <div class="festivalDetails">
+    <div class="festivalDetails">
             <h1 class="event-title"> {{ festival.nomManifestation }} </h1>
         <ul>
             <i>Domain: {{festival.sousDomaine.domaine.nomDomaine}} </i>
@@ -20,7 +23,6 @@
             <input matInput  type="text" ngx-google-places-autocomplete
             [options]="options"
             (onAddressChange)="handleAddressChange($event)" placeholder="Your addresse" />
-
         </mat-form-field>
 
         <mat-form-field class="pass-field">

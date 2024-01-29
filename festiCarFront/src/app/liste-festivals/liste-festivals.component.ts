@@ -1,11 +1,8 @@
+import { ReturnStatement } from '@angular/compiler';
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { FestiCarService } from 'src/services/festi-car.service';
-
-
 
 
 @Component({
@@ -16,26 +13,25 @@ import { FestiCarService } from 'src/services/festi-car.service';
 export class ListeFestivalsComponent implements OnInit {
   festivalsTab? : Festival[];
   festivalsSubscription: Subscription;
-
-  // @ViewChild(MatPaginator) paginator: MatPaginator;
+  pagedFestivals: Festival[] = [];
+  pageSize = 10;
+  pageSizeOptions = [5, 10, 20, 50, 100];
+  totalFestivals = 0;
 
   constructor(public festivalCarService : FestiCarService){
   }
 
   ngOnInit(): void {
     this.getAllFestivals();
+    this.pageSize = this.pageSizeOptions[0];
   }
-
-  name? : string;
-  date? : Date;
-  lieu? : string;
-
 
   public getAllFestivals(): void {
     this.festivalsSubscription = this.festivalCarService.getAllFestival().subscribe({
       next: (data: any) => {
         this.festivalsTab = data;
-        console.log('Festivals Data:', data);
+        this.totalFestivals = this.festivalsTab.length;
+        this.updatePagedFestivals(0);
       },
       error: (error: any) => {
         console.error('Error fetching festivals:', error);
@@ -43,45 +39,48 @@ export class ListeFestivalsComponent implements OnInit {
     });
   }
 
-//   configurePaginator(): void {
-//     if (this.paginator && this.festivalsTab) {
+  getUrl(festival : Festival): string{
+    var src : string = "";
+    if(festival.sousDomaine.domaine.nomDomaine === "Musiques actuelles"){
+       src="assets/images/musiquesActuelles.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Livre et littérature"){
+      src="assets/images/livreEtLiterature.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Cirque et Arts de la rue"){
+      src="assets/images/cirqueEtArt.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Pluridisciplinaire Spectacle vivant"){
+      src="assets/images/spectacleVivant.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Cinéma et audiovisuel"){
+      src="assets/images/cinemaEtAudiovisuel.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Transdisciplinaire"){
+      src="assets/images/trandisciplinaire.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Arts plastiques et visuels"){
+      src="assets/images/artPlastiques.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Divers spectacle vivant"){
+      src="assets/images/diversEtVivant.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Danse"){
+      src="assets/images/danse.jpg";
+    }
+    return src;
+  }
 
-//       this.paginator.length = this.festivalsTab.length;
-//       this.paginator.pageSize = 10;
-//       this.paginator.pageIndex = 0;
-//       this.paginator.page.subscribe((event: PageEvent) => {
-//         // Gérer l'événement de changement de page ici
-//         console.log(event);
-//       });
-//     }
-// }
+  public updatePagedFestivals(pageIndex: number): void {
+    const startIndex = pageIndex * this.pageSize;
+    const endIndex = Math.min(startIndex + this.pageSize, this.totalFestivals);
+    this.pagedFestivals = this.festivalsTab.slice(startIndex, endIndex);
+  }
 
-
-
-// pageSize = 10;
-// pageIndex = 0;
-
-// pageChanged(event: PageEvent) {
-//   this.pageSize = event.pageSize;
-//   this.pageIndex = event.pageIndex;
-//   this.loadData();
-// }
-
-// loadData() {
-//   // Calculer l'index de début en fonction de l'index de la page et de la taille de la page
-//   const startIndex = this.pageIndex * this.pageSize;
-
-//   // Calculer l'index de fin
-//   const endIndex = Math.min(startIndex + this.pageSize, this.festivalsTab.length);
-
-//   // Extraire les données de la liste en fonction de l'index de début et de l'index de fin
-//   const paginatedData = this.festivalsTab.slice(startIndex, endIndex);
-
-//   // Utiliser les données paginées
-//   console.log('Paginated Data:', paginatedData);
-//   this.festivalsTab = paginatedData;
-// }
-
+  public onPageChange(event: any): void {
+    this.pageSize = event.pageSize;
+    this.updatePagedFestivals(event.pageIndex);
+  }
 
   ngOnDestroy(): void {
     if (this.festivalsSubscription) {

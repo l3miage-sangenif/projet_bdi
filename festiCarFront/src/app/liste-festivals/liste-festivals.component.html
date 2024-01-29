@@ -1,70 +1,10 @@
-<!-- <div class="list-of-festivals"> list of festivals </div> -->
-
-<!-- <div class="liste-festival">
-  <mat-grid-list cols="3" rowHeight="1:1">
-    <mat-grid-tile *ngFor="let item of festivalsTab">
-      <mat-card>
-        <mat-card-header>
-          {{ item.nomManifestation }}
-        </mat-card-header>
-      </mat-card>
-    </mat-grid-tile>
-  </mat-grid-list>
-</div> -->
-
-
-<!-- <div class="liste-festival">
-  <mat-grid-list cols="3" rowHeight="2:1">
-    <div class="elem-liste-festival">
-      <mat-grid-tile *ngFor="let festival of festivalsTab " >
-        <mat-card  [routerLink]="['/details', festival.idFestival]">
-          <mat-card-header>
-            <img mat-card-image src="{{ festival.sousDomaine.domaine.nomDomaine}}.png "  alt="Image">
-            <mat-card-title>{{ festival.nomManifestation }}</mat-card-title>
-            <mat-card-subtitle>{{ festival.dateDebut }}</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-            <p>Tarif: {{ festival.tarif }} £</p>
-            <p>Places restantes: {{ festival.nbPlaceRestante }}</p>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </div>
-  </mat-grid-list>
-</div> -->
-<!--
-<div class="liste-festival">
-  <mat-action-list >
-    <button mat-list-item  *ngFor="let festival of festivalsTab ">
-      <div class="festival-domaine">
-
-      </div>
-      <div>
-        {{ festival.nomManifestation }}
-      </div>
-      <div>
-        {{ festival.dateDebut }}
-      </div>
-      <div>
-        {{ festival.nbPlaceRestante }}
-      </div>
-      <div>
-        {{ festival.tarif }}
-      </div>
-
-
-    </button>
-  </mat-action-list>
-</div> -->
-
-
-<mat-paginator  [pageSizeOptions]="[5, 10, 25, 100]" [length]="" [pageSize]="10" showFirstLastButtons ></mat-paginator>
+<mat-paginator [length]="totalFestivals" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
 <div class="festivals-grid">
-  <div *ngFor="let festival of festivalsTab" class="clickable-card" style="max-width: 450px;">
+  <div *ngFor="let festival of pagedFestivals" class="clickable-card" style="max-width: 440px;">
       <mat-card  [routerLink]="['/detailfestival', festival.idFestival]">
         <mat-card-header>
           <div class="header-content">
-            <img src="assets/images/Musiques actuelles.png" alt="Image du festival">
+            <img [src]="getUrl(festival)" alt="Image du festival">
           </div>
         </mat-card-header>
         <mat-card-content>
@@ -76,6 +16,11 @@
       </mat-card>
   </div>
 </div>
+
+
+
+
+
 
 
 

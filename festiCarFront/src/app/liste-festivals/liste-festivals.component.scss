@@ -1,19 +1,11 @@
 
-// .list-of-festivals{
-//   text-align: center;
-//   margin-top: 40px;
-//   font-size: 50px;
-//   font-weight: bold;
-//   text-transform: uppercase;
-// }
-
 .festivals-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Changez 250px selon vos besoins */
-  gap: 30px; /* Espacement entre les cartes */
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
   margin-left: 23px;
   margin-right: 23px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 
 .clickable-card {
@@ -21,9 +13,16 @@
 }
 
 .clickable-card:hover {
-  transform: scale(1.07); /* Ajustez cette valeur selon vos préférences */
+  transform: scale(1.07);
 }
 .festival-tarif{
   margin-left: 100px;
+}
+
+.mat-mdc-card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px; /* Définit une taille maximale pour le titre */
 }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from 'src/services/auth.service';
 
+
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -8,10 +9,14 @@ import { AuthService } from 'src/services/auth.service';
 })
 export class HeaderComponent {
 
-  constructor(public authService: AuthService){}
+  constructor(public authService: AuthService){
+    console.log('userUrl1:', this.photo)
+  }
 
   photo = this.authService.photo;
   userId = this.authService.userId;
   userName = this.authService.userName;
+
+
 }
 

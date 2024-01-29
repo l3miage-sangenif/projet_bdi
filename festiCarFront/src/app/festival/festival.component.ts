@@ -20,7 +20,7 @@ export class FestivalComponent implements OnInit, OnDestroy {
 
   festivalsSubscription: Subscription;
 
-   constructor(private route: ActivatedRoute, private festiCarService : FestiCarService){
+   constructor(private route: ActivatedRoute, public festiCarService : FestiCarService){
 
    }
 
