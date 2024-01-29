@@ -23,7 +23,7 @@ export class ChoixPointDepartComponent {
     
   }
   calculateTotal(): number {
-  //  this.selectedPrice=this.prix();
+  this.selectedPrice=this.prix();
     return this.totalPrice = this.selectedPrice * this.numberOfPlaces;
   }
  
