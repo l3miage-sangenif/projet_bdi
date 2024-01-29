@@ -1,6 +1,24 @@
+.page-container{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+}
 
+.page-title{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Open Sans Semi-Bold';
+  margin-top: -10px;
+
+  
+}
 .container-fluid{
- padding-top: 20px;
+  padding-top: 40px;
 }
 .festival-container {
     display: flex;
@@ -11,9 +29,9 @@
   }
 
   .festivalImage {
-    flex: 0 0 auto;
-    margin-right: 72px;
-    margin-left: 72px;
+    flex: 0 0 40%;
+    margin-right: 0px;
+    margin-left: 10px;
   }
 
   .festivalImage img {
@@ -41,10 +59,9 @@
 
 
   .event-title {
-    font-size: 24px;
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 40px;
     text-transform: uppercase;
+    font-family: 'Open Sans Semi-Bold';
 
   }
 
@@ -91,9 +108,7 @@
   .mat-icon{
     color: #4AD3B8;
   }
-  .container-fluid{
-    margin-top: -42px;
-  }
+  
 
 $brand-primary: #4AD3B8;
 $white: #fff;

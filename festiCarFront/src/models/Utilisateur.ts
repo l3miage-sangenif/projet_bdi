@@ -1,9 +1,9 @@
 export interface Utilisateur {
-  type_utilisateur: string;
-  user_uid: string;
-  email: string;
-  nom: string;
-  num_telephone: string;
-  prenom: string;
-  mdp: string;
+  type_utilisateur?: any;
+  user_uid: any;
+  email: any;
+  nom: any;
+  num_telephone: any;
+  prenom: any;
+  mdp: any;
 }

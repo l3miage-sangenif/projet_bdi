@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 import { FestiCarService } from 'src/services/festi-car.service';
+import { ShareDataService } from 'src/services/share-data.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class FestivalComponent implements OnInit, OnDestroy {
 
   festivalsSubscription: Subscription;
 
-   constructor(private route: ActivatedRoute, public festiCarService : FestiCarService){
+   constructor(private route: ActivatedRoute, public festiCarService : FestiCarService, private sharedDataService: ShareDataService){
 
    }
 
@@ -79,6 +80,7 @@ export class FestivalComponent implements OnInit, OnDestroy {
         console.log('covoiturages Data:', data);
         this.showCovoiturages = true;
         console.log(this.showCovoiturages);
+        this.sharedDataService.updateCovoiturageTab(data);
       },
       error: (error: any) => {
         console.error('Error fetching festivals:', error);

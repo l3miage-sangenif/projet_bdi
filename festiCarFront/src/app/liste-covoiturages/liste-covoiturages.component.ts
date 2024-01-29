@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
-import { FestiCarService } from 'src/services/festi-car.service';
+import { ShareDataService } from 'src/services/share-data.service';
 
 @Component({
   selector: 'app-liste-covoiturages',
@@ -13,39 +13,30 @@ import { FestiCarService } from 'src/services/festi-car.service';
 export class ListeCovoituragesComponent implements OnDestroy {
   covoiturageTab? : OffreCovoirage[] = [];
   festivalsSubscription: Subscription;
-  festivalId: number;
-
-  constructor( private festiCarService : FestiCarService, private route: ActivatedRoute,){}
+ 
 
 
-  public getAllCovoiturageByFestivalId(festivalId : number): void {
-    this.festivalsSubscription = this.festiCarService.getAllCovoituragesByFestivalId(festivalId)
-    .subscribe({
-      next: (data: any) => {
+  constructor(private route: ActivatedRoute, private sharedDataService: ShareDataService){
+    this.festivalsSubscription = this.sharedDataService.covoiturageTab$.subscribe((data) => {
         this.covoiturageTab = data;
-        console.log('covoiturages111 Data:', data);
-      },
-      error: (error: any) => {
-        console.error('Error fetching festivals:', error);
-      }
-    });
+      });
   }
+
 
   ngOnDestroy(): void {
     if (this.festivalsSubscription) {
       this.festivalsSubscription.unsubscribe();
     }
   }
+ 
 
-  ngOnInit(): void {
-    this.route.params.subscribe({
-      next: (params) => {
-        this.festivalId = +params['id'];
-        this.getAllCovoiturageByFestivalId(this.festivalId);
-      },
-      error: (error) => {
-        console.error('Error fetching festival ID:', error);
-      }
-    });
-  }
+  public extractHourFromDate(dateString: string): string {
+    const date = new Date(dateString);
+    const utcHour = date.getUTCHours().toString().padStart(2, '0');
+    const utcMinutes = date.getUTCMinutes().toString().padStart(2, '0');
+    console.log("heureParam",dateString);
+    console.log("heureResult",utcHour, utcMinutes);
+    return `${utcHour}:${utcMinutes}`;
+
+}
 }

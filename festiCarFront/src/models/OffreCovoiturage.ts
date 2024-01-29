@@ -8,7 +8,7 @@ export interface OffreCovoirage {
   numImmatriculation: string;
   modele: string;
   couleur: string;
-  conducteur: Utilisateur;
-  festival: Festival;
+  conducteur: any;
+  festival: any;
   etape: Etape[];
 }

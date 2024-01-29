@@ -8,7 +8,7 @@ import { Festival } from 'src/models/Festival';
 })
 export class FestiCarService {
 
-  baseUrl = ' http://129.88.210.61:8080/api';
+  baseUrl = ' http://129.88.210.69:8080/api';
 
   httpOptions = {
     headers: new HttpHeaders({
