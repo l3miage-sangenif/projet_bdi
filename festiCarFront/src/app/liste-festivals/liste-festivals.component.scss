@@ -1,0 +1,28 @@
+
+.festivals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  margin-left: 23px;
+  margin-right: 23px;
+  margin-top: 20px;
+}
+
+.clickable-card {
+  transition: transform 0.3s ease;
+}
+
+.clickable-card:hover {
+  transform: scale(1.07);
+}
+.festival-tarif{
+  margin-left: 100px;
+}
+
+.mat-mdc-card-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 150px; /* Définit une taille maximale pour le titre */
+}
+
