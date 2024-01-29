@@ -35,13 +35,14 @@ export class ListeCovoituragesComponent implements OnDestroy {
     const date = new Date(dateString);
     const utcHour = date.getUTCHours().toString().padStart(2, '0');
     const utcMinutes = date.getUTCMinutes().toString().padStart(2, '0');
-    console.log("heureParam",dateString);
-    console.log("heureResult",utcHour, utcMinutes);
+  
     return `${utcHour}:${utcMinutes}`;
 
 }
- public ouvrirCovoiturage(){
- this.dialog.open(ChoixPointDepartComponent);
+public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
+  const dialogRef = this.dialog.open(ChoixPointDepartComponent, {
+    data: offreCovoiturage // Pass the selected covoiturage to the dialog
+  });
 }
 
 }

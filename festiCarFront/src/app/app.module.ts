@@ -39,6 +39,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PaiementEffectueeComponent } from './paiement-effectuee/paiement-effectuee.component';
 import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { CommonModule } from '@angular/common';
 
 
 
@@ -83,8 +84,8 @@ import { ConnexionComponent } from './connexion/connexion.component';
     MatPaginatorModule,
     MatListModule,
     MatDialogModule,
-    ReactiveFormsModule
-
+    ReactiveFormsModule,
+    CommonModule
 
   ],
   providers: [
