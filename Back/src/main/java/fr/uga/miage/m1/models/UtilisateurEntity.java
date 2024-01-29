@@ -4,6 +4,9 @@ package fr.uga.miage.m1.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UuidGenerator;
+
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +22,6 @@ public class UtilisateurEntity {
 
     @Id
     @Column(name = "userUid")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String userUid;
 
     @Column(name = "nom")
