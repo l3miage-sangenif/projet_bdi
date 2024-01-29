@@ -5,6 +5,7 @@ import java.sql.Date;
 
 import fr.uga.miage.m1.models.CommuneEntity;
 import fr.uga.miage.m1.models.SousDomaineEntity;
+import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 
@@ -27,6 +28,10 @@ public class Festival {
     BigDecimal tarif;
 
     int nbPlaceRestante;
+
+    BigDecimal longitude;
+
+    BigDecimal latitude;
 
     SousDomaineEntity sousDomaine;
 

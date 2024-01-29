@@ -1,0 +1,75 @@
+
+.logoFesticar {
+  width: 100px;
+  height: auto;
+  border: none;
+  background-color: transparent;
+}
+
+.mat-toolbar {
+  background-color: white;
+  gap: 5px;
+  height: auto;
+}
+
+button.example-icon {
+  background-color: white;
+  cursor: pointer;
+  outline: none;
+  border-radius: 50px;
+  width: 80px;
+  height: 30px;
+  font-size: 11px;
+  border: none;
+  color: #4AD3B8;
+  font-weight: bold;
+  padding: 0;
+  text-align: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  
+}
+
+.header-elements{
+  gap: 2px;
+  background-color: #4AD3B8;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  height: 90px;
+  align-items: center;
+  border: 1px solid #4AD3B8;
+  border-radius: 50px;
+  overflow: hidden;
+}
+.custom-tab{
+  color: white;
+
+}
+.mat-icon{
+  color: white;
+  margin-left:  268px;
+
+  float: right;
+}
+.mat-tab-label {
+  border-bottom: none;
+}
+
+.user-infos {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+
+  .connexionlogo{
+    height: 28px;
+    border-radius: 98%;
+    float: left;
+    width: 28px;
+    position: absolute;
+
+  }
+
+  .text-connexion{
+    margin-left: 32px;
+  }
+}

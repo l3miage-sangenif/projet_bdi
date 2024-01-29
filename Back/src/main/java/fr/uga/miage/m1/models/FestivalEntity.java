@@ -7,6 +7,7 @@ import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
@@ -38,6 +39,12 @@ public class FestivalEntity{
     @Column(name="nbPlaceRestante")
     private int nbPlaceRestante;
 
+    @Column(name = "longitude", precision = 25, scale = 20)
+    private BigDecimal longitude;
+
+    @Column(name = "latitude", precision = 25, scale = 20)
+    private BigDecimal latitude;
+
     @ManyToOne
     @JoinColumn(name = "nomSousDomaine", referencedColumnName = "nomSousDomaine")
     private SousDomaineEntity sousDomaine;
@@ -50,7 +57,6 @@ public class FestivalEntity{
     private List<OrganisateurEntity> organisateurs;
 
     public FestivalEntity(){
-        this.organisateurs = new ArrayList<OrganisateurEntity>();
     }
 
 }
