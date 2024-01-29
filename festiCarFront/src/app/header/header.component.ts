@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })
+
 export class HeaderComponent {
 
   constructor(public authService: AuthService, private dialog: MatDialog, private router: Router){}
@@ -21,8 +22,12 @@ export class HeaderComponent {
       width: '800px',
     });
   }
+  alleraccueil(){
+    this.router.navigate(['/AccueilComponent']);
+  }
   allerpanier(){
     this.router.navigate(['/PanierComponent']);
+    
   }
 }
 

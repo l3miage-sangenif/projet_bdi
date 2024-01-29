@@ -16,14 +16,21 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class ConnexionComponent {
   constructor( public dialogRef: MatDialogRef<ConnexionComponent>, public authService: AuthService){ }
-  photo = this.authService.photo;
-   userId = this.authService.userId;
-    userName = this.authService.userName;
+
   nameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   matcher = new MyErrorStateMatcher();
   close(){
     this.dialogRef.close();
+  }
+
+  public loginWithGoogle(){
+    this.authService.googleConnection();
+    this.close();
+  }
+  public loginWithFacebook(){
+    this.authService.facebookAuth();
+    this.close();
   }
 }
 

@@ -1,12 +1,9 @@
-mat-toolbar {
-  padding: 0;
-}
+
 .logoFesticar {
   width: 100px;
   height: auto;
   border: none;
   background-color: transparent;
-
 }
 
 .mat-toolbar {
@@ -16,35 +13,32 @@ mat-toolbar {
 }
 
 button.example-icon {
-  background-color: transparent;
+  background-color: white;
   cursor: pointer;
   outline: none;
   border-radius: 50px;
-  border: none;
-  align-items: right;
-  min-width: 166px;
-  width: 100%;
+  width: 80px;
   height: 30px;
   font-size: 11px;
-  border: 1px solid white;
-  color: white;
+  border: none;
+  color: #4AD3B8;
   font-weight: bold;
-  display: flex;
-  align-items: center;
-  position: relative;
   padding: 0;
+  text-align: center;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  
 }
 
 .header-elements{
-  position: relative;
   gap: 2px;
   background-color: #4AD3B8;
   width: 100%;
   display: flex;
   justify-content: space-evenly;
-  height: 100px;
+  height: 90px;
   align-items: center;
   border: 1px solid #4AD3B8;
+  border-radius: 50px;
   overflow: hidden;
 }
 .custom-tab{
@@ -79,6 +73,3 @@ button.example-icon {
     margin-left: 32px;
   }
 }
-
-
-
