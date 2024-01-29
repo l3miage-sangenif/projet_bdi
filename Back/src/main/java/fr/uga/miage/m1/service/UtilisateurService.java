@@ -10,6 +10,7 @@ import fr.uga.miage.m1.DTO.Utilisateur;
 import fr.uga.miage.m1.mapper.UtilisateurMapper;
 import fr.uga.miage.m1.models.UtilisateurEntity;
 import fr.uga.miage.m1.repository.UtilisateurRepository;
+import fr.uga.miage.m1.request.CreateUserRequest;
 
 @Service
 public class UtilisateurService {
@@ -33,6 +34,9 @@ public class UtilisateurService {
         return (user != null) ? UtilisateurMapper.INSTANCE.toDto(user) : null;
     }
 
-   
+    public Utilisateur createUser(CreateUserRequest utilisateur) {
+        UtilisateurEntity user = UtilisateurMapper.INSTANCE.toEntity(utilisateur);
+        return UtilisateurMapper.INSTANCE.toDto(userRepository.save(user));
+    }   
     
 }
