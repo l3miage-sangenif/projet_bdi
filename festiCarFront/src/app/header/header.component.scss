@@ -19,12 +19,20 @@ button.example-icon {
   background-color: transparent;
   cursor: pointer;
   outline: none;
-  background-color: white;
   border-radius: 50px;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
   border: none;
   align-items: right;
-
+  min-width: 166px;
+  width: 100%;
+  height: 30px;
+  font-size: 11px;
+  border: 1px solid white;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 0;
 }
 
 .header-elements{
@@ -38,8 +46,6 @@ button.example-icon {
   align-items: center;
   border: 1px solid #4AD3B8;
   overflow: hidden;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-
 }
 .custom-tab{
   color: white;
@@ -48,11 +54,30 @@ button.example-icon {
 .mat-icon{
   color: white;
   margin-left:  268px;
-  
+
   float: right;
 }
 .mat-tab-label {
   border-bottom: none;
+}
+
+.user-infos {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+
+  .connexionlogo{
+    height: 28px;
+    border-radius: 98%;
+    float: left;
+    width: 28px;
+    position: absolute;
+
+  }
+
+  .text-connexion{
+    margin-left: 32px;
+  }
 }
 
 
