@@ -6,9 +6,10 @@
     </button>
     <div class="custom-tab" >About Us</div>
     <div class="custom-tab" >Contact</div>
-    <mat-icon >shopping_cart</mat-icon>
+    <mat-icon (click)="allerpanier()" >shopping_cart</mat-icon>
+    
     <div class="user-infos" *ngIf="!authService.user">
-      <button mat-icon-button class="example-icon" (click)="authService.FacebookAuth()">SignUp</button>
+      <button mat-icon-button class="example-icon" (click)="connexion()">Connecter</button>
     </div>
 
     <div class="user-infos" *ngIf="authService.user">
