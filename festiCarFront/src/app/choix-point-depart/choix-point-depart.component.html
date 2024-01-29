@@ -1,33 +1,10 @@
 
 
 <div class="cart-container">
-    <h1 class="festival-date"><b> Choisir point de départ</b> </h1>
-    <div class="container-fluid">
-     <br /><br />
-     <ul class="list-unstyled multi-steps">
-       <li>Choisir un festival</li>
-       <li>Choisir une covoiturage</li>
-       <li  class="is-active" >Choisir point de départ</li>
-       <li>Payer</li>
-     </ul>
-   </div>
-     <div class="festival-container">
-             <div class="festivalImage">
-                 <img src="/assets/images/festival1.png" >
-             </div>
-             <div class="festival-titre">
-                  <h3><b> Worldwide Concert Lyon </b></h3> 
-                 <ul>
-                     <i>date : 12/06/2024</i> <br>
-                     <i>Lieu: Lille</i>
-                 </ul>
-                 
-                 
-         </div>
-     
-         
-     
-     </div>
+  <button class="close" (click)="close()">✖</button>
+
+    <h1 class="festival-date"><b> Choisir un point de départ</b> </h1>
+   
  <div class="trajet-container">
      <div class="box">
          <div class="box-location">
@@ -86,9 +63,8 @@
  
  </div>
  
- <div class="buttons">
-     <button mat-icon-button class="retourner" >Retourner</button>
-     <button mat-icon-button class="ajouter" >Ajouter au panier</button>
+ <div class="button">
+     <button mat-icon-button class="ajouter" (click)="close()" >Ajouter au panier</button>
  </div>
  
  </div>

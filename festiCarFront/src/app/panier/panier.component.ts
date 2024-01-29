@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import {MatDialogModule, MatDialogConfig, MatDialog} from '@angular/material/dialog';
-import { CheckoutFormComponent } from '../checkout-form/checkout-form.component';
-import { PaiementEffectueeComponent } from '../paiement-effectuee/paiement-effectuee.component';
+import { MatDialog} from '@angular/material/dialog';
+
 import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.component';
 
 @Component({

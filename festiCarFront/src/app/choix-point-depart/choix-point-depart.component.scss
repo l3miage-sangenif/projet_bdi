@@ -8,23 +8,7 @@
     text-align: center;
 
 }
-.festival-container {
-    text-align: left;
-    display: flex;
-    width: 700px;
-    height: 150px;
-    padding: 15px;
-    border-radius: 5px;
-    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
-    box-shadow: 2px 2px 15px -4px #000000;
-    margin: 20px;
-  
-  }
-  .festivalImage{
-    flex: 0 0 auto;
-    margin-right: -373px; 
- 
-  }
+
 .trajet-container {
     text-align: left;
     display: flex;
@@ -74,17 +58,8 @@
     margin: 10px;
 
   }
-  .retourner{
-    height: 56px;
-    width: max-content;
-    background-color: white;
-    color: #4AD3B8;
-    border-radius: 50px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    border-color: #4AD3B8;
 
-
-  }
+  
   .ajouter{
     height: 56px;
     width: max-content;
@@ -96,23 +71,19 @@
   }
  
   
-  .festivalImage img {
-    max-width: 30%; 
-    height: auto; 
-  }
+
   .input-container {
     display: flex;
     align-items: center;
   }
 
-  input {
-  margin: 0.4rem 0;
-}
+
 
 
   button {
     cursor: pointer;
     padding: 5px 10px;
+    margin-bottom: 5px;
   }
 
   .radio{
@@ -168,111 +139,22 @@ input{
  
 .input-container input {
     margin: 0.4rem 0;
-    width: 40px; /* Set the width as needed */
-    text-align: center; /* Center the text in the input */
+    width: 40px; 
+    text-align: center; 
     border: 1px solid #ccc;
     border-radius: 5px;
     padding: 5px;
     font-size: 16px;
     display: inline-block; ;
   }
-  .input-container button{
-    cursor: pointer;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f4f4f4;
-    font-size: 16px;
-    margin: 0 5px;
-  }
-  .festival-date{
-    margin: 10px;
-  }
-  .buttons{
-    display: flex;
-    width: 700px;
-    height: 80px;
-    justify-content: space-between;
-    padding: 15px;
-    margin: 10px;
-  }
 
-  $brand-primary: #4AD3B8;
-  $white: #fff;
-  $grey-light: #ededed;
-  %remain-steps{
-    &:before {
-      content: counter(stepNum);
-      font-family: inherit;
-      font-weight: 700;
-    }
-    &:after{
-      background-color: $grey-light;
-    }
-  }
-  .multi-steps{
-    display: table;
-    table-layout: fixed;
-    width: 100%;
-    > li{
-      counter-increment: stepNum;
-      text-align: center;
-      display: table-cell;
-      position: relative;
-      color: $brand-primary;
-  
-      &:before{
-        content: '\f00c';
-        content: '\2713;';
-        content: '\10003';
-        content: '\10004';
-        content: '\2713';
-        display: block;
-        margin: 0 auto 4px;
-        background-color: $white;
-        width: 36px;
-        height: 36px;
-        line-height: 32px;
-        text-align: center;
-        font-weight: bold;
-        border: {
-          width: 2px;
-          style: solid;
-          color: $brand-primary;
-          radius: 50%;
-        }
-      }
-      &:after{
-        content: '';
-        height: 2px;
-        width: 100%;
-        background-color: $brand-primary;
-        position: absolute;
-        top: 16px;
-        left: 50%;
-        z-index: -1;
-      }
-      &:last-child{
-        &:after{
-          display: none;
-        }
-      }
-  
-      &.is-active{
-        @extend %remain-steps;
-        &:before{
-          background-color: $white;
-          border-color: $brand-primary;
-        }
-  
-        ~ li{
-          color: #808080;
-          @extend %remain-steps;
-          &:before{
-            background-color: $grey-light;
-            border-color: $grey-light;
-          }
-        }
-      }
-    }
+  button.close {
+    width: 30px;
+    font-size: 20px;
+    color: #c0c5cb;
+    align-self: flex-end;
+    background-color: transparent;
+    border: none;
+    margin-right: 7px;
+    margin-top: -12px;
   }

@@ -1,5 +1,5 @@
 <div class="liste-des-covoiturages"  >
-  <div class="box-container" *ngFor="let offreCovoiturage of covoiturageTab" >
+  <div class="box-container" *ngFor="let offreCovoiturage of covoiturageTab" (click)="ouvrirCovoiturage()" >
 
     <div class="box-location" *ngFor="let item of offreCovoiturage.etape">
       <div class="trajet-time">

@@ -1,9 +1,11 @@
 import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatDialog} from '@angular/material/dialog';
 
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 import { ShareDataService } from 'src/services/share-data.service';
+import { ChoixPointDepartComponent } from '../choix-point-depart/choix-point-depart.component';
 
 @Component({
   selector: 'app-liste-covoiturages',
@@ -15,8 +17,7 @@ export class ListeCovoituragesComponent implements OnDestroy {
   festivalsSubscription: Subscription;
  
 
-
-  constructor(private route: ActivatedRoute, private sharedDataService: ShareDataService){
+  constructor(private route: ActivatedRoute, private sharedDataService: ShareDataService, private dialog: MatDialog){
     this.festivalsSubscription = this.sharedDataService.covoiturageTab$.subscribe((data) => {
         this.covoiturageTab = data;
       });
@@ -39,4 +40,8 @@ export class ListeCovoituragesComponent implements OnDestroy {
     return `${utcHour}:${utcMinutes}`;
 
 }
+ public ouvrirCovoiturage(){
+ this.dialog.open(ChoixPointDepartComponent);
+}
+
 }
