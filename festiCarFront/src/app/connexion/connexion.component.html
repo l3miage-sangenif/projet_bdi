@@ -1,0 +1,40 @@
+<div class="row">
+    <button class="close" (click)="close()">✖</button>
+    <div class="reseaux-sociaux">
+      <h3>Se connecter ou S'inscrire</h3>
+      <div class="facebook-google">
+        <img src="/assets/images/facebook.png" alt=""  (click)="authService.FacebookAuth()">
+        <img src="/assets/images/google.jpg" alt="">
+      </div>
+      <div class="line">
+        <hr class="long">
+        <span>Ou bien</span>
+        <hr class="long">
+      </div>
+      
+      <div class="connexion-container">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                 placeholder="Ex. pat@example.com">
+          <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Veuillez entrer une adresse e-mail valide
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email est <strong>requis</strong>
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field class="example-full-width">
+          <mat-label>Mot de passe</mat-label>
+          <input type="password" matInput [formControl]="nameFormControl" placeholder="John M. Doe">
+          <mat-error *ngIf="nameFormControl.hasError('required')">
+              Mot de passe est <strong>requis</strong>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <button mat-icon-button class="login" >Connecter</button>
+      </div>
+    </div>
+  </div>

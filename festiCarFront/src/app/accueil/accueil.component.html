@@ -1,14 +1,20 @@
 
-<div class="accueil-title">Find your event</div>
+
+
+
 <div class="search-container">
-  <mat-form-field class="example-form-field">
+
+       
+    <mat-form-field class="example-form-field">
     <mat-icon matPrefix>search</mat-icon>
-    <input matInput type="text" placeholder="Name of festival" [(ngModel)]="festivalName" />
+    <input matInput type="text" placeholder="Nom de festival" [(ngModel)]="festivalName" />
   </mat-form-field>
 
   <mat-form-field class="example-form-field">
     <mat-icon matPrefix>location_on</mat-icon>
-    <input matInput type="text" placeholder="Place of festival" [(ngModel)]="festivalPlace" />
+    <input matInput type="text"ngx-google-places-autocomplete
+    [options]="options"
+    (onAddressChange)="handleAddressChange($event)" placeholder="Ville" [(ngModel)]="festivalPlace" />
   </mat-form-field>
 
   <mat-form-field class="example-form-field">
@@ -16,8 +22,13 @@
     <input matInput type="date" placeholder="Date" [(ngModel)]="festivalDate" />
   </mat-form-field>
 
-  <button mat-icon-button class="search-button" (click)="getAllFestivals()" >Search</button>
+  <button mat-icon-button class="search-button" (click)="getAllFestivals()" >Chercher</button>
 </div>
+
+
+
+
+  
 <div class="accueil-event-liste">
   <!-- <mat-grid-list cols="3" rowHeight="1:1">
     <mat-grid-tile *ngFor="let item of eventItems">

@@ -28,11 +28,17 @@ import { GooglePlaceModule } from "ngx-google-places-autocomplete";
 import {MatMenuModule} from '@angular/material/menu';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { CorsInterceptor } from './cors.interceptor';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import {MatListModule} from '@angular/material/list';
-import { PaymentComponent } from './payment/payment.component';
-import { CartComponent } from './cart/cart.component';
+import { ChoixPointDepartComponent } from './choix-point-depart/choix-point-depart.component';
+import { PanierComponent } from './panier/panier.component';
+import { ElementComponent } from './element/element.component';
+import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { PaiementEffectueeComponent } from './paiement-effectuee/paiement-effectuee.component';
+import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 
 
@@ -45,8 +51,13 @@ import { CartComponent } from './cart/cart.component';
     FestivalComponent,
     ListeCovoituragesComponent,
     ChoixCovoiturageComponent,
-    PaymentComponent,
-    CartComponent
+    ChoixPointDepartComponent,
+    PanierComponent,
+    ElementComponent,
+    CheckoutFormComponent,
+    PaiementEffectueeComponent,
+    PaymentDialogComponent,
+    ConnexionComponent
 
   ],
   imports: [
@@ -70,7 +81,9 @@ import { CartComponent } from './cart/cart.component';
     HttpClientModule,
     FormsModule,
     MatPaginatorModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
+    ReactiveFormsModule
 
 
   ],
@@ -83,6 +96,7 @@ import { CartComponent } from './cart/cart.component';
     }
   ],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [CheckoutFormComponent]
 })
 export class AppModule { }

@@ -1,10 +1,15 @@
 <mat-toolbar >
-  <button mat-icon-button class="logoFesticar" aria-label="Example icon-button with menu icon">
-    <img src="assets/images/logoFestiCar.png" class="logoFesticar" alt="">
-  </button>
-  <span class="example-spacer"></span>
 
   <div class="header-elements">
+    <button mat-icon-button class="logoFesticar" aria-label="Example icon-button with menu icon">
+      <img src="assets/images/logo-with-shadow.png" class="logoFesticar" alt="">
+    </button>
+    <div class="custom-tab" >About us</div>
+    <div class="custom-tab" >Contact</div>
+    <mat-icon (click)="allerpanier()" >shopping_cart</mat-icon>
+
+    <div class="user-infos" *ngIf="!authService.user">
+      <button mat-icon-button class="example-icon" (click)="connexion()">Connecter</button>
     <div class="custom-tab" >About us</div>
     <div class="custom-tab" >Contact</div>
     <mat-icon >shopping_cart</mat-icon>

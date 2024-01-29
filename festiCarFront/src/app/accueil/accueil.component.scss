@@ -1,21 +1,41 @@
+
 .accueil-title{
   text-align: center;
   font-size: 50px;
   font-weight: bold;
   text-transform: uppercase;
+  top:0;
+  left: 0;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
 }
 
 .search-container {
   margin-top: 40px;
   display: flex;
   justify-content: center;
+  gap: 10px;
+
 }
 
+
 .search-button {
+
   height: 56px;
-  background-color: #4AD3B8;
+  width: 80px;
+  background-color:#4AD3B8;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: none;
 }
 
 .mat-icon{
   color: #4AD3B8;
 }
+
+

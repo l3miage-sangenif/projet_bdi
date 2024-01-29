@@ -1,41 +1,58 @@
+
+<div class="container-fluid">
+
+        <ul class="list-unstyled multi-steps">
+          <li >Choisir un festival</li>
+          <li class="is-active">Choisir une covoiturage</li>
+          <li >Choisir point de départ</li>
+          <li>Payer</li>
+          </ul>
+</div>
 <div class="festival-container">
-    <div class="festivalImage" *ngIf="festival">
-      <a [href]="festival.siteWeb" target="_blank">
-        <img [src]="festiCarService.getUrl(festival)" >
-      </a>
-      {{festival.siteWeb}}
-    </div>
-    <div class="festivalDetails">
+  <div class="festivalImage" *ngIf="festival">
+    <a [href]="festival.siteWeb" target="_blank">
+      <img [src]="festiCarService.getUrl(festival)" >
+    </a>
+    {{festival.siteWeb}}
+  </div>
+  <div class="festivalDetails">
             <h1 class="event-title"> {{ festival.nomManifestation }} </h1>
-        <ul>
+            <ul>
+
             <i>Domain: {{festival.sousDomaine.domaine.nomDomaine}} </i>
             <i>Date de début: {{festival.dateDebut}} </i>
             <i>Date de fin: {{festival.dateFin}} </i>
             <i>Lieu: {{festival.commune.nomCommune}} </i>
-            <i>Place restante: {{festival.nbPlaceRestante}} </i>
             <i>Site Web: {{festival.siteWeb}} </i>
-        </ul>
+            </ul>
+            <hr>
+         <div  class="places-restantes"> <mat-icon>whatshot</mat-icon><span> {{festival.nbPlaceRestante}} places restantes</span> </div>
+       </div>
+
     </div>
-    </div>
+
     <div class="search-container">
         <mat-form-field class="location-field">
             <mat-icon matPrefix>location_on</mat-icon>
             <input matInput  type="text" ngx-google-places-autocomplete
             [options]="options"
-            (onAddressChange)="handleAddressChange($event)" placeholder="Your addresse" />
+            (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" />
         </mat-form-field>
 
         <mat-form-field class="pass-field">
-          <input matInput type="text" placeholder="Number of place" />
+            <mat-icon matPrefix>supervisor_account</mat-icon>
+          <input matInput type="text" placeholder="Nombre de pass" />
         </mat-form-field>
-
-
-        <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >search covoiturage</button>
+        <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >Trouver covoiturage</button>
       </div>
-    <div>
-</div>
-<div class="covoiturage-app" *ngIf="showCovoiturages">
-  <app-liste-covoiturages [covoiturageTab]="covoiturageTab" *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
-</div>
+
+
+    <app-liste-covoiturages></app-liste-covoiturages>
+    <div class="covoiturage-app" *ngIf="showCovoiturages">
+    <app-liste-covoiturages [covoiturageTab]="covoiturageTab" *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
+    </div>
+
+
+
 
 
