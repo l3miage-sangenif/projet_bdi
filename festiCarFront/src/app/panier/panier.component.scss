@@ -30,6 +30,8 @@
     -webkit-box-shadow: 2px 2px 15px -4px #000000; 
     box-shadow: 2px 2px 15px -4px #000000;
     margin: 10px;
+    font-family: Arial;
+    font-size: medium;
 
   }
 .buttons{
@@ -79,7 +81,8 @@ $brand-primary: #4AD3B8;
     display: table;
     table-layout: fixed;
     width: 100%;
-    > li{
+    > a{
+      text-decoration: none;
       counter-increment: stepNum;
       text-align: center;
       display: table-cell;
@@ -130,7 +133,7 @@ $brand-primary: #4AD3B8;
           border-color: $brand-primary;
         }
   
-        ~ li{
+        ~ a{
           color: #808080;
           @extend %remain-steps;
           &:before{

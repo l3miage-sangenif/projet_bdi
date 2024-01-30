@@ -7,12 +7,14 @@ import { ConnexionComponent } from '../connexion/connexion.component';
 import { Router } from '@angular/router';
 import { PanierServiceService } from 'src/services/panier-service.service';
 
+
 @Component({
   selector: 'app-panier',
   templateUrl: './panier.component.html',
   styleUrls: ['./panier.component.scss']
 })
 export class PanierComponent {
+
   panier: any[] = [];
   item: any
 
@@ -24,6 +26,7 @@ export class PanierComponent {
       });
     }
 
+
   onCreate(){
     if(this.authService.user){
       this.dialog.open(PaymentDialogComponent, { 
@@ -31,11 +34,17 @@ export class PanierComponent {
     }
     else{
       this.dialog.open(ConnexionComponent, { 
+
+        width: '800px',
       });
     }
   }
 
+  
+
   alleraccueil(){
     this.router.navigate(['/accueil']);
   }
+
 }
+

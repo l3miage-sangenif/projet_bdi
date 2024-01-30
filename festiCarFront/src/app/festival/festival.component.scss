@@ -98,6 +98,10 @@
 
   }
 
+  .liste-des-covoiturages ng-star-inserted{
+    display: flex;
+
+  }
 
 
   .search-covoiturage{
@@ -137,7 +141,8 @@ $grey-light: #ededed;
   display: table;
   table-layout: fixed;
   width: 100%;
-  > li{
+  > a{
+    text-decoration: none;
     counter-increment: stepNum;
     text-align: center;
     display: table-cell;
@@ -188,7 +193,7 @@ $grey-light: #ededed;
         border-color: $brand-primary;
       }
 
-      ~ li{
+      ~ a{
         color: #808080;
         @extend %remain-steps;
         &:before{

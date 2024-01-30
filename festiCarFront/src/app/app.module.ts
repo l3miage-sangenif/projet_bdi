@@ -41,8 +41,7 @@ import { PaymentDialogComponent } from './payment-dialog/payment-dialog.componen
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CommonModule } from '@angular/common';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
-
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 @NgModule({
@@ -88,8 +87,8 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
     MatListModule,
     MatDialogModule,
     ReactiveFormsModule,
-    CommonModule
-
+    CommonModule,
+    MatAutocompleteModule
   ],
   providers: [
     AuthService,

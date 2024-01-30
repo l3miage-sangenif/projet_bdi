@@ -3,10 +3,9 @@
     <div class="container-fluid">
         <br /><br />
         <ul class="list-unstyled multi-steps">
-          <li>Choisir un festival</li>
-          <li>Choisir une covoiturage</li>
-          <li >Choisir point de départ</li>
-          <li  class="is-active" >Payer</li>
+          <a routerLink="/accueil"><li>Choisir un festival  </li></a>
+          <a [routerLink]="['/detailfestival/:id']" > <li> Choisir une covoiturage</li></a> 
+         <a [routerLink]="['/panier']" class="is-active"> <li   >Payer</li></a>
         </ul>
       </div>
     <ng-container *ngFor="let element of panier">

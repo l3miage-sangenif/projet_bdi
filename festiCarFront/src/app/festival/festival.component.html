@@ -7,10 +7,9 @@
 <div class="container-fluid">
 
         <ul class="list-unstyled multi-steps">
-          <li >Choisir un festival</li>
-          <li class="is-active">Choisir une covoiturage</li>
-          <li >Choisir point de départ</li>
-          <li>Payer</li>
+          <a routerLink="/accueil"><li>Choisir un festival  </li></a>
+          <a [routerLink]="['/detailfestival/:id']" class="is-active" > <li > Choisir une covoiturage</li></a> 
+         <a [routerLink]="['/panier']" > <li   >Payer</li></a>
           </ul>
 </div>
 
@@ -53,8 +52,14 @@
         <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >Chercher covoiturage</button>
       </div>
 
+
+
+    <div class="covoiturage-app" *ngIf="showCovoiturages">
+      
+
     <div class="covoiturage-app" *ngIf="showCovoiturages">
     <app-liste-covoiturages  *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
+
     </div>
 
 

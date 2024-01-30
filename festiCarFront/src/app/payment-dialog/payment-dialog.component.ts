@@ -6,7 +6,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   selector: 'app-payment-dialog',
   template: `
   <div *ngIf="!showThankYou">
-  <!-- CheckoutFormComponent is displayed initially -->
+  
   <app-checkout-form (paymentSuccess)="onPaymentSuccess()"></app-checkout-form>
 </div>
 <div *ngIf="showThankYou">
@@ -17,7 +17,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class PaymentDialogComponent {
   showThankYou = false;
 
-  constructor(private dialogRef: MatDialogRef<PaymentDialogComponent>) {}
+  constructor() {}
   
 
   onPaymentSuccess() {

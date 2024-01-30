@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, Subscription, filter } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { FestiCarService } from 'src/services/festi-car.service';
 import { ShareDataService } from 'src/services/share-data.service';
 import { ListeFestivalsComponent } from '../liste-festivals/liste-festivals.component';
+
 
 
 @Component({
@@ -27,10 +29,39 @@ export class AccueilComponent implements  OnDestroy {
   diastanceRechere: any;
 
 
+  domainControl = new FormControl();
+
+  domainOptions = ['Musiques actuelles', 'Livre et littérature', 'Cirque et Arts de la rue', "Pluridisciplinaire Spectacle vivant",
+  "Cinéma et audiovisuel",
+  "Transdisciplinaire",
+  "Arts plastiques et visuels",
+  "Divers spectacle vivant",
+  "Danse",
+  "Pluridisciplinaire Musique"];
+
 
   constructor(public festivalCarService : FestiCarService, private router : Router, private shareDataService: ShareDataService){
-
   }
+
+
+  ngOnInit(): void {
+  this.getAllFestivals();
+  }
+
+
+    public getAllFestivals(): void {
+      this.festivalsSubscription = this.festivalCarService.getAllFestival().subscribe({
+        next: (data: any) => {
+          this.festivalsTab = data;
+          console.log('Festivals Data:', data);
+        },
+        error: (error: any) => {
+          console.error('Error fetching festivals:', error);
+        }
+      });
+    
+    }
+
 
     ngOnDestroy(): void {
       if (this.festivalsSubscription) {
@@ -65,10 +96,9 @@ export class AccueilComponent implements  OnDestroy {
         (place) => { console.log('nouvelle adresse : ' +
         place.formatted_address);
         }
-  
-  
       );
     }
+
     public searchFestivals(): void {
       const searchCriteria = {
         name: this.festivalName,
@@ -77,30 +107,29 @@ export class AccueilComponent implements  OnDestroy {
         addresseLng: this.addresseLng,
         addresselat: this.addresselat,
         diastancerechere: this.diastanceRechere
-      
-      }
-      this.festivalsSubscription = this.festivalCarService.getAllFestivalsFilter(
-        searchCriteria.name,
-        searchCriteria.domaine,
-        searchCriteria.dateDebut,
-        searchCriteria.addresseLng,
-        searchCriteria.addresselat,
-        searchCriteria.diastancerechere
-      )
+
+      };
     
-  
-      .subscribe({
-        
-        next: (data: any) => {
-          this.festivalsTab = data;
-          console.log('Filtered Festivals:', data);
-          this.shareDataService.updateFestivalTab(data);
-          this.shareDataService.updateShowFestivals(true);
-        },
-        error: (error: any) => {
-          console.error('Error searching festivals:', error);
-        }
-      });
-     
-} 
+      this.festivalsSubscription = this.festivalCarService
+        .getAllFestivalsFilter(
+          searchCriteria.name,
+          searchCriteria.domaine,
+          searchCriteria.dateDebut,
+          searchCriteria.addresseLng,
+          searchCriteria.addresselat,
+          searchCriteria.diastancerechere
+        )
+        .subscribe({
+          next: (data: any) => {
+            this.festivalsTab = data;
+            console.log('Filtered Festivals:', data);
+            this.shareDataService.updatefestivalTab(data);
+            this.shareDataService.updateShowFestivals(true); // Set the flag to true
+          },
+          error: (error: any) => {
+            console.error('Error searching festivals:', error);
+          },
+        });
+    }
+
 }
