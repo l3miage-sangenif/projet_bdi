@@ -43,7 +43,7 @@ public class UtilisateurController {
         return (user != null) ? ResponseEntity.ok(user) : ResponseEntity.notFound().build();
     }
     
-    @PostMapping("/utilisateur")
+    @PostMapping("/utilisateur")@ResponseStatus(HttpStatus.CREATED)
     public Utilisateur postUtilisateur(@RequestBody CreateUserRequest entity) {
         return userService.createUser(entity);
     }

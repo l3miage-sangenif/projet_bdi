@@ -33,8 +33,8 @@ public class FestivalEntity{
     @Column(name="nbPlace")
     private int nbPlace;
 
-    @Column(name="tarif", precision = 10, scale = 2)
-    private BigDecimal tarif;
+    @Column(name="tarif")
+    private double tarif;
 
     @Column(name="nbPlaceRestante")
     private int nbPlaceRestante;
