@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Festival } from 'src/models/Festival';
@@ -32,6 +32,41 @@ export class FestiCarService {
     const url = `${this.baseUrl}/covoiturage/${idFestival}`;
     return this.http.get(url, this.httpOptions);
   }
+
+  postPanierWithOutConnectedUser(nbPlace : any, etape : any ): Observable<any> {
+    const url = `${this.baseUrl}/achat`; 
+    const body = { nbPlace: nbPlace, etape: etape };
+    return this.http.post(url, body);
+  }
+
+  postPanierWithConnectedUser(userUid: string, nbPlace: number, etape: any[]): Observable<any> {
+    const url = `${this.baseUrl}/achat/${userUid}`;
+    const body = {
+      nbPlace: nbPlace,
+      etape: etape
+    };
+    return this.http.post(url, body, this.httpOptions);
+  }
+
+  getAllFestivalsFilter(name: string, domaine: string, dateDebut: string, dateFin: string, longitudeCovoiturage: number, latitudeCovoiturage: number, distanceRechercheCovoiturage: number): Observable<any> {
+    const url = `${this.baseUrl}/festival`;
+    let params = new HttpParams();
+    if (name) params = params.set('name', name);
+    if (domaine) params = params.set('domaine', domaine);
+    if (dateDebut) params = params.set('dateDebut', dateDebut);
+    if (dateFin) params = params.set('dateFin', dateFin);
+    if (longitudeCovoiturage) params = params.set('longitudeCovoiturage', longitudeCovoiturage.toString());
+    if (latitudeCovoiturage) params = params.set('latitudeCovoiturage', latitudeCovoiturage.toString());
+    if (distanceRechercheCovoiturage) params = params.set('distanceRechercheCovoiturage', distanceRechercheCovoiturage.toString());
+    
+    return this.http.get(url, { params: params });
+  }
+
+  postUser(user: any): Observable<any> {
+    const url = `${this.baseUrl}/utilisateur`;
+    return this.http.post(url, user, this.httpOptions);
+  }
+
 
   getUrl(festival : Festival): string{
     var src : string = "";

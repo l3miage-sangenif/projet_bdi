@@ -37,6 +37,8 @@ export class ListeCovoituragesComponent implements OnDestroy {
     const utcMinutes = date.getUTCMinutes().toString().padStart(2, '0');
   
     return `${utcHour}:${utcMinutes}`;
+ }
+
 
 }
 public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
@@ -44,5 +46,12 @@ public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
     data: offreCovoiturage // Pass the selected covoiturage to the dialog
   });
 }
+
+//   public ouvrirCovoiturage(nbPlace: number, etape: any[]){
+//     this.dialog.open(ChoixPointDepartComponent, {
+//       data: { nbPlace: nbPlace, etape: etape }
+//     });
+//   }
+
 
 }
