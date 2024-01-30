@@ -114,18 +114,19 @@ button.example-icon {
   }
 
   .header-elements {
-    height: auto; /* Hauteur automatique pour les écrans étroits */
+    height: auto; 
     flex-direction: column; /* Pour empiler les éléments verticalement */
   }
 
   .example-icon {
-    width: 100%; /* Largeur pleine pour les écrans étroits */
-    height: 50px; /* Hauteur pour les écrans étroits */
-    margin-top: 10px; /* Espace en haut pour les écrans étroits */
+    width: 100%; 
+    height: 50px; 
+    margin-top: 10px; 
   }
 
   .mat-icon {
-    margin-left: 0; /* Réinitialiser la marge pour les écrans étroits */
+    margin-left: 0; 
+    padding: 10px;
   }
 
 }}

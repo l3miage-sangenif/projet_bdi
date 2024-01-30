@@ -13,6 +13,13 @@
       display: flex;
    
     }
+    div .mat-icon{
+      color: red;
+    }
+    .festival-delete{
+      display: flex;
+      justify-content: space-between;
+    }
     .festivalImage{
       flex: 0 0 auto;
       margin-right: -373px; 

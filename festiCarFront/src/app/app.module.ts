@@ -40,6 +40,7 @@ import { PaiementEffectueeComponent } from './paiement-effectuee/paiement-effect
 import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { CommonModule } from '@angular/common';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 
 
 
@@ -59,7 +60,8 @@ import { CommonModule } from '@angular/common';
     CheckoutFormComponent,
     PaiementEffectueeComponent,
     PaymentDialogComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    ConfirmDeleteComponent
 
   ],
   imports: [

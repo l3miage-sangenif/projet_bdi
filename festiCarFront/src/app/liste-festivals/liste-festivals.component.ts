@@ -1,8 +1,8 @@
-import { ReturnStatement } from '@angular/compiler';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { FestiCarService } from 'src/services/festi-car.service';
+import { ShareDataService } from 'src/services/share-data.service';
 
 
 @Component({
@@ -11,14 +11,24 @@ import { FestiCarService } from 'src/services/festi-car.service';
   styleUrls: ['./liste-festivals.component.scss']
 })
 export class ListeFestivalsComponent implements OnInit {
+  
   festivalsTab? : Festival[];
   festivalsSubscription: Subscription;
   pagedFestivals: Festival[] = [];
   pageSize = 10;
   pageSizeOptions = [5, 10, 20, 50, 100];
   totalFestivals = 0;
+  showFestivals = true;
 
-  constructor(public festivalCarService : FestiCarService){
+
+  constructor(public festivalCarService : FestiCarService, private shareDataService: ShareDataService){
+    this.festivalsSubscription = this.shareDataService.festivalsTab$.subscribe((data) => {
+      this.festivalsTab = data;
+      if (this.showFestivals) {
+        this.updatePagedFestivals(0); 
+        this.totalFestivals = this.festivalsTab.length;
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -30,13 +40,17 @@ export class ListeFestivalsComponent implements OnInit {
     this.festivalsSubscription = this.festivalCarService.getAllFestival().subscribe({
       next: (data: any) => {
         this.festivalsTab = data;
+        console.log('Festivals Data:', data);
         this.totalFestivals = this.festivalsTab.length;
-        this.updatePagedFestivals(0);
+        if (this.showFestivals) {
+          this.updatePagedFestivals(0); 
+        }
       },
       error: (error: any) => {
         console.error('Error fetching festivals:', error);
       }
     });
+  
   }
 
   getUrl(festival : Festival): string{

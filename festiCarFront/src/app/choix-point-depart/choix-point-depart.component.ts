@@ -1,6 +1,9 @@
 
+import { PrefixNot } from '@angular/compiler';
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { Etape } from 'src/models/Etape';
+import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 import { FestiCarService } from 'src/services/festi-car.service';
 import { PanierServiceService } from 'src/services/panier-service.service';
 import { Etape } from 'src/models/Etape';
@@ -13,7 +16,6 @@ import { AuthService } from 'src/services/auth.service';
 })
 
 export class ChoixPointDepartComponent {
-
   selectedStep: Etape;
   selectedPrice: number =0;
   numberOfPlaces: number = 0;
@@ -30,12 +32,13 @@ export class ChoixPointDepartComponent {
   prix(): number {
     return this.selectedStep? this.selectedStep.prix : 0; 
   }
+
   calculateTotal(): number {
   this.selectedPrice=this.prix();
     return this.totalPrice = this.selectedPrice * this.numberOfPlaces;
   }
  
-  
+
   close(){
     this.panierService.ajouterAuPanier();
     this.dialog.closeAll();
@@ -65,4 +68,4 @@ export class ChoixPointDepartComponent {
     }
     console.log('ajouté au panier');
   }
-}
+  }

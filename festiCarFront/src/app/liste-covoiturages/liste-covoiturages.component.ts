@@ -36,6 +36,7 @@ export class ListeCovoituragesComponent implements OnDestroy {
     return `${utcHour}:${utcMinutes}`;
  }
 
+
   public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
     this.dialog.open(ChoixPointDepartComponent, {
       data: offreCovoiturage 

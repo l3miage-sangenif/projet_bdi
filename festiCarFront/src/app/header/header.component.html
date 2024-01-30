@@ -7,9 +7,9 @@
 
     <div class="custom-tab" >Histoire</div>
     <div class="custom-tab" >Contact</div>
-    <div class="panier">
+    <div class="panier"  (click)="allerpanier()">
       <div class="nombre-articles">{{ obtenirNombreElementsPanier() }}</div>
-      <mat-icon class="cart" (click)="allerpanier()">shopping_cart</mat-icon>
+      <mat-icon class="cart">shopping_cart</mat-icon>
     </div>
 
     <div class="user-infos" *ngIf="!authService.user" >
