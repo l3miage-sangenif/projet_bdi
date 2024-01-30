@@ -1,0 +1,70 @@
+.box-container {
+  
+    width: max-content;
+    height: max-content;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000;
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 40px;
+
+  }
+  .time {
+    display: flex;
+    flex-direction: column;
+    padding-right: 10px;
+  }
+
+  .trajet{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+  }
+  .box-location{
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    flex-direction: row;
+
+  }
+  .trajet-time{
+    display: flex;
+    flex-direction: row;
+    margin-right: 10px;
+
+  }
+
+  .trajet {
+    display: flex;
+    flex-direction: row;
+    }
+    .trajet ul {
+      list-style: none;
+      margin: 0; 
+      padding: 0; 
+  }
+  .price{
+    display: flex;
+   }
+
+  .driver{
+    display: flex;
+    justify-content: space-between;
+  }
+  .driver p:first-child {
+    margin-right:50px;
+  }
+
+ .driver p:last-child {
+    margin-left: 80px;
+  }
+  .mat-icon{
+    color: #4AD3B8;
+  }
+.vertical-line {
+  border-left: 1px solid #ccc;
+  height: 30px; 
+  margin: 0 10px; 
+    }

@@ -1,0 +1,28 @@
+<mat-paginator [length]="totalFestivals" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChange($event)"></mat-paginator>
+<div class="festivals-grid">
+  <div *ngFor="let festival of pagedFestivals" class="clickable-card" style="max-width: 440px;">
+      <mat-card  [routerLink]="['/detailfestival', festival.idFestival]">
+        <mat-card-header>
+          <div class="header-content">
+            <img [src]="getUrl(festival)" alt="Image du festival">
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-card-title>{{ festival.nomManifestation }}</mat-card-title>
+          <mat-card-subtitle>{{ festival.dateDebut | date }}</mat-card-subtitle>
+          <span>{{ festival.nbPlaceRestante }} places restantes</span>
+          <span class="festival-tarif">Tarif : {{ festival.tarif }} €</span>
+        </mat-card-content>
+      </mat-card>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+

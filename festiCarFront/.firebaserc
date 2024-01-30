@@ -1,0 +1,8 @@
+{
+  "projects": {
+    "default": "festicar-fa572",
+    "dev-festicar": "festicar-fa572"
+  },
+  "targets": {},
+  "etags": {}
+}
