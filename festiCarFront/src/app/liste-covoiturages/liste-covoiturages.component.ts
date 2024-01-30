@@ -38,10 +38,12 @@ export class ListeCovoituragesComponent implements OnDestroy {
     console.log("heureParam",dateString);
     console.log("heureResult",utcHour, utcMinutes);
     return `${utcHour}:${utcMinutes}`;
+ }
 
-}
- public ouvrirCovoiturage(){
- this.dialog.open(ChoixPointDepartComponent);
-}
+  public ouvrirCovoiturage(nbPlace: number, etape: any[]){
+    this.dialog.open(ChoixPointDepartComponent, {
+      data: { nbPlace: nbPlace, etape: etape }
+    });
+  }
 
 }

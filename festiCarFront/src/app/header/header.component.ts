@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/services/auth.service';
 import { ConnexionComponent } from '../connexion/connexion.component';
 import { Router } from '@angular/router';
+import { PanierServiceService } from 'src/services/panier-service.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 
 export class HeaderComponent {
 
-  constructor(public authService: AuthService, private dialog: MatDialog, private router: Router){}
+  constructor(public authService: AuthService, private dialog: MatDialog, private router: Router, private panierService : PanierServiceService){}
 
   photo = this.authService.photo;
   userId = this.authService.userId;
@@ -23,11 +24,14 @@ export class HeaderComponent {
     });
   }
   alleraccueil(){
-    this.router.navigate(['/AccueilComponent']);
+    this.router.navigate(['/accueil']);
   }
   allerpanier(){
-    this.router.navigate(['/PanierComponent']);
-    
+    this.router.navigate(['/panier']);
+  }
+
+  obtenirNombreElementsPanier() {
+    return this.panierService.nombreElementsPanier;
   }
 }
 

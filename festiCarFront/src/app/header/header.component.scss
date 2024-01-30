@@ -30,7 +30,6 @@ button.example-icon {
 }
 
 .header-elements{
-  gap: 2px;
   background-color: #4AD3B8;
   width: 100%;
   display: flex;
@@ -40,6 +39,21 @@ button.example-icon {
   border: 1px solid #4AD3B8;
   border-radius: 50px;
   overflow: hidden;
+  
+  .mat-icon.cart{
+    color: white;
+    margin-left:  268px;
+    margin-bottom: 19px;
+  }
+
+  .nombre-articles {
+    position: relative;
+    top: 14px;
+    color: white; 
+    padding: 0px 9px; 
+    font-size: 12px; 
+    margin-left:  268px;
+  }
 }
 .custom-tab{
   color: white;
@@ -49,7 +63,8 @@ button.example-icon {
   color: white;
   margin-left:  268px;
 
-  float: right;
+
+  
 }
 .mat-tab-label {
   border-bottom: none;
@@ -72,4 +87,5 @@ button.example-icon {
   .text-connexion{
     margin-left: 32px;
   }
+
 }

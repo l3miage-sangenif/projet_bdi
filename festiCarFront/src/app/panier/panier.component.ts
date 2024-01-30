@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
 
 import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.component';
+import { AuthService } from 'src/services/auth.service';
+import { ConnexionComponent } from '../connexion/connexion.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panier',
@@ -9,16 +12,20 @@ import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.compone
   styleUrls: ['./panier.component.scss']
 })
 export class PanierComponent {
-  constructor ( private dialog: MatDialog){}
+  constructor ( private dialog: MatDialog, public authService: AuthService, private router: Router){}
 
   onCreate(){
- 
-  const dialogRef = this.dialog.open(PaymentDialogComponent, {
-    
-  });
+    if(this.authService.user){
+      this.dialog.open(PaymentDialogComponent, { 
+      });
+    }
+    else{
+      this.dialog.open(ConnexionComponent, { 
+      });
+    }
+  }
 
-  dialogRef.afterClosed().subscribe(() => {
-    console.log('Dialog closed');
-  });
-}
+  alleraccueil(){
+    this.router.navigate(['/accueil']);
+  }
 }
