@@ -3,6 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { FestiCarService } from 'src/services/festi-car.service';
+import { ShareDataService } from 'src/services/share-data.service';
 
 
 @Component({
@@ -17,8 +18,15 @@ export class ListeFestivalsComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions = [5, 10, 20, 50, 100];
   totalFestivals = 0;
+  showFestivals = true; 
 
-  constructor(public festivalCarService : FestiCarService){
+  constructor(public festivalCarService: FestiCarService, private shareDataService: ShareDataService) {
+    this.festivalsSubscription = this.shareDataService.festivalsTab$.subscribe((data) => {
+      this.festivalsTab = data;
+      if (this.showFestivals) {
+        this.updatePagedFestivals(0); 
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -31,7 +39,9 @@ export class ListeFestivalsComponent implements OnInit {
       next: (data: any) => {
         this.festivalsTab = data;
         this.totalFestivals = this.festivalsTab.length;
-        this.updatePagedFestivals(0);
+        if (this.showFestivals) {
+          this.updatePagedFestivals(0); 
+        }
       },
       error: (error: any) => {
         console.error('Error fetching festivals:', error);

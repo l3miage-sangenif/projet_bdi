@@ -61,7 +61,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     CheckoutFormComponent,
     PaiementEffectueeComponent,
     PaymentDialogComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    ConfirmDeleteComponent
 
   ],
   imports: [

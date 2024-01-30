@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./panier.component.scss']
 })
 export class PanierComponent {
-  constructor ( private dialog: MatDialog, public authService: AuthService,, private router: Router){}
+  constructor ( private dialog: MatDialog, public authService: AuthService, private router: Router){}
 
   onCreate(){
     if(this.authService.user){

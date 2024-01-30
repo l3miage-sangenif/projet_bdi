@@ -3,6 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/services/auth.service';
 import { ConnexionComponent } from '../connexion/connexion.component';
 import { Router } from '@angular/router';
+import { FestiCarService } from 'src/services/festi-car.service';
+import { PanierServiceService } from 'src/services/panier-service.service';
 
 @Component({
   selector: 'app-header',
@@ -12,22 +14,39 @@ import { Router } from '@angular/router';
 
 export class HeaderComponent {
 
-  constructor(public authService: AuthService, private dialog: MatDialog, private router: Router){}
+  constructor(private festiCarService : FestiCarService, public authService: AuthService, private dialog: MatDialog, private router: Router,
+     private panierService : PanierServiceService){
 
-  photo = this.authService.photo;
-  userId = this.authService.userId;
-  userName = this.authService.userName;
+  }
+
   connexion(){
      this.dialog.open(ConnexionComponent, {
       width: '800px',
     });
   }
+
   alleraccueil(){
-    this.router.navigate(['/AccueilComponent']);
+    this.router.navigate(['/accueil']);
   }
+
   allerpanier(){
-    this.router.navigate(['/PanierComponent']);
-    
+    if(this.authService.user){
+      this.festiCarService.getPanierByUser(this.authService.user.uid)
+      .subscribe({
+        next: (response) => {
+          console.log('Réponse de la requête get panier pour user connecté:', response);
+          const panierData = response; 
+          this.panierService.mettreAJourPanier(panierData);
+        },
+        error: (error) => {
+          console.error('Erreur lors de la requête get panier pour user connecté:', error);
+        }
+      });
+    }
+    this.router.navigate(['/panier']);
+  }
+
+  obtenirNombreElementsPanier() {
+    return this.panierService.nombreElementsPanier;
   }
 }
-
