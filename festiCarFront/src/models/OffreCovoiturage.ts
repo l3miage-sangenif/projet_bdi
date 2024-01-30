@@ -1,6 +1,4 @@
 import { Etape } from "./Etape";
-import { Festival } from "./Festival";
-import { Utilisateur } from "./Utilisateur";
 
 export interface OffreCovoirage {
   idOffreCovoiturage: number;

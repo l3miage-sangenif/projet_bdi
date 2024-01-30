@@ -30,7 +30,6 @@ button.example-icon {
 }
 
 .header-elements{
-  gap: 2px;
   background-color: #4AD3B8;
   width: 100%;
   display: flex;
@@ -40,8 +39,10 @@ button.example-icon {
   border: 1px solid #4AD3B8;
   border-radius: 50px;
   overflow: hidden;
+
   font-family: Arial;
   font-size: medium;
+
   
   .mat-icon.cart{
     color: white;
@@ -64,6 +65,12 @@ button.example-icon {
   font-family: Arial;
 
 }
+
+.mat-icon{
+  color: white;
+  margin-left:  268px;
+}
+
 .mat-tab-label {
   border-bottom: none;
 }
@@ -103,7 +110,7 @@ button.example-icon {
   .text-connexion{
     margin-left: 32px;
   }
-}
+
 @media only screen and (min-width: 600px) {
   .mat-toolbar {
     height: 90px; /* Hauteur pour les écrans larges */
@@ -134,17 +141,25 @@ button.example-icon {
 
   .header-elements {
     height: auto; 
+
     flex-direction: column; 
+
   }
 
   .example-icon {
-    width: 100%; /* Largeur pleine pour les écrans étroits */
-    height: 50px; /* Hauteur pour les écrans étroits */
-    margin-top: 10px; /* Espace en haut pour les écrans étroits */
+    width: 100%; 
+    height: 50px; 
+    margin-top: 10px; 
   }
 
 
   .mat-icon {
-    margin-left: 0; /* Réinitialiser la marge pour les écrans étroits */
+    margin-left: 0; 
+    padding: 10px;
   }
+
   }}
+
+
+}}
+

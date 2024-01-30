@@ -23,6 +23,13 @@
       text-align: left;
       display: flex;
    
+  }
+    div .mat-icon{
+      color: red;
+    }
+    .festival-delete{
+      display: flex;
+      justify-content: space-between;
     }
     .festivalImage{
       flex: 0 0 auto;
@@ -33,6 +40,7 @@
       max-width: 30%; 
       height: auto; 
     }
+
     .covoiturage-details {
       font-family: Arial;
       font-style: normal;
@@ -44,3 +52,13 @@
         font-style: normal;
         font-size: medium;
       }
+
+  ul, li {
+    font-style: normal;
+  }
+  .prix-total-container {
+      display: flex;
+      justify-content: space-between;
+  
+    }
+

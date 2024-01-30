@@ -22,4 +22,6 @@ export class PanierServiceService {
   obtenirPanier(): Observable<any[]> {
     return this.panier$;
   }
+
 }
+

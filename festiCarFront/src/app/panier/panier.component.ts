@@ -2,9 +2,11 @@ import { Component } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
 
 import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.component';
-import { ConnexionComponent } from '../connexion/connexion.component';
 import { AuthService } from 'src/services/auth.service';
+import { ConnexionComponent } from '../connexion/connexion.component';
 import { Router } from '@angular/router';
+import { PanierServiceService } from 'src/services/panier-service.service';
+
 
 @Component({
   selector: 'app-panier',
@@ -12,7 +14,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./panier.component.scss']
 })
 export class PanierComponent {
-  constructor ( private dialog: MatDialog, public authService: AuthService, private router: Router){}
+
+  panier: any[] = [];
+  item: any
+
+  constructor ( private dialog: MatDialog, public authService: AuthService, 
+    private router: Router, private panierService : PanierServiceService){
+
+      this.panierService.obtenirPanier().subscribe(panierData => {
+        this.panier = panierData;
+      });
+    }
+
 
   onCreate(){
     if(this.authService.user){
@@ -21,11 +34,17 @@ export class PanierComponent {
     }
     else{
       this.dialog.open(ConnexionComponent, { 
+
         width: '800px',
       });
     }
   }
 
   
+
+  alleraccueil(){
+    this.router.navigate(['/accueil']);
+  }
+
 }
 

@@ -1,6 +1,10 @@
 
 
+
 <div class="point-depart-container">
+
+<div class="cart-container">
+
   <button class="close" (click)="close()">✖</button>
 
     <h1 class="festival-date"><b> Choisir un point de départ</b> </h1>
@@ -40,13 +44,17 @@
      <div  class="prix-passanger">
          Nombre de places : 
      </div>
- 
+
      <div class="input-container">
          
          <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1"  (input)="calculateTotal()">
        </div>
     <div class="input-container">
       <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1" max={{data.nbPlace}}  (input)="calculateTotal()">
+
+    <div class="input-container">
+      <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1"  (input)="calculateTotal()">
+
     </div>
  </div>
  <div class="prix-total-container">
@@ -57,7 +65,6 @@
      <div class="prix-total">
       {{ calculateTotal() }}€
        </div>
- 
  </div>
  
  <div class="button">
