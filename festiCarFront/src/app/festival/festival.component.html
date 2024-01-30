@@ -18,7 +18,7 @@
 
 <div class="festival-container">
   <div class="festivalImage" *ngIf="festival">
-    <a [href]="festival.siteWeb" target="_blank">
+    <a href="http://{{festival.siteWeb}}" target="_blank">
       <img [src]="festiCarService.getUrl(festival)" >
     </a>
   </div>
@@ -26,13 +26,13 @@
             <h1 class="event-title"> {{ festival.nomManifestation }} </h1>
             <ul>
 
-            <i>Domain: {{festival.sousDomaine.domaine.nomDomaine}} </i>
-            <i>Date de début: {{festival.dateDebut}} </i>
-            <i>Date de fin: {{festival.dateFin}} </i>
-            <i>Lieu: {{festival.commune.nomCommune}} </i>
-            <i>Site Web: {{festival.siteWeb}} </i>
-            </ul>
-            <hr>
+            <i> <b> Domain :</b>  {{festival.sousDomaine.domaine.nomDomaine}} </i>
+            <i><b> Date de début :</b> {{festival.dateDebut}} </i>
+            <i><b> Date de fin :</b> {{festival.dateFin}} </i>
+            <i><b> Lieu : </b>{{festival.commune.nomCommune}} </i>
+            <i><b> Site Web :</b> <a href="http://{{festival.siteWeb}}" target="_blank">{{festival.siteWeb}}</a></i>
+          </ul>
+          <hr>
          <div  class="places-restantes"> <mat-icon>whatshot</mat-icon><span> {{festival.nbPlaceRestante}} places restantes</span> </div>
        </div>
 

@@ -8,7 +8,7 @@ import { Festival } from 'src/models/Festival';
 })
 export class FestiCarService {
 
-  baseUrl = ' http://129.88.210.69:8080/api';
+  baseUrl = ' http://129.88.210.61:8080/api';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -56,11 +56,17 @@ export class FestiCarService {
     else if(festival.sousDomaine.domaine.nomDomaine === "Arts plastiques et visuels"){
       src="assets/images/artPlastiques.jpg";
     }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Divers spectacle vivant"){
+    else if(festival.sousDomaine.domaine.nomDomaine === "Divers Spectacle vivant"){
       src="assets/images/diversEtVivant.jpg";
     }
     else if(festival.sousDomaine.domaine.nomDomaine === "Danse"){
       src="assets/images/danse.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Pluridisciplinaire Musique"){
+      src="assets/images/PluridisciplinaireMusique.jpg";
+    }
+    else if(festival.sousDomaine.domaine.nomDomaine === "Musiques classiques"){
+      src="assets/images/MusiquesClassiques.jpg";
     }
     return src;
   }

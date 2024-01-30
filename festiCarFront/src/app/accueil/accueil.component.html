@@ -15,13 +15,22 @@
     [options]="options"
     (onAddressChange)="handleAddressChange($event)" placeholder="Ville" [(ngModel)]="festivalPlace" />
   </mat-form-field>
-
+  <mat-form-field class="example-form-field">
+    <mat-icon matPrefix>my_location</mat-icon>
+    <input matInput type="text"ngx-google-places-autocomplete
+    [options]="options"
+    (onAddressChange)="handleAddressChange($event)" placeholder="Votre Addresse" [(ngModel)]="festivalierAddresse" />
+  </mat-form-field>
   <mat-form-field class="example-form-field">
     <mat-icon matPrefix>event</mat-icon>
     <input matInput type="date" placeholder="Date" [(ngModel)]="festivalDate" />
   </mat-form-field>
-
-  <button mat-icon-button class="search-button" (click)="getAllFestivals()" >Chercher</button>
+ 
+  <mat-form-field class="example-form-field">
+    <mat-icon matPrefix>theaters</mat-icon>
+    <input matInput type="text" placeholder="Domaine" [(ngModel)]="festivalDomaine" />
+  </mat-form-field>
+  <button mat-icon-button class="search-button" (click)="searchFestivals()" >Chercher</button>
 </div>
 
 

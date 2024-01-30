@@ -41,14 +41,15 @@ button.example-icon {
   border-radius: 50px;
   overflow: hidden;
 }
+
 .custom-tab{
   color: white;
+  font-family: Arial;
 
 }
 .mat-icon{
   color: white;
   margin-left:  268px;
-
   float: right;
 }
 .mat-tab-label {
@@ -71,5 +72,46 @@ button.example-icon {
 
   .text-connexion{
     margin-left: 32px;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .mat-toolbar {
+    height: 90px; /* Hauteur pour les écrans larges */
+  }
+
+  .header-elements {
+    height: 90px; /* Hauteur pour les écrans larges */
+  }
+
+  .example-icon {
+    width: 80px;
+    font-size: 11px;
+    height: 30px;
+  }
+
+  .mat-icon {
+    margin-left: 268px;
+  }
+}
+
+/* Styles pour les écrans étroits (par exemple, jusqu'à 599px) */
+@media only screen and (max-width: 599px) {
+  .mat-toolbar {
+    height: auto; /* Hauteur automatique pour les écrans étroits */
+  }
+
+  .header-elements {
+    height: auto; /* Hauteur automatique pour les écrans étroits */
+    flex-direction: column; /* Pour empiler les éléments verticalement */
+  }
+
+  .example-icon {
+    width: 100%; /* Largeur pleine pour les écrans étroits */
+    height: 50px; /* Hauteur pour les écrans étroits */
+    margin-top: 10px; /* Espace en haut pour les écrans étroits */
+  }
+
+  .mat-icon {
+    margin-left: 0; /* Réinitialiser la marge pour les écrans étroits */
   }
 }
