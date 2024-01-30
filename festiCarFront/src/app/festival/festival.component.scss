@@ -30,13 +30,16 @@
 
   .festivalImage {
     flex: 0 0 40%;
-    margin-right: 0px;
-    margin-left: 10px;
+    margin-right: 20px;
+    margin-left: 40px;
   }
 
   .festivalImage img {
     max-width: 100%;
     height: auto;
+    border-radius: 10px; 
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
   }
 
   .festivalDetails {
@@ -62,6 +65,7 @@
     font-size: 40px;
     text-transform: uppercase;
     font-family: 'Open Sans Semi-Bold';
+    margin-top: -100px;
 
   }
 
@@ -69,6 +73,12 @@
     list-style: none;
     padding: 0;
     margin-top: 50px;
+    font-family: Arial;
+    font-style: normal;
+    font-size: medium;
+  }
+  hr{
+    width: 50%;
   }
 
   .festivalDetails ul i {

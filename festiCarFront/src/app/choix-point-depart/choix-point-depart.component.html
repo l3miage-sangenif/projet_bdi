@@ -11,18 +11,12 @@
                Choisir point de départ :
              </div>
          <div class="etapes">   
-             <label class="radio">
-                 <input name="radio" type="radio" checked>
-                 <span>heure :</span> <span> Etape 1</span>
+          
+             <label class="radio" *ngFor="let etape of data.etape; let i = index">
+                 <input name="radio" type="radio" checked [(ngModel)]="selectedStep" [value]="etape">
+                  <span>  {{ data.etape[i].lieuCovoiturage.adresseLieu  }} </span>
                </label>
-               <label class="radio">
-                 <input name="radio" type="radio">
-                 <span>heure :</span> <span>Etape 2</span>
-               </label>
-               <label class="radio">
-                 <input name="radio" type="radio">
-                 <span>heure :</span>  <span>Etape 3</span>
-               </label>
+              
           </div> 
           <div class="Point-arrive">
              Point d’arriver : 37, place Corinne Etienne 49378 Lille
@@ -36,19 +30,19 @@
              <div class="prix-passanger">
               Prix par passenger : 
              </div>
-          <div class="prix">
-             43€
+          <div [(ngModel)]="selectedPrice" class="prix">
+            {{ prix() }}€
            </div>
          
  </div>
  <div class="place-container">
-     <div class="prix-passanger">
+     <div  class="prix-passanger">
          Nombre de places : 
      </div>
  
      <div class="input-container">
          
-         <input type="number" id="nombreDePlaces" value="1" min="1">
+         <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1"  (input)="calculateTotal()">
        </div>
  </div>
  <div class="prix-total-container">
@@ -57,7 +51,7 @@
      </div>
  
      <div class="prix-total">
-         94.95€
+      {{ calculateTotal() }}€
        </div>
  </div>
  

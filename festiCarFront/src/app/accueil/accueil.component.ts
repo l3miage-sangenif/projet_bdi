@@ -16,12 +16,15 @@ export class AccueilComponent implements OnInit, OnDestroy {
   festivalName: string = '';
   festivalPlace: string = '';
   festivalDate: string = '';
+  festivalDomaine: String='';
+  festivalierAddresse: string='';
+
 
   constructor(public festivalCarService : FestiCarService, private router : Router){
   }
 
   ngOnInit(): void {
-    // this.getAllFestivals();
+  this.getAllFestivals();
   }
 
       eventItems = [
@@ -55,7 +58,7 @@ export class AccueilComponent implements OnInit, OnDestroy {
           console.error('Error fetching festivals:', error);
         }
       });
-      this.router.navigate(['/listfestivals']);
+    
     }
 
 
@@ -91,5 +94,10 @@ export class AccueilComponent implements OnInit, OnDestroy {
   
   
       );
+    }
+
+    searchFestivals(): void {
+     
+      
     }
 }

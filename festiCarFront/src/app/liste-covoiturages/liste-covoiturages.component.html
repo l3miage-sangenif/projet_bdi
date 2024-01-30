@@ -1,5 +1,10 @@
+
+<div class="liste-des-covoiturages" *ngIf="covoiturageTab.length > 0" >
+  <div class="box-container" *ngFor="let offreCovoiturage of covoiturageTab" (click)="ouvrirCovoiturage(offreCovoiturage )" >
+
 <div class="liste-des-covoiturages"  >
   <div class="box-container" *ngFor="let offreCovoiturage of covoiturageTab" (click)="ouvrirCovoiturage(offreCovoiturage.nbPlace, offreCovoiturage.etape)" >
+
 
     <div class="box-location" *ngFor="let item of offreCovoiturage.etape">
       <div class="trajet-time">
