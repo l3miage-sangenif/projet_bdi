@@ -5,8 +5,6 @@ import { MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialo
 import { Etape } from 'src/models/Etape';
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 
-import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 import { FestiCarService } from 'src/services/festi-car.service';
 import { PanierServiceService } from 'src/services/panier-service.service';
 
@@ -18,10 +16,11 @@ import { PanierServiceService } from 'src/services/panier-service.service';
 
 export class ChoixPointDepartComponent {
 
-  constructor(
-    public dialogRef: MatDialogRef<ChoixPointDepartComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: OffreCovoirage
-  ) {}
+  constructor(private dialog: MatDialog,
+     private panierService : PanierServiceService, 
+     private festiCarService : FestiCarService,
+      @Inject(MAT_DIALOG_DATA) public data: any){}
+
   selectedStep: Etape;
   selectedPrice: number =0;
   numberOfPlaces: number = 1;
@@ -35,15 +34,14 @@ export class ChoixPointDepartComponent {
     return this.totalPrice = this.selectedPrice * this.numberOfPlaces;
   }
  
-  close(): void {
-    this.dialogRef.close();
+  // close(): void {
+  //   this.dialogRef.close();
 
-  constructor(private dialog: MatDialog, private panierService : PanierServiceService, private festiCarService : FestiCarService, @Inject(MAT_DIALOG_DATA) public data: any){}
-  
+  // }
   close(){
     this.panierService.ajouterAuPanier();
     this.dialog.closeAll();
     this.festiCarService.postPanierWithOutConnectedUser(this.data.nbPlace, this.data.etape);
 
   }
-}
+  }

@@ -48,13 +48,13 @@ export class FestiCarService {
     return this.http.post(url, body, this.httpOptions);
   }
 
-  getAllFestivalsFilter(name: string, domaine: string, dateDebut: string, dateFin: string, longitudeCovoiturage: number, latitudeCovoiturage: number, distanceRechercheCovoiturage: number): Observable<any> {
+  getAllFestivalsFilter(name: string, domaine: string, dateDebut: string,  longitudeCovoiturage: number, latitudeCovoiturage: number, distanceRechercheCovoiturage: number): Observable<any> {
     const url = `${this.baseUrl}/festival`;
     let params = new HttpParams();
     if (name) params = params.set('name', name);
     if (domaine) params = params.set('domaine', domaine);
     if (dateDebut) params = params.set('dateDebut', dateDebut);
-    if (dateFin) params = params.set('dateFin', dateFin);
+    
     if (longitudeCovoiturage) params = params.set('longitudeCovoiturage', longitudeCovoiturage.toString());
     if (latitudeCovoiturage) params = params.set('latitudeCovoiturage', latitudeCovoiturage.toString());
     if (distanceRechercheCovoiturage) params = params.set('distanceRechercheCovoiturage', distanceRechercheCovoiturage.toString());

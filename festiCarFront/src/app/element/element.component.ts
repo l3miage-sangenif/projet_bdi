@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { MatDialog} from '@angular/material/dialog';
+import { ConfirmDeleteComponent } from '../confirm-delete/confirm-delete.component';
 
 @Component({
   selector: 'app-element',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./element.component.scss']
 })
 export class ElementComponent {
+  constructor(private dialog: MatDialog){}
 
+  Openconfirmer(){
+    this.dialog.open(ConfirmDeleteComponent);
+  }
 }

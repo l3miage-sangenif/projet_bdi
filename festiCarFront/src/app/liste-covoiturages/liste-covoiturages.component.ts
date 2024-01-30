@@ -40,12 +40,12 @@ export class ListeCovoituragesComponent implements OnDestroy {
  }
 
 
-}
-public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
-  const dialogRef = this.dialog.open(ChoixPointDepartComponent, {
-    data: offreCovoiturage // Pass the selected covoiturage to the dialog
-  });
-}
+
+    public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
+    const dialogRef = this.dialog.open(ChoixPointDepartComponent, {
+      data: offreCovoiturage // Pass the selected covoiturage to the dialog
+    });
+  }
 
 //   public ouvrirCovoiturage(nbPlace: number, etape: any[]){
 //     this.dialog.open(ChoixPointDepartComponent, {

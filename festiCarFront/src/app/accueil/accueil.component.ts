@@ -1,8 +1,10 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
-import { Subscription, filter } from 'rxjs';
+import { Observable, Subscription, filter } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { FestiCarService } from 'src/services/festi-car.service';
+import { ShareDataService } from 'src/services/share-data.service';
+import { ListeFestivalsComponent } from '../liste-festivals/liste-festivals.component';
 
 
 @Component({
@@ -10,56 +12,24 @@ import { FestiCarService } from 'src/services/festi-car.service';
   templateUrl: './accueil.component.html',
   styleUrls: ['./accueil.component.scss']
 })
-export class AccueilComponent implements OnInit, OnDestroy {
+export class AccueilComponent implements  OnDestroy {
+  @ViewChild(ListeFestivalsComponent) festivalsListComponent: ListeFestivalsComponent;
+
   festivalsTab? : Festival[] = [];
   festivalsSubscription: Subscription;
   festivalName: string = '';
   festivalPlace: string = '';
   festivalDate: string = '';
-  festivalDomaine: String='';
+  festivalDomaine: string='';
   festivalierAddresse: string='';
+  addresseLng: number;
+  addresselat: number;
+  diastanceRechere: any;
 
 
-  constructor(public festivalCarService : FestiCarService, private router : Router){
-  }
-
-  ngOnInit(): void {
-  this.getAllFestivals();
-  }
-
-      eventItems = [
-        {
-          imageSrc: "assets/images/Group10.png"
-        },
-        {
-          imageSrc: "assets/images/Group11.png"
-        },
-        {
-          imageSrc: "assets/images/Group12.png"
-        },
-        {
-          imageSrc: "assets/images/Group13.png"
-        },
-        {
-          imageSrc: "assets/images/Group14.png"
-        },
-        {
-          imageSrc: "assets/images/Group15.png"
-        },
-      ];
-
-    public getAllFestivals(): void {
-      this.festivalsSubscription = this.festivalCarService.getAllFestival().subscribe({
-        next: (data: any) => {
-          this.festivalsTab = data;
-          console.log('Festivals Data:', data);
-        },
-        error: (error: any) => {
-          console.error('Error fetching festivals:', error);
-        }
-      });
+  constructor(public festivalCarService : FestiCarService, private router : Router, private shareDataService: ShareDataService){
     
-    }
+  }
 
 
     ngOnDestroy(): void {
@@ -72,6 +42,9 @@ export class AccueilComponent implements OnInit, OnDestroy {
     }
   
     handleAddressChange(address: any) {
+      this.addresseLng=address.geometry.location.lng();
+      this.addresselat=address.geometry.location.lat();
+
       console.log(address.formatted_address)
       console.log(address.geometry.location.lat())
       console.log(address.geometry.location.lng())
@@ -95,9 +68,38 @@ export class AccueilComponent implements OnInit, OnDestroy {
   
       );
     }
-
-    searchFestivals(): void {
-     
+    public searchFestivals(): void {
+      const searchCriteria = {
+        name: this.festivalName,
+        domaine: this.festivalDomaine,
+        dateDebut: this.festivalDate,
+        addresseLng: this.addresseLng,
+        addresselat: this.addresselat,
+        diastancerechere: this.diastanceRechere
       
-    }
+      }
+      this.festivalsSubscription = this.festivalCarService.getAllFestivalsFilter(
+        searchCriteria.name,
+        searchCriteria.domaine,
+        searchCriteria.dateDebut,
+        searchCriteria.addresseLng,
+        searchCriteria.addresselat,
+        searchCriteria.diastancerechere
+      )
+    
+  
+      .subscribe({
+        
+        next: (data: any) => {
+          this.festivalsTab = data;
+          console.log('Filtered Festivals:', data);
+          this.shareDataService.updateFestivalTab(data);
+          this.shareDataService.updateShowFestivals(true);
+        },
+        error: (error: any) => {
+          console.error('Error searching festivals:', error);
+        }
+      });
+     
+} 
 }
