@@ -3,10 +3,8 @@ import { PrefixNot } from '@angular/compiler';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 import { Etape } from 'src/models/Etape';
-import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 import { FestiCarService } from 'src/services/festi-car.service';
 import { PanierServiceService } from 'src/services/panier-service.service';
-import { Etape } from 'src/models/Etape';
 import { AuthService } from 'src/services/auth.service';
 
 @Component({

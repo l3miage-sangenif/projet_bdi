@@ -9,23 +9,25 @@
           <li  class="is-active" >Payer</li>
         </ul>
       </div>
- 
-<app-element></app-element>
+    <ng-container *ngFor="let element of panier">
+      <app-element [element]="element"></app-element>
 
-    <div class="total-container">
-        <div class="prix-passanger">
-          <b>  Prix total : </b>
-        </div>
-    
-        <div class="prix-total">
-            <b>     94.95€ </b>
+      <div class="total-container">
+          <div class="prix-passanger">
+            <b>  Prix total : </b>
           </div>
-    
-    </div> 
-    <div class="buttons">
-        <button mat-icon-button class="ajouter" (click)="alleraccueil()">Ajouter un festival</button>
-        <button mat-icon-button class="payer" (click)= "onCreate()">Payer</button>
-    </div>     
+      
+          <div class="prix-total">
+              <b>     94.95€ </b>
+            </div>
+      
+      </div> 
+      <div class="buttons">
+          <button mat-icon-button class="ajouter" (click)="alleraccueil()">Ajouter un festival</button>
+          <button mat-icon-button class="payer" (click)= "onCreate()">Payer</button>
+      </div>  
+    </ng-container>
+       
 </div> 
        
    

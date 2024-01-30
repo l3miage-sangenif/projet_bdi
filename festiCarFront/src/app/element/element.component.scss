@@ -12,7 +12,7 @@
       text-align: left;
       display: flex;
    
-    }
+  }
     div .mat-icon{
       color: red;
     }
@@ -29,11 +29,11 @@
       max-width: 30%; 
       height: auto; 
     }
-    ul, li {
-      font-style: normal;
+  ul, li {
+    font-style: normal;
+  }
+  .prix-total-container {
+      display: flex;
+      justify-content: space-between;
+  
     }
-    .prix-total-container {
-        display: flex;
-        justify-content: space-between;
-    
-      }

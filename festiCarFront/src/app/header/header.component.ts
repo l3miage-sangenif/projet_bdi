@@ -32,6 +32,8 @@ export class HeaderComponent {
       .subscribe({
         next: (response) => {
           console.log('Réponse de la requête get panier pour user connecté:', response);
+          const panierData = response; 
+          this.panierService.mettreAJourPanier(panierData);
         },
         error: (error) => {
           console.error('Erreur lors de la requête get panier pour user connecté:', error);

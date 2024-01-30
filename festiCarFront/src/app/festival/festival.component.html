@@ -50,13 +50,11 @@
             <mat-icon matPrefix>supervisor_account</mat-icon>
           <input matInput type="text" placeholder="Nombre de pass" />
         </mat-form-field>
-        <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >Trouver covoiturage</button>
+        <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >Chercher covoiturage</button>
       </div>
 
-
-    <app-liste-covoiturages></app-liste-covoiturages>
     <div class="covoiturage-app" *ngIf="showCovoiturages">
-    <app-liste-covoiturages [covoiturageTab]="covoiturageTab" *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
+    <app-liste-covoiturages  *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
     </div>
 
 
