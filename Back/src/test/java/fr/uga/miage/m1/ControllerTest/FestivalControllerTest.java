@@ -44,9 +44,6 @@ public class FestivalControllerTest {
 
     @Test
     void testGetAllFestival() throws Exception {
-        // Mocking repository behavior to return a list of festivals
-        createFestivalEntity(1L, "test 1");
-        createFestivalEntity(2L, "test 2");
    
         List<Festival> festivals = festivalService.getAllFestival();
 
@@ -63,8 +60,6 @@ public class FestivalControllerTest {
     @Test
     public void testGetFestivalById() throws Exception {
 
-        festivalRepository.save(createFestivalEntity(1L, "Test Festival"));
-            
         Festival fest = festivalService.getFestivalById(1L);
         
         mockMvc.perform(get("/api/festival/1"))
