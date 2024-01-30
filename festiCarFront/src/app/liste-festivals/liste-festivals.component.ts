@@ -54,41 +54,7 @@ export class ListeFestivalsComponent implements OnInit {
   }
 
   getUrl(festival : Festival): string{
-    var src : string = "";
-    if(festival.sousDomaine.domaine.nomDomaine === "Musiques actuelles"){
-       src="assets/images/musiquesActuelles.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Livre et littérature"){
-      src="assets/images/livreEtLiterature.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Cirque et Arts de la rue"){
-      src="assets/images/cirqueEtArt.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Pluridisciplinaire Spectacle vivant"){
-      src="assets/images/spectacleVivant.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Cinéma et audiovisuel"){
-      src="assets/images/cinemaEtAudiovisuel.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Transdisciplinaire"){
-      src="assets/images/trandisciplinaire.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Arts plastiques et visuels"){
-      src="assets/images/artPlastiques.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Divers Spectacle vivant"){
-      src="assets/images/diversEtVivant.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Danse"){
-      src="assets/images/danse.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Pluridisciplinaire Musique"){
-      src="assets/images/PluridisciplinaireMusique.jpg";
-    }
-    else if(festival.sousDomaine.domaine.nomDomaine === "Musiques classiques"){
-      src="assets/images/MusiquesClassiques.jpg";
-    }
-    return src;
+   return this.festivalCarService.getUrl(festival);
   }
 
   public updatePagedFestivals(pageIndex: number): void {

@@ -5,7 +5,6 @@
   <span class="example-spacer"></span>
   <div class="header-elements">
 
-
     <div class="custom-tab" >Histoire</div>
     <div class="custom-tab" >Contact</div>
     <div class="panier"  (click)="allerpanier()">
@@ -13,11 +12,8 @@
       <mat-icon class="cart">shopping_cart</mat-icon>
     </div>
 
-
-    
     <div class="user-infos" *ngIf="!authService.user" >
-     
-      <button mat-icon-button class="example-icon" (click)="connexion()">Connecter</button>
+      <button mat-icon-button class="example-icon" (click)="connexion()">Connexion</button>
     </div>
 
     <ng-container class="user-connected-infos" *ngIf="authService.user">
@@ -31,13 +27,6 @@
         <button mat-menu-item (click)="authService.logOut()">Déconnexion</button>
       </mat-menu>
     </ng-container>
-
-
-      <!--div  class="profil-image"!-->
-
-      <!--div-->
-
-
   </div>
 
 

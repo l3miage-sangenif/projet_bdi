@@ -36,7 +36,7 @@ export class FestiCarService {
   postPanierWithOutConnectedUser(nbPlace : any, etape : any ): Observable<any> {
     const url = `${this.baseUrl}/achat`; 
     const body = { nbPlace: nbPlace, etape: etape };
-    return this.http.post(url, body);
+    return this.http.post(url, body, this.httpOptions);
   }
 
   postPanierWithConnectedUser(userUid: string, nbPlace: number, etape: any[]): Observable<any> {
@@ -66,6 +66,14 @@ export class FestiCarService {
     const url = `${this.baseUrl}/utilisateur`;
     return this.http.post(url, user, this.httpOptions);
   }
+
+  getPanierByUser(userUid: string): Observable<any> {
+    const url = `${this.baseUrl}/achat/${userUid}`;
+    return this.http.get(url, this.httpOptions);
+  }
+
+
+
 
 
   getUrl(festival : Festival): string{

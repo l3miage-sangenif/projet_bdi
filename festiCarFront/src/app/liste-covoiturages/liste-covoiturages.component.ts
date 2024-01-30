@@ -1,5 +1,4 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { MatDialog} from '@angular/material/dialog';
 
@@ -17,19 +16,17 @@ export class ListeCovoituragesComponent implements OnDestroy {
   festivalsSubscription: Subscription;
  
 
-  constructor(private route: ActivatedRoute, private sharedDataService: ShareDataService, private dialog: MatDialog){
+  constructor(private sharedDataService: ShareDataService, private dialog: MatDialog){
     this.festivalsSubscription = this.sharedDataService.covoiturageTab$.subscribe((data) => {
         this.covoiturageTab = data;
       });
   }
-
 
   ngOnDestroy(): void {
     if (this.festivalsSubscription) {
       this.festivalsSubscription.unsubscribe();
     }
   }
- 
 
   public extractHourFromDate(dateString: string): string {
     const date = new Date(dateString);
@@ -40,18 +37,10 @@ export class ListeCovoituragesComponent implements OnDestroy {
  }
 
 
-
-    public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
-    const dialogRef = this.dialog.open(ChoixPointDepartComponent, {
-      data: offreCovoiturage // Pass the selected covoiturage to the dialog
+  public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
+    this.dialog.open(ChoixPointDepartComponent, {
+      data: offreCovoiturage 
     });
   }
-
-//   public ouvrirCovoiturage(nbPlace: number, etape: any[]){
-//     this.dialog.open(ChoixPointDepartComponent, {
-//       data: { nbPlace: nbPlace, etape: etape }
-//     });
-//   }
-
 
 }

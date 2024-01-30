@@ -27,10 +27,10 @@ export class AccueilComponent implements  OnDestroy {
   diastanceRechere: any;
 
 
-  constructor(public festivalCarService : FestiCarService, private router : Router, private shareDataService: ShareDataService){
-    
-  }
 
+  constructor(public festivalCarService : FestiCarService, private router : Router, private shareDataService: ShareDataService){
+
+  }
 
     ngOnDestroy(): void {
       if (this.festivalsSubscription) {
@@ -49,6 +49,7 @@ export class AccueilComponent implements  OnDestroy {
       console.log(address.geometry.location.lat())
       console.log(address.geometry.location.lng())
     }
+
    @ViewChild('addressText') addressText!: ElementRef;
     protected placeSubscription: Subscription;
   
