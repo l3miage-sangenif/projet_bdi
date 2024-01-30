@@ -27,27 +27,6 @@ export class AccueilComponent implements OnInit, OnDestroy {
   this.getAllFestivals();
   }
 
-      eventItems = [
-        {
-          imageSrc: "assets/images/Group10.png"
-        },
-        {
-          imageSrc: "assets/images/Group11.png"
-        },
-        {
-          imageSrc: "assets/images/Group12.png"
-        },
-        {
-          imageSrc: "assets/images/Group13.png"
-        },
-        {
-          imageSrc: "assets/images/Group14.png"
-        },
-        {
-          imageSrc: "assets/images/Group15.png"
-        },
-      ];
-
     public getAllFestivals(): void {
       this.festivalsSubscription = this.festivalCarService.getAllFestival().subscribe({
         next: (data: any) => {
@@ -76,6 +55,7 @@ export class AccueilComponent implements OnInit, OnDestroy {
       console.log(address.geometry.location.lat())
       console.log(address.geometry.location.lng())
     }
+
    @ViewChild('addressText') addressText!: ElementRef;
     protected placeSubscription: Subscription;
   
