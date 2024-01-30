@@ -18,15 +18,18 @@ export class ListeFestivalsComponent implements OnInit {
   pageSize = 10;
   pageSizeOptions = [5, 10, 20, 50, 100];
   totalFestivals = 0;
+
   showFestivals = true;
 
 
   constructor(public festivalCarService : FestiCarService, private shareDataService: ShareDataService){
+
     this.festivalsSubscription = this.shareDataService.festivalsTab$.subscribe((data) => {
       this.festivalsTab = data;
       if (this.showFestivals) {
         this.updatePagedFestivals(0); 
         this.totalFestivals = this.festivalsTab.length;
+
       }
     });
   }

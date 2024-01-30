@@ -3,8 +3,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { AuthService } from 'src/services/auth.service';
 import { ConnexionComponent } from '../connexion/connexion.component';
 import { Router } from '@angular/router';
-import { PanierServiceService } from 'src/services/panier-service.service';
+
 import { FestiCarService } from 'src/services/festi-car.service';
+import { PanierServiceService } from 'src/services/panier-service.service';
+
 
 @Component({
   selector: 'app-header',
@@ -14,7 +16,12 @@ import { FestiCarService } from 'src/services/festi-car.service';
 
 export class HeaderComponent {
 
-  constructor(private festiCarService : FestiCarService, public authService: AuthService, private dialog: MatDialog, private router: Router, private panierService : PanierServiceService){}
+
+  constructor(private festiCarService : FestiCarService, public authService: AuthService, private dialog: MatDialog, private router: Router,
+     private panierService : PanierServiceService){
+
+  }
+
 
   connexion(){
      this.dialog.open(ConnexionComponent, {
@@ -41,10 +48,10 @@ export class HeaderComponent {
       });
     }
     this.router.navigate(['/panier']);
+
   }
 
   obtenirNombreElementsPanier() {
     return this.panierService.nombreElementsPanier;
   }
 }
-

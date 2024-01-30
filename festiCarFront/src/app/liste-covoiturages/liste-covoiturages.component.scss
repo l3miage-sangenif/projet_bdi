@@ -1,3 +1,7 @@
+.liste-des-covoiturages{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+}
 .box-container {
   
     width: max-content;
@@ -36,7 +40,9 @@
     margin-right: 10px;
 
   }
-
+  .point-arrive{
+    margin-left:3px;
+  }
   .trajet {
     display: flex;
     flex-direction: row;

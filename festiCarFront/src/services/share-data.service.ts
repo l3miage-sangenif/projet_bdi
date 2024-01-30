@@ -29,7 +29,7 @@ export class ShareDataService {
 
   private showFestivalsSource = new BehaviorSubject<boolean>(false);
   showFestivals$ = this.showFestivalsSource.asObservable();
-  
+
   updateShowFestivals(show: boolean): void {
     this.showFestivalsSource.next(show);
   }
