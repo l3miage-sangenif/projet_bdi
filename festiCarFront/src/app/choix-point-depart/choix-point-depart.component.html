@@ -24,20 +24,20 @@
               
           </div> 
           <div class="Point-arrive">
-             Point d’arriver : {{data.festival.commune.nomCommune }}
+             Point d arriver : {{data.festival.commune.nomCommune }}
            </div>
         
-         </div>
+            </div>
         
    
  </div>
- <div class="prix-container">
+          <div class="prix-container">
              <div class="prix-passanger">
               Prix par passenger : 
              </div>
-          <div [(ngModel)]="selectedPrice" class="prix">
+             <div [(ngModel)]="selectedPrice" class="prix">
             {{ prix() }}€
-           </div>
+               </div>
          
  </div>
  <div class="place-container">
@@ -45,17 +45,11 @@
          Nombre de places : 
      </div>
 
-     <div class="input-container">
-         
-         <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1"  (input)="calculateTotal()">
-       </div>
+   
     <div class="input-container">
       <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1" max={{data.nbPlace}}  (input)="calculateTotal()">
-
-    <div class="input-container">
-      <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1"  (input)="calculateTotal()">
-
     </div>
+ 
  </div>
  <div class="prix-total-container">
      <div class="prix-passanger">

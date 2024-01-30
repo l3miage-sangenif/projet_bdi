@@ -40,7 +40,8 @@ export class ListeCovoituragesComponent implements OnDestroy {
 
   public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
     this.dialog.open(ChoixPointDepartComponent, {
-      data: offreCovoiturage 
+      data: offreCovoiturage ,
+      
     });
   }
 
