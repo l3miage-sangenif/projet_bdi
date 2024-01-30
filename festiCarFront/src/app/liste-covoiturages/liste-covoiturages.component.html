@@ -9,21 +9,22 @@
         <div class="trajet">
           <ul>
   
-            <i ><mat-icon matPrefix>location_on</mat-icon>{{ item.lieuCovoiturage.adresseLieu  }}</i><br>
+            <i ><mat-icon matPrefix>location_on</mat-icon>{{ item.lieuCovoiturage.nomLieu  }}</i><br>
             <div class="vertical-line"></div>
-  
+            
           </ul>
         </div>
       </div>
         <div class="price" >
           <strong fxLayout="row" fxLayoutAlign="end center">{{ item.prix }} €</strong>
         </div>
-     
+       
     </div>
+  <i>00:00  </i>  <i ><mat-icon class="point-arrive" matPrefix>location_on</mat-icon>{{ offreCovoiturage.festival.commune.nomCommune  }}</i><br>
     <hr>
     <div class="driver">
       <p>{{ offreCovoiturage.conducteur.prenom }} {{ offreCovoiturage.conducteur.nom }}</p>
-      <p>{{ offreCovoiturage.nbPlace }}</p>
+      <p>Places disonibles: {{ offreCovoiturage.nbPlace }}</p>
     </div>
   </div>
 </div>

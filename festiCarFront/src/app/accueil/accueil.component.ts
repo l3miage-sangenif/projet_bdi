@@ -4,7 +4,6 @@ import { Subscription, filter } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { FestiCarService } from 'src/services/festi-car.service';
 
-
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
@@ -18,7 +17,6 @@ export class AccueilComponent implements OnInit, OnDestroy {
   festivalDate: string = '';
   festivalDomaine: String='';
   festivalierAddresse: string='';
-
 
   constructor(public festivalCarService : FestiCarService, private router : Router){
   }

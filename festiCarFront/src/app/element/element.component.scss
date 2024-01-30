@@ -7,6 +7,17 @@
     -webkit-box-shadow: 2px 2px 15px -4px #000000; 
     box-shadow: 2px 2px 15px -4px #000000;
     margin: 20px;
+    font-family: Arial;
+    font-size: medium;
+  } 
+  ul{
+    padding-left: 0px;
+  }
+  .festival-title{
+    font-family:  'Open Sans Semi-Bold';
+    font-size: x-large;
+    font-weight: bold;
+    
   }
   .festival-container {
       text-align: left;
@@ -22,11 +33,14 @@
       max-width: 30%; 
       height: auto; 
     }
-    ul, li {
+    .covoiturage-details {
+      font-family: Arial;
       font-style: normal;
     }
     .prix-total-container {
         display: flex;
         justify-content: space-between;
-    
+        font-family: Arial;
+        font-style: normal;
+        font-size: medium;
       }

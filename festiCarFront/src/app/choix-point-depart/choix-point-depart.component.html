@@ -1,12 +1,12 @@
 
 
-<div class="cart-container">
+<div class="point-depart-container">
   <button class="close" (click)="close()">✖</button>
 
     <h1 class="festival-date"><b> Choisir un point de départ</b> </h1>
    
  <div class="trajet-container">
-     <div class="box">
+     
          <div class="box-location">
              <div class="Point-depart">
                Choisir point de départ :
@@ -15,17 +15,17 @@
           
              <label class="radio" *ngFor="let etape of data.etape; let i = index">
                  <input name="radio" type="radio" checked [(ngModel)]="selectedStep" [value]="etape">
-                  <span>  {{ data.etape[i].lieuCovoiturage.adresseLieu  }} </span>
+                  <span>  {{ data.etape[i].lieuCovoiturage.nomLieu  }} </span>
                </label>
               
           </div> 
           <div class="Point-arrive">
-             Point d’arriver : 37, place Corinne Etienne 49378 Lille
+             Point d’arriver : {{data.festival.commune.nomCommune }}
            </div>
         
          </div>
         
-     </div>
+   
  </div>
  <div class="prix-container">
              <div class="prix-passanger">
@@ -45,6 +45,9 @@
          
          <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1"  (input)="calculateTotal()">
        </div>
+    <div class="input-container">
+      <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1" max={{data.nbPlace}}  (input)="calculateTotal()">
+    </div>
  </div>
  <div class="prix-total-container">
      <div class="prix-passanger">

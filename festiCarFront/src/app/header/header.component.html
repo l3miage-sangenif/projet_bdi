@@ -16,10 +16,14 @@
     </div>
 
     <ng-container class="user-connected-infos" *ngIf="authService.user">
-      <div>{{ authService.user.displayName }}</div>
-      <button [matMenuTriggerFor]="menu" title="Afficher les options">
+     <div  class="img-name">  
+      
+      <button class="img-container" [matMenuTriggerFor]="menu" title="Afficher les options">
         <img mat-card-image referrerpolicy=“no-referrer” [src]="authService.photo" alt="Image" class="profil">
       </button>
+      <div class="name">{{ authService.user.displayName }}</div>
+     </div>
+     
       <mat-menu #menu="matMenu">
         <button mat-menu-item>Paramètres</button>
           <!--Pour se déconnecter-->
@@ -34,6 +38,7 @@
 
 
   </div>
+  
 
 
 

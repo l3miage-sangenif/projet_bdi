@@ -40,6 +40,23 @@ button.example-icon {
   border: 1px solid #4AD3B8;
   border-radius: 50px;
   overflow: hidden;
+  font-family: Arial;
+  font-size: medium;
+  
+  .mat-icon.cart{
+    color: white;
+    margin-left:  268px;
+    margin-bottom: 19px;
+  }
+
+  .nombre-articles {
+    position: relative;
+    top: 14px;
+    color: white; 
+    padding: 0px 9px; 
+    font-size: 12px; 
+    margin-left:  268px;
+  }
 }
 
 .custom-tab{
@@ -47,13 +64,26 @@ button.example-icon {
   font-family: Arial;
 
 }
-.mat-icon{
-  color: white;
-  margin-left:  268px;
-  float: right;
-}
 .mat-tab-label {
   border-bottom: none;
+}
+.profil{
+  border-radius: 10px; 
+  width: 70px;
+}
+.img-container{
+  border: none;
+  background-color:#4AD3B8;
+}
+.name{
+  color: white;
+  font-family: Arial;
+  font-size: medium;
+  font-weight: bold;
+}
+.img-name{
+  display: flex;
+  align-items: center;
 }
 
 .user-infos {
@@ -94,15 +124,17 @@ button.example-icon {
   }
 }
 
-/* Styles pour les écrans étroits (par exemple, jusqu'à 599px) */
 @media only screen and (max-width: 599px) {
   .mat-toolbar {
+    height: auto; 
+
+  .header-elements {
     height: auto; /* Hauteur automatique pour les écrans étroits */
   }
 
   .header-elements {
-    height: auto; /* Hauteur automatique pour les écrans étroits */
-    flex-direction: column; /* Pour empiler les éléments verticalement */
+    height: auto; 
+    flex-direction: column; 
   }
 
   .example-icon {
@@ -111,7 +143,8 @@ button.example-icon {
     margin-top: 10px; /* Espace en haut pour les écrans étroits */
   }
 
+
   .mat-icon {
     margin-left: 0; /* Réinitialiser la marge pour les écrans étroits */
   }
-}
+  }}

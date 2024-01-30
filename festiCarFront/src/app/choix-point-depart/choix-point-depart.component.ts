@@ -1,8 +1,5 @@
-import { PrefixNot } from '@angular/compiler';
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
-import { Etape } from 'src/models/Etape';
-import { OffreCovoirage } from 'src/models/OffreCovoiturage';
+import { MAT_DIALOG_DATA, MatDialog} from '@angular/material/dialog';
 @Component({
   selector: 'app-choix-point-depart',
   templateUrl: './choix-point-depart.component.html',
