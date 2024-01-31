@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component  } from '@angular/core';
 import { MatDialog} from '@angular/material/dialog';
+import { Location as AngularLocation } from '@angular/common';
 
 import { PaymentDialogComponent } from '../payment-dialog/payment-dialog.component';
 import { AuthService } from 'src/services/auth.service';
@@ -17,8 +18,9 @@ export class PanierComponent {
 
   panier: any[] = [];
   item: any
+  prixTotal: number;
 
-  constructor ( private dialog: MatDialog, public authService: AuthService, 
+  constructor ( private dialog: MatDialog, public authService: AuthService, private location: AngularLocation ,
     private router: Router, private panierService : PanierServiceService){
 
       this.panierService.obtenirPanier().subscribe(panierData => {
@@ -26,7 +28,9 @@ export class PanierComponent {
         console.log('panier partagé dans le composant panier', this.panier);
       });
     }
-
+    ngOnInit(): void {
+      this.calculeTotal();
+    }
 
   onCreate(){
     if(this.authService.user){
@@ -41,11 +45,24 @@ export class PanierComponent {
     }
   }
 
-  
+  calculeTotal(): void{
+    this.prixTotal = this.panier.reduce((total, element) => {
+      return total + this.calculeElementTotal(element);
+    }, 0);
+  }
+  calculeElementTotal(element: any): number {
+    return element.etapeAchat.reduce((elementTotal, etapeAchat) => {
+      return elementTotal + (etapeAchat.nbPlace * etapeAchat.etape.prix);
+    }, 0);
+  }
 
   alleraccueil(){
     this.router.navigate(['/accueil']);
   }
+  
+retournerFestival(){
+  this.location.back();
 
+}
 }
 

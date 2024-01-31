@@ -26,12 +26,15 @@ export class ChoixPointDepartComponent {
   totalPrice: number = 0;
   etapeSelected: EtapeSelected = { idTrajet: 0, nbPlace: 0 };
 
+  ngOnInit():void{
+    this.calculateTotal();
+  }
+
   constructor(private dialog: MatDialog, private authService : AuthService,  
     private panierService : PanierServiceService, private festiCarService : FestiCarService,
      @Inject(MAT_DIALOG_DATA) public data: any){
     console.log('Data reçue dans le dialogue : ', data);
     console.log('Data reçue dans le dialogue nbPlace: ', data.nbPlace);
-    // this.numberOfPlaces = data.nbPlace;
     console.log('nombre de places saisi par l utilisateur: ', this.numberOfPlaces);
   }
 
@@ -43,7 +46,7 @@ export class ChoixPointDepartComponent {
   calculateTotal(): number {
     if (this.numberOfPlaces && this.selectedStep) {
       this.selectedPrice = this.prix();
-      this.totalPrice = this.selectedPrice * this.numberOfPlaces;
+      this.totalPrice = this.selectedPrice * this.numberOfPlaces + this.data.festival.tarif ;
     } else {
       this.totalPrice = 0;
     }

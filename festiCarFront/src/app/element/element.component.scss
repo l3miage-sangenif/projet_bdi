@@ -32,13 +32,14 @@
       justify-content: space-between;
     }
     .festivalImage{
-      flex: 0 0 auto;
-      margin-right: -373px; 
+      margin-right: 20px;
    
     }
     .festivalImage img {
-      max-width: 30%; 
-      height: 30%; 
+      max-width: 200px;
+      height: auto; 
+      border-radius: 10px; 
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
 
     .covoiturage-details {

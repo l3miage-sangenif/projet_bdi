@@ -1,11 +1,14 @@
 import { Component, ElementRef,  Input,  OnDestroy,  OnInit,  ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Festival } from 'src/models/Festival';
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 import { FestiCarService } from 'src/services/festi-car.service';
 import { ShareDataService } from 'src/services/share-data.service';
 import { ChangeDetectorRef } from '@angular/core';
+import { AuthService } from 'src/services/auth.service';
+import { PanierServiceService } from 'src/services/panier-service.service';
+import { Location as AngularLocation } from '@angular/common';
 
 
 @Component({
@@ -27,7 +30,10 @@ export class FestivalComponent implements OnInit, OnDestroy {
   festivalsSubscription: Subscription;
   showMessage: boolean =false;
 
-   constructor(private route: ActivatedRoute, public festiCarService : FestiCarService, private sharedDataService: ShareDataService, private cdr: ChangeDetectorRef){
+   constructor(private route: ActivatedRoute, public festiCarService : FestiCarService, private sharedDataService: ShareDataService,
+     private cdr: ChangeDetectorRef,  public authService: AuthService, private panierService : PanierServiceService, 
+     private router: Router,
+     private location: AngularLocation){
 
    }
 
@@ -142,6 +148,27 @@ export class FestivalComponent implements OnInit, OnDestroy {
     });
   
   }
-
+      allerpanier(){
+        if(this.authService.user){
+          this.festiCarService.getPanierByUser(this.authService.user.uid)
+          .subscribe({
+            next: (response) => {
+              console.log('Réponse de la requête get panier pour user connecté:', response);
+              const panierData = response; 
+              this.panierService.mettreAJourPanier(panierData);
+              console.log('panierData envoyé au service:', panierData);
+              this.router.navigate(['/panier']);
+            },
+            error: (error) => {
+              console.error('Erreur lors de la requête get panier pour user connecté:', error);
+            }
+          });
+        }
+       
+      }
+   
+      alleraccueil(){
+        this.location.back();
+      }
 
 }
