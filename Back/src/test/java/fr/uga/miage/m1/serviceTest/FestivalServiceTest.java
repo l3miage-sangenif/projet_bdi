@@ -30,7 +30,7 @@ public class FestivalServiceTest {
     public void FestivalService_GetAllFestival_ReturnsResponsiveDto(){
         
 
-        List<Festival> festivals = festivalService.getAllFestival();
+        List<Festival> festivals = festivalService.getAllFestival(null,null,null,null,null,null,null,null,null,null,null);
         // Assert that the list of festivals is not null
         assertNotNull(festivals);
 
