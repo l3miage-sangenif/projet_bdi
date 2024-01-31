@@ -23,5 +23,11 @@ export class PanierServiceService {
     return this.panier$;
   }
 
+  viderPanier(): void {
+    this.nombreElementsPanier = 0;
+
+    // Autres logiques de nettoyage du panier si nécessaire
+  }
+
 }
 

@@ -75,11 +75,27 @@ export class AccueilComponent implements  OnDestroy {
     handleAddressChange(address: any) {
       this.addresseLng=address.geometry.location.lng();
       this.addresselat=address.geometry.location.lat();
+      
+      const addressComponents = address.address_components;
+      let city = '';
+      let postalCode = '';
 
-      console.log(address.formatted_address)
-      console.log(address.geometry.location.lat())
-      console.log(address.geometry.location.lng())
+      addressComponents.forEach((component: any) => {
+        if (component.types.includes('locality')) {
+          city = component.long_name;
+        } else if (component.types.includes('postal_code')) {
+          postalCode = component.long_name;
+        }
+      });
+    
+      this.shareDataService.updateSelectedAddressDetails({
+        address: address.formatted_address,
+        city: city,
+        postalCode: postalCode
+      });
     }
+
+
 
    @ViewChild('addressText') addressText!: ElementRef;
     protected placeSubscription: Subscription;

@@ -8,10 +8,16 @@ import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 })
 export class ShareDataService {
 
+  private selectedAddressDetails: any = {};
+  private covoiturageTabSource = new BehaviorSubject<OffreCovoirage[]>([]);
+  private festivalTabSource = new BehaviorSubject<Festival[]>([]);
+  private showFestivalsSource = new BehaviorSubject<boolean>(false);
+
   constructor() { }
 
-  private covoiturageTabSource = new BehaviorSubject<OffreCovoirage[]>([]);
   covoiturageTab$ = this.covoiturageTabSource.asObservable();
+  festivalsTab$ = this.festivalTabSource.asObservable();
+  showFestivals$ = this.showFestivalsSource.asObservable();
   
 
   updateCovoiturageTab(data: OffreCovoirage[]): void {
@@ -19,19 +25,22 @@ export class ShareDataService {
   }
 
 
-  private festivalTabSource = new BehaviorSubject<Festival[]>([]);
-  festivalsTab$ = this.festivalTabSource.asObservable();
-
   updateFestivalTab(data: Festival[]): void {
     this.festivalTabSource.next(data);
   }
 
-
-  private showFestivalsSource = new BehaviorSubject<boolean>(false);
-  showFestivals$ = this.showFestivalsSource.asObservable();
-
+ 
   updateShowFestivals(show: boolean): void {
     this.showFestivalsSource.next(show);
+  }
+
+ 
+  updateSelectedAddressDetails(details: any): void {
+    this.selectedAddressDetails = details;
+  }
+
+  getSelectedAddressDetails(): any {
+    return this.selectedAddressDetails;
   }
 }
 

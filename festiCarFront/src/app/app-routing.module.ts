@@ -9,6 +9,7 @@ import { ChoixPointDepartComponent } from './choix-point-depart/choix-point-depa
 import { PanierComponent } from './panier/panier.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ElementComponent } from './element/element.component';
+import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
 
 
 const routes: Routes = [
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'panier', component: PanierComponent},
   { path: 'connexion', component: ConnexionComponent},
   { path: 'element', component: ElementComponent},
+  { path: 'payment', component: CheckoutFormComponent},
 
   { path: '**', redirectTo: '/accueil', pathMatch: 'full' },
 

@@ -1,10 +1,12 @@
 import { Injectable} from '@angular/core';
 import {FacebookAuthProvider, GoogleAuthProvider, User, getAuth, signInWithPopup, signOut} from 'firebase/auth';
-import { FestiCarService } from './festi-car.service';
-import { PostUser } from 'src/models/PostUser';
-import { Subscription } from 'rxjs';
+import { PanierServiceService } from './panier-service.service';
 
-
+interface UserInfoForPayment {
+  name: string;
+  email: string;
+  number?: string;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +20,7 @@ export class AuthService {
   userName : string | undefined;
 
 
-  constructor() {}
+  constructor(private panierService: PanierServiceService) {}
 
   async facebookAuth() {
     const auth = getAuth();
@@ -43,6 +45,7 @@ export class AuthService {
     const auth = getAuth();
     signOut(auth).then(() => {
       this.user = null;
+      this.panierService.viderPanier();
     }).catch((error) => {
       // An error happened.
     });
@@ -59,20 +62,19 @@ export class AuthService {
       this.photo = this.user.photoURL;
       this.userId = this.user.uid;
       this.userName = this.user.displayName;
-      
-      // Créer un utilisateur
-      // this.postUser.userUid = this.user.providerId;
-      // const userNameParts = this.userName.split(' ');
-      // this.postUser.nom = userNameParts[1];
-      // this.postUser.prenom = userNameParts[0];
-      // this.postUser.email = this.user.email;
-      // this.postUser.numTelephone = this.user.phoneNumber;
-  
       return result.user;
     } catch (error) {
-      // Gérer les erreurs ici si nécessaire
-      throw error; // Remarque : vous pouvez choisir de gérer l'erreur ici ou de laisser la fonction caller gérer l'erreur
+      throw error;
     }
+  }
+
+
+  getUserInfo(): UserInfoForPayment {
+    return {
+      name: this.user.displayName,
+      email: this.user.email,
+      number: this.user.phoneNumber
+    };
   }
 
 }

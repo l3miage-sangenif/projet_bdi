@@ -18,11 +18,13 @@ export class ChoixPointDepartComponent {
   numberOfPlaces: number = 0;
   totalPrice: number = 0;
 
-  constructor(private dialog: MatDialog, private authService : AuthService,  private panierService : PanierServiceService, private festiCarService : FestiCarService, @Inject(MAT_DIALOG_DATA) public data: any){
+  constructor(private dialog: MatDialog, private authService : AuthService,  
+    private panierService : PanierServiceService, private festiCarService : FestiCarService,
+     @Inject(MAT_DIALOG_DATA) public data: any){
     console.log('Data reçue dans le dialogue : ', data);
     console.log('Data reçue dans le dialogue nbPlace: ', data.nbPlace);
     // this.numberOfPlaces = data.nbPlace;
-    console.log('Data reçue dans le dialogue nbPlace appel achat: ', this.numberOfPlaces);
+    console.log('nombre de places saisi par l utilisateur: ', this.numberOfPlaces);
   }
 
 
@@ -37,14 +39,19 @@ export class ChoixPointDepartComponent {
  
 
   close(){
-    this.panierService.ajouterAuPanier();
     this.dialog.closeAll();
+     
+    this.data.etape.forEach((etape: Etape) => {
+      etape.nbPlacesSaisies = this.numberOfPlaces;
+    });
+
     if(this.authService.user){
-      this.festiCarService.postPanierWithConnectedUser(this.authService.user.uid,this.numberOfPlaces, this.data.etape)
+      this.festiCarService.postPanierWithConnectedUser(this.authService.user.uid,this.data.nbPlace, this.data.etape)
       .subscribe({
         next: (response) => {
           console.log('Réponse de la requête ajouter au  panier pour user connecté:', response);
           // Autres actions à effectuer avec la réponse si nécessaire
+          this.panierService.ajouterAuPanier();
         },
         error: (error) => {
           console.error('Erreur lors de la requête ajouter au panier pour user connecté:', error);
@@ -52,11 +59,12 @@ export class ChoixPointDepartComponent {
       });
     }
     else{
-      this.festiCarService.postPanierWithOutConnectedUser(this.numberOfPlaces, this.data.etape)
+      this.festiCarService.postPanierWithOutConnectedUser(this.data.nbPlace, this.data.etape)
       .subscribe({
         next: (response) => {
           console.log('Réponse de la requête ajouter au  panier:', response);
           // Autres actions à effectuer avec la réponse si nécessaire
+          this.panierService.ajouterAuPanier();
         },
         error: (error) => {
           console.error('Erreur lors de la requête ajouter au panier:', error);

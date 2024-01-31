@@ -42,6 +42,7 @@ import { ConnexionComponent } from './connexion/connexion.component';
 import { CommonModule } from '@angular/common';
 import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SendConfirmationSmsComponent } from './send-confirmation-sms/send-confirmation-sms.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     PaiementEffectueeComponent,
     PaymentDialogComponent,
     ConnexionComponent,
-    ConfirmDeleteComponent
+    ConfirmDeleteComponent,
+    SendConfirmationSmsComponent
 
   ],
   imports: [
