@@ -2,6 +2,7 @@ package fr.uga.miage.m1.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import fr.uga.miage.m1.DTO.Achat;
@@ -20,6 +21,8 @@ import fr.uga.miage.m1.repository.UtilisateurRepository;
 import fr.uga.miage.m1.request.CreateAchatRequest;
 import fr.uga.miage.m1.request.CreateEtapeAchatRequest;
 import fr.uga.miage.m1.request.UpdateAchatRequest;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -54,6 +57,7 @@ public class AchatService {
         throw new EntityNotFoundRestException(String.format("Aucun achat n'a été trouvée pour l'id [%s]", id),id);
     }
 
+    @Transactional
     public Achat createAchat(CreateAchatRequest entity,String userUid) {
         int nb_etape_total=0;
         for (CreateEtapeAchatRequest e : entity.getEtape()) {
@@ -143,5 +147,33 @@ public class AchatService {
             etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival()),
             etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival());
 
+    }
+
+     @Transactional
+    public Achat validateAchat(Long achatId) {
+        if (achatId == null) {
+            throw new IllegalArgumentException("Id Achat est nul");
+        }
+        AchatEntity achatEntity = achatRepository.findById(achatId)
+            .orElseThrow(() -> new EntityNotFoundException("Achat non trouvé: " + achatId));
+        if (!achatEntity.getAchatValidee()) {
+            achatEntity.setAchatValidee(true);
+            achatRepository.save(achatEntity);
+        } else {
+            throw new IllegalStateException("Achat avec id " + achatId + " est déjà validé.");
+        }
+        return AchatMapper.INSTANCE.toDto(achatRepository.save(achatEntity));
+    }
+
+    public void deleteAchat(Long id){
+        if(id != null ){
+             Optional<AchatEntity> achat = achatRepository.findById(id);
+        if (achat.isPresent()) {
+            achatRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Achat num : " + id + " n'existe pas");
+        }
+        }
+       
     }
 }
