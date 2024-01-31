@@ -1,0 +1,31 @@
+<div class="panier-container">
+    <h1 class="festival-date"><b> Panier</b> </h1>
+    <div class="container-fluid">
+        <br /><br />
+        <ul class="list-unstyled multi-steps">
+          <li>Choisir un festival</li>
+          <li>Choisir une covoiturage</li>
+          <li >Choisir point de départ</li>
+          <li  class="is-active" >Payer</li>
+        </ul>
+      </div>
+ 
+<app-element></app-element>
+
+    <div class="total-container">
+        <div class="prix-passanger">
+          <b>  Prix total : </b>
+        </div>
+    
+        <div class="prix-total">
+            <b>     94.95€ </b>
+          </div>
+    
+    </div> 
+    <div class="buttons">
+        <button mat-icon-button class="ajouter" >Ajouter un festival</button>
+        <button mat-icon-button class="payer" (click)= "onCreate()">Payer</button>
+    </div>     
+</div> 
+       
+   

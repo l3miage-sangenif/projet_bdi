@@ -25,7 +25,7 @@ public class Festival {
 
     int nbPlace;
 
-    BigDecimal tarif;
+    double tarif;
 
     int nbPlaceRestante;
 

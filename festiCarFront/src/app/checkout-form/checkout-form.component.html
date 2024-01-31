@@ -1,0 +1,120 @@
+<div class="checkout-container">
+  <div class="col-75">
+    <div class="container">
+      <div class="row">
+        <div class="col-50">
+          <h3>Adresse de livraison</h3>
+          <mat-form-field class="example-full-width">
+            <mat-label>Nom et Prénom</mat-label>
+            <input type="text" matInput [formControl]="nameFormControl" placeholder="John M. Doe">
+            <mat-error *ngIf="nameFormControl.hasError('required')">
+              Nom et Prénom sont <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" [errorStateMatcher]="matcher"
+                   placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+              Veuillez entrer une adresse e-mail valide
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+              Email est <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ligne d'addresse</mat-label>
+            <input type="text" matInput [formControl]="addressFormControl" placeholder="05 impasse Arnaud">
+            <mat-error *ngIf="addressFormControl.hasError('required')">
+              Ligne d'addresse est <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Ville</mat-label>
+            <input type="text" matInput [formControl]="cityFormControl" placeholder="Grenoble">
+            <mat-error *ngIf="cityFormControl.hasError('required')">
+              Ville est <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="row">
+            <div class="col-50">
+              <mat-form-field class="example-full-width">
+                <mat-label>Comté/Région</mat-label>
+                <input type="text" matInput [formControl]="regionFormControl" placeholder="Grenoble">
+                <mat-error *ngIf="regionFormControl.hasError('required')">
+                  Comté/Région est <strong>requis</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-50">
+              <mat-form-field class="example-full-width">
+                <mat-label>Code postal</mat-label>
+                <input type="text" matInput [formControl]="postalCodeFormControl" placeholder="34000">
+                <mat-error *ngIf="postalCodeFormControl.hasError('required')">
+                  Code postal est <strong>requis</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-50">
+          <h3>Payment</h3>
+          <label for="fname">cartes acceptées</label>
+          <div class="icon-container">
+            <img src="/assets/images/cards.png">
+          </div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Nom sur la carte</mat-label>
+            <input type="text" matInput [formControl]="cardNameFormControl" placeholder="John More Doe">
+            <mat-error *ngIf="cardNameFormControl.hasError('required')">
+              Nom sur la carte est <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Numéro de carte</mat-label>
+            <input type="text" matInput [formControl]="cardNumberFormControl" placeholder="1111-2222-3333-4444">
+            <mat-error *ngIf="cardNumberFormControl.hasError('required')">
+              Numéro de carte est <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Mois d'expiration</mat-label>
+            <input type="text" matInput [formControl]="expirationMonthFormControl" placeholder="Septembre">
+            <mat-error *ngIf="expirationMonthFormControl.hasError('required')">
+              Mois d'expiration est <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+
+          <div class="row">
+            <div class="col-50">
+              <mat-form-field class="example-full-width">
+                <mat-label>Année d'expiration</mat-label>
+                <input type="text" matInput [formControl]="expirationYearFormControl" placeholder="2026">
+                <mat-error *ngIf="expirationYearFormControl.hasError('required')">
+                  Année d'expiration est <strong>requis</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+            <div class="col-50">
+              <mat-form-field class="example-full-width">
+                <mat-label>CVV</mat-label>
+                <input type="text" matInput [formControl]="cvvFormControl" placeholder="352">
+                <mat-error *ngIf="cvvFormControl.hasError('required')">
+                  CVV est <strong>requis</strong>
+                </mat-error>
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="valider">
+    <button mat-icon-button class="btn" (click)="submitForm()">
+      <mat-icon>check</mat-icon>
+      Finaliser le paiment
+    </button>
+  </div>
+</div>

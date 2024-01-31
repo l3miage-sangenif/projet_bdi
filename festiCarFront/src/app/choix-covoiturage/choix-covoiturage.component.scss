@@ -1,0 +1,52 @@
+.box-container {
+    display: flex;
+    width: 700px;
+    height: 200px;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 20px;
+  
+  }
+  .time {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid #ccc; 
+    padding-right: 10px; 
+  }
+  
+  .box-location{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+
+  
+
+  .trajet {
+    margin-left: 0px;
+    
+    }
+  .price{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+ 
+  .driver{
+    display: flex;
+    justify-content: space-between;
+  }
+  .driver p:first-child {
+    margin-right:50px; 
+  }
+  
+ .driver p:last-child {
+    margin-left: 80px; 
+  }
+  .mat-icon{
+    color: #4AD3B8;
+  }

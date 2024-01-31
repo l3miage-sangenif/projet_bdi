@@ -1,0 +1,36 @@
+.accueil-title{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Open Sans Semi-Bold';
+  
+}
+
+
+.search-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+
+}
+
+
+.search-button {
+  font-size: 11pt;
+  height: 56px;
+  width: 80px;
+  background-color:#4AD3B8;
+  color: white;
+  border-radius: 50px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  border: none;
+}
+
+.mat-icon{
+  color: #4AD3B8;
+}
+
+

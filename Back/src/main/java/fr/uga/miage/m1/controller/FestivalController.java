@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.uga.miage.m1.DTO.Festival;
-import fr.uga.miage.m1.models.FestivalEntity;
+
 import fr.uga.miage.m1.service.FestivalService;
 
 @RestController
