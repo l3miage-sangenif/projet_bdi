@@ -12,13 +12,13 @@
     <mat-icon matPrefix>location_on</mat-icon>
     <input matInput type="text"ngx-google-places-autocomplete
     [options]="options"
-    (onAddressChange)="handleAddressChange($event)" placeholder="Commune du festival" [(ngModel)]="festivalPlace" />
+    (onAddressChange)="FestivalAddresse($event)" placeholder="Commune du festival" [(ngModel)]="festivalPlace" />
   </mat-form-field>
   <mat-form-field class="example-form-field">
     <mat-icon matPrefix>my_location</mat-icon>
     <input matInput type="text" ngx-google-places-autocomplete
     [options]="options"
-    (onAddressChange)="handleAddressChange($event)" placeholder="Votre Addresse" [(ngModel)]="festivalierAddresse" />
+    (onAddressChange)="FestivalierAddresse($event)" placeholder="Votre Addresse" [(ngModel)]="festivalierAddresse" />
   </mat-form-field>
   <mat-form-field class="example-form-field">
     <mat-icon matPrefix>event</mat-icon>

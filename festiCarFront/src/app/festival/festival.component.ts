@@ -5,6 +5,7 @@ import { Festival } from 'src/models/Festival';
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 import { FestiCarService } from 'src/services/festi-car.service';
 import { ShareDataService } from 'src/services/share-data.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 
 @Component({
@@ -18,10 +19,15 @@ export class FestivalComponent implements OnInit, OnDestroy {
 
   festivalId: number;
   festival: Festival;
-
+  festivalPlace: number;
+  AddresseFestivalier: string='';
+  addresseFestivalierlng: number;
+  addresseFestivalierlat: number;
+  distanceRechercheCovoiturage: any;
   festivalsSubscription: Subscription;
+  showMessage: boolean =false;
 
-   constructor(private route: ActivatedRoute, public festiCarService : FestiCarService, private sharedDataService: ShareDataService){
+   constructor(private route: ActivatedRoute, public festiCarService : FestiCarService, private sharedDataService: ShareDataService, private cdr: ChangeDetectorRef){
 
    }
 
@@ -30,9 +36,11 @@ export class FestivalComponent implements OnInit, OnDestroy {
   }
 
   handleAddressChange(address: any) {
+    this.addresseFestivalierlng=address.geometry.location.lng();
+    this.addresseFestivalierlat=address.geometry.location.lat();
     console.log(address.formatted_address)
-    console.log(address.geometry.location.lat())
-    console.log(address.geometry.location.lng())
+    console.log(this.addresseFestivalierlng)
+    console.log(this.addresseFestivalierlat)
   }
  @ViewChild('addressText') addressText!: ElementRef;
   protected placeSubscription: Subscription;
@@ -69,7 +77,8 @@ export class FestivalComponent implements OnInit, OnDestroy {
       error: (error) => {
         console.error('Error fetching festival ID:', error);
       }
-    });
+    }
+    );
   }
 
   public getAllCovoiturageByFestivalId(festivalId : number): void {
@@ -93,4 +102,46 @@ export class FestivalComponent implements OnInit, OnDestroy {
       this.festivalsSubscription.unsubscribe();
     }
   }
+  public getCovoituragefiltrer(festivalId : number): void{
+    const searchCriteria = {
+      festivalId: this.festivalId,
+      pass: this.festivalPlace,
+      addresseFestivalierlng: this.addresseFestivalierlng,
+      addresseFestivalierlat:  this.addresseFestivalierlat
+  
+    };
+    this.festivalsSubscription = this.festiCarService.getCovoituragefiltered(
+      searchCriteria.festivalId,
+      searchCriteria.pass,
+      searchCriteria.addresseFestivalierlng,
+      searchCriteria.addresseFestivalierlat
+    )
+    .subscribe({
+      next: (data: any) => {
+        if (data && data.length > 0){
+          this.covoiturageTab = data;
+          this.showCovoiturages = true;
+          this.showMessage=false;
+          this.sharedDataService.updateCovoiturageTab(data);
+        }
+        else {
+          this.showMessage = true;
+          this.showCovoiturages = false;
+          console.log('No covoiturages available.');
+        }
+       
+      
+      },
+      error: (error: any) => {
+        console.error('Error fetching covoiturages:', error);
+        this.showMessage = true;
+        this.showCovoiturages = false;
+
+
+      }
+    });
+  
+  }
+
+
 }

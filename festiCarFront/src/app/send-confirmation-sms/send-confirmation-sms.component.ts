@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import * as QRCode from 'qrcode';
-import * as TwilioSDK from 'twilio'; // Renommé de twilio à TwilioSDK pour éviter les conflits de noms
+// import * as QRCode from 'qrcode';
+// import * as TwilioSDK from 'twilio'; // Renommé de twilio à TwilioSDK pour éviter les conflits de noms
 
 @Component({
   selector: 'app-send-confirmation-sms',
