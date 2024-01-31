@@ -21,7 +21,7 @@ export class PanierComponent {
   constructor ( private dialog: MatDialog, public authService: AuthService, 
     private router: Router, private panierService : PanierServiceService){
 
-      this.panierService.obtenirPanier().subscribe(panierData => {
+      this.panierService.getPanier().subscribe(panierData => {
         this.panier = panierData;
         console.log('panier partagé dans le composant panier', this.panier);
       });

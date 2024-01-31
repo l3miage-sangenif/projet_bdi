@@ -14,8 +14,9 @@ export class ElementComponent {
   
   constructor(private dialog: MatDialog, public festiCarService : FestiCarService){}
 
-  Openconfirmer(){
-    this.dialog.open(ConfirmDeleteComponent);
-    console.log('élément ajouté dans le panier:', this.element);
+  Openconfirmer(numAchat: number){
+    this.dialog.open(ConfirmDeleteComponent, {
+      data: { numAchat: numAchat }
+    });
   }
 }

@@ -12,6 +12,7 @@ export class ShareDataService {
   private covoiturageTabSource = new BehaviorSubject<OffreCovoirage[]>([]);
   private festivalTabSource = new BehaviorSubject<Festival[]>([]);
   private showFestivalsSource = new BehaviorSubject<boolean>(false);
+  private achatIdforNotConnectedUser: string;
 
   constructor() { }
 
@@ -41,6 +42,15 @@ export class ShareDataService {
 
   getSelectedAddressDetails(): any {
     return this.selectedAddressDetails;
+  }
+
+
+  getachatIdforNotConnectedUser(): string {
+    return this.achatIdforNotConnectedUser;
+  }
+
+  setachatIdforNotConnectedUser(value: number) {
+    this.achatIdforNotConnectedUser = value.toString();
   }
 }
 

@@ -9,19 +9,7 @@
         </ul>
       </div>
     <ng-container *ngFor="let element of panier">
-      <app-element [element]="element"></app-element>
-
-      <!-- <div class="total-container">
-          <div class="prix-passanger">
-            <b>  Prix total : </b>
-          </div>
-      
-          <div class="prix-total">
-              <b>     94.95€ </b>
-            </div>
-      
-      </div>  -->
-      
+      <app-element [element]="element"></app-element>    
     </ng-container>
     <div class="buttons">
       <button mat-icon-button class="ajouter" (click)="alleraccueil()">Ajouter un festival</button>

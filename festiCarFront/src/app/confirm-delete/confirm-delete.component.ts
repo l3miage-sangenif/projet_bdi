@@ -1,10 +1,11 @@
 
 
 
-import { ThisReceiver } from '@angular/compiler';
-import { Component } from '@angular/core';
-import { MatDialog} from '@angular/material/dialog';
-import { TitleStrategy } from '@angular/router';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
+import { Achat } from 'src/models/Achat';
+import { FestiCarService } from 'src/services/festi-car.service';
+import { PanierServiceService } from 'src/services/panier-service.service';
 
 
 @Component({
@@ -14,9 +15,26 @@ import { TitleStrategy } from '@angular/router';
 })
 export class ConfirmDeleteComponent {
 
-  constructor(private dialog: MatDialog){}
-  close(){
-    this.dialog.closeAll();
+  constructor(private festiCarService : FestiCarService, private panierService : PanierServiceService,
+    public dialogRef: MatDialogRef<ConfirmDeleteComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {}
+  
+
+  close(): void {
+    this.dialogRef.close();
   }
 
+  delete(): void {
+   this.festiCarService.deleteAchatById(this.data.numAchat).subscribe({
+    next: (response) => {
+      console.log('Réponse de la requête ajouter au  panier:', response);
+      this.panierService.retirerElementDuPanier(this.data.numAchat);
+      this.close(); 
+    },
+    error: (error) => {
+      console.error('Erreur lors de la requête supprimer un element:', error);
+    }
+  });
+  }
 }

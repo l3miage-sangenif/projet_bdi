@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { FestiCarService } from 'src/services/festi-car.service';
 import { PanierServiceService } from 'src/services/panier-service.service';
+import { ShareDataService } from 'src/services/share-data.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class HeaderComponent {
 
 
   constructor(private festiCarService : FestiCarService, public authService: AuthService, private dialog: MatDialog, private router: Router,
-     private panierService : PanierServiceService){
+     private panierService : PanierServiceService, private shareDataService : ShareDataService,){
 
   }
 
@@ -34,22 +35,7 @@ export class HeaderComponent {
   }
 
   allerpanier(){
-    if(this.authService.user){
-      this.festiCarService.getPanierByUser(this.authService.user.uid)
-      .subscribe({
-        next: (response) => {
-          console.log('Réponse de la requête get panier pour user connecté:', response);
-          const panierData = response; 
-          this.panierService.mettreAJourPanier(panierData);
-          console.log('panierData envoyé au service:', panierData);
-          this.router.navigate(['/panier']);
-        },
-        error: (error) => {
-          console.error('Erreur lors de la requête get panier pour user connecté:', error);
-        }
-      });
-    }
-   
+      this.router.navigate(['/panier']);
   }
 
   obtenirNombreElementsPanier() {

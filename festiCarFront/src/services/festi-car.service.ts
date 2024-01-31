@@ -75,6 +75,25 @@ export class FestiCarService {
     return this.http.get(url, this.httpOptions);
   }
 
+  getPanierByUserNotConnected(achatId: string): Observable<any> {
+    const url = `${this.baseUrl}/achat/unknow/${achatId}`;
+    return this.http.get(url, this.httpOptions);
+  }
+
+  putPanierByAchatId(achatId: string, etape : any , userUid?: string ): Observable<any> {
+    const url = `${this.baseUrl}/achat/${achatId}`;
+    const body = {
+      userUid: userUid,
+      etape: etape
+    };
+    return this.http.put(url, body, this.httpOptions);
+  }
+
+  deleteAchatById(achatId: string): Observable<any> {
+    const url = `${this.baseUrl}/achat/${achatId}`;
+    return this.http.get(url, this.httpOptions);
+  }
+
 
 
 
