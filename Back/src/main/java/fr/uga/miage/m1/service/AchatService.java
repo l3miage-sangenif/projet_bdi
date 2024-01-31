@@ -3,7 +3,6 @@ package fr.uga.miage.m1.service;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import org.springframework.stereotype.Service;
 import fr.uga.miage.m1.DTO.Achat;
 import fr.uga.miage.m1.exception.EntityNotFoundRestException;
@@ -11,9 +10,11 @@ import fr.uga.miage.m1.mapper.AchatMapper;
 import fr.uga.miage.m1.models.AchatEntity;
 import fr.uga.miage.m1.models.UtilisateurEntity;
 import fr.uga.miage.m1.repository.AchatRepository;
+import fr.uga.miage.m1.repository.EtapeAchatRepository;
 import fr.uga.miage.m1.mapper.EtapeAchatMapper;
 import fr.uga.miage.m1.mapper.UtilisateurMapper;
 import fr.uga.miage.m1.models.EtapeAchatEntity;
+import fr.uga.miage.m1.models.EtapeAchatIdEntity;
 import fr.uga.miage.m1.repository.EtapeRepository;
 import fr.uga.miage.m1.repository.UtilisateurRepository;
 import fr.uga.miage.m1.request.CreateAchatRequest;
@@ -29,21 +30,28 @@ public class AchatService {
     private final UtilisateurService utilisateurService;
     private final EtapeRepository etapeRepository;
     private final UtilisateurRepository utilisateurRepository;
-    
+    private final EtapeAchatRepository etapeAchatRepository;
+
     public List<Achat> getPanierByUserId(final String id) {
         List<AchatEntity> achatList = achatRepository.findAll();
         List<Achat> newAchatList = new ArrayList();
         for (AchatEntity achatEntity : achatList) {
-            if(achatEntity.getUtilisateur().getUserUid().equals(id)){
-                System.out.println(achatEntity.getEtape());
+            if(achatEntity.getUtilisateur().getUserUid().equals(id)&&!achatEntity.getAchatValidee()){
                 newAchatList.add(AchatMapper.INSTANCE.toDto(achatEntity));
-                System.out.println(AchatMapper.INSTANCE.toDto(achatEntity));
             } 
         }
         if (newAchatList.isEmpty()){
             throw new EntityNotFoundRestException(String.format("Aucun achat n'a été trouvée pour utilisateur [%s]", id),id);
         }
         return newAchatList;
+    }
+
+    public Achat getPanierByAchatId(final int id) {
+        AchatEntity achat = achatRepository.findById((long) id).orElse(null);
+        if (achat!=null){
+            return AchatMapper.INSTANCE.toDto(achat);
+        }
+        throw new EntityNotFoundRestException(String.format("Aucun achat n'a été trouvée pour l'id [%s]", id),id);
     }
 
     public Achat createAchat(CreateAchatRequest entity,String userUid) {
@@ -66,6 +74,7 @@ public class AchatService {
                 nbPlaceDemander+=etape.getNbPlace();
             }
             achat.setEtape(etapes);
+            achat.setNbPlace(nb_etape_total);
             if(nbPlaceDemander==achat.getNbPlace()){
                 return AchatMapper.INSTANCE.toDto(achatRepository.save(achat));
             }
@@ -103,26 +112,31 @@ public class AchatService {
         for (CreateEtapeAchatRequest e : entity.getEtape()) {
             nb_etape_total=nb_etape_total+e.getNbPlace();
         }
-        if(entity.getEtape().isEmpty() && nb_etape_total ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>entity.getNbPlace()){
+        if (entity.getUserUid()==null){
+            entity.setUserUid("empty");
+        }
+        if(entity.getEtape().isEmpty() && nb_etape_total ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>nb_etape_total){
             AchatEntity achat = achatRepository.getReferenceById((long) achatId);
             UtilisateurEntity user = UtilisateurMapper.INSTANCE.toEntity(utilisateurService.getUtilisateurById(entity.getUserUid()));
-            int nbPlaceDemander=0;
             List<EtapeAchatEntity> etapes= new ArrayList();
             for (CreateEtapeAchatRequest etape : entity.getEtape()) {
                 EtapeAchatEntity e =EtapeAchatMapper.INSTANCE.toEntity(etape);
                 e.setAchat(achat);
                 e.setEtape(etapeRepository.getReferenceById((long) etape.getIdTrajet()));
-                etapes.add(e);
-                nbPlaceDemander+=etape.getNbPlace();
+
+                EtapeAchatEntity old_e = etapeAchatRepository.findById(new EtapeAchatIdEntity(achat.getNumAchat(),e.getEtape().getIdtrajet())).orElse(null);
+                if(old_e!=null) {
+                    old_e.setNbPlace(e.getNbPlace());
+                    etapes.add(old_e);
+                }
+                else {
+                    etapes.add(e);
+                }
             }
-            if(nbPlaceDemander==entity.getNbPlace()){
-                achat.setNbPlace(entity.getNbPlace());
-                achat.setUtilisateur(user);
-                achat.setEtape(etapes);
-                return AchatMapper.INSTANCE.toDto(achatRepository.save(achat));
-            }
-            throw new EntityNotFoundRestException(
-                String.format("Nombre de place de covoiturage different du nombre d'achat"),0);
+            achat.setNbPlace(nb_etape_total);
+            achat.setUtilisateur(user);
+            achat.setEtape(etapes);
+            return AchatMapper.INSTANCE.toDto(achatRepository.saveAndFlush(achat));
         }
         throw new EntityNotFoundRestException(
             String.format("Pas assez de place restante pour le festival [%s]", 

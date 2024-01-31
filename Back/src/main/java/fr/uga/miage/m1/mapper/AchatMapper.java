@@ -16,6 +16,8 @@ public interface AchatMapper {
     @Mapping(source = "achat.etape", target = "etapeAchat")
     Achat toDto(AchatEntity achat);
 
+    @Mapping(source = "etape", target = "etape")
+    @Mapping(source = "achat.achatValidee", target = "achatValidee")
     AchatEntity toEntity(CreateAchatRequest achat);
     
 }

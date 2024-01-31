@@ -19,6 +19,7 @@ public class OffreCovoiturageService {
 
 
     public List<OffreCovoiturage> getOffreByFestival(final Long id, String modele,String couleur,Float longitudeCovoiturage,Float latitudeCovoiturage,Integer distanceRechercheCovoiturage,Integer nbPlace) {
+        System.out.println("aaaa");
         List<OffreCovoiturageEntity> etapeList;
         if(distanceRechercheCovoiturage==null){
             distanceRechercheCovoiturage=30;
@@ -27,11 +28,19 @@ public class OffreCovoiturageService {
             nbPlace=1;
         }
         if(latitudeCovoiturage!=null && longitudeCovoiturage!=null){
+            System.out.println("ddd:"+id);
+            System.out.println("eee:"+latitudeCovoiturage);
+            System.out.println("fff:"+longitudeCovoiturage);
+            System.out.println("ggg:"+nbPlace);
+            System.out.println("ggg:"+distanceRechercheCovoiturage);
+
             etapeList = repository.findAllDistance(id,latitudeCovoiturage,longitudeCovoiturage,distanceRechercheCovoiturage,nbPlace);
         }
         else {
             etapeList = repository.findAll(id,nbPlace);
         }
+        System.out.println("bbbb1 "+etapeList);
+        System.out.println("bbbb "+etapeList.size());
         List<OffreCovoiturage> newEtapeList = new ArrayList();
         for (OffreCovoiturageEntity etapeEntity : etapeList) {
             if(modele!=null && !etapeEntity.getModele().contains(modele)){
@@ -44,6 +53,7 @@ public class OffreCovoiturageService {
                 newEtapeList.add(OffreCovoiturageMapper.INSTANCE.toDto(etapeEntity));
             }
         }
+        System.out.println("cccc " + newEtapeList.size());
         if (newEtapeList.isEmpty()){
             throw new EntityNotFoundRestException(String.format("Aucun covoiturage n'a été trouvée pour festival [%s]", id),id.intValue());
         }

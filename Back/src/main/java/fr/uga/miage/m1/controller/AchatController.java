@@ -38,6 +38,12 @@ public class AchatController {
     public List<Achat> getAchatbyUserId(@PathVariable String userUid) {
         return achatService.getPanierByUserId(userUid);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @GetMapping("/achat/unknow/{achatId}")
+    public Achat getAchatbyUserId(@PathVariable int achatId) {
+        return achatService.getPanierByAchatId(achatId);
+    }
     
     @PostMapping("achat/{userUid}")
     public Achat postAchat(@PathVariable final String userUid,@RequestBody CreateAchatRequest entity) {

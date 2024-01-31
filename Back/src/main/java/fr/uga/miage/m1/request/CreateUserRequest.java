@@ -1,6 +1,5 @@
 package fr.uga.miage.m1.request;
 
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 
