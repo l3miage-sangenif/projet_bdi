@@ -6,6 +6,13 @@ import { FestiCarService } from 'src/services/festi-car.service';
 import { PanierServiceService } from 'src/services/panier-service.service';
 import { AuthService } from 'src/services/auth.service';
 
+
+interface EtapeSelected {
+  idTrajet: number;
+  nbPlace: number;
+}
+
+
 @Component({
   selector: 'app-choix-point-depart',
   templateUrl: './choix-point-depart.component.html',
@@ -15,8 +22,9 @@ import { AuthService } from 'src/services/auth.service';
 export class ChoixPointDepartComponent {
   selectedStep: Etape;
   selectedPrice: number =0;
-  numberOfPlaces: number = 0;
+  numberOfPlaces: number ;
   totalPrice: number = 0;
+  etapeSelected: EtapeSelected = { idTrajet: 0, nbPlace: 0 };
 
   constructor(private dialog: MatDialog, private authService : AuthService,  
     private panierService : PanierServiceService, private festiCarService : FestiCarService,
@@ -33,20 +41,41 @@ export class ChoixPointDepartComponent {
   }
 
   calculateTotal(): number {
-  this.selectedPrice=this.prix();
-    return this.totalPrice = this.selectedPrice * this.numberOfPlaces;
+    if (this.numberOfPlaces && this.selectedStep) {
+      this.selectedPrice = this.prix();
+      this.totalPrice = this.selectedPrice * this.numberOfPlaces;
+    } else {
+      this.totalPrice = 0;
+    }
+    return this.totalPrice;
   }
- 
+  
 
+  onStepChange(etape: Etape, numberOfPlaces: number): void {
+    this.selectedStep = etape;
+    console.log('etape choisie par lutilisateur dans fonction onstepChange:', etape);
+    this.selectedPrice = etape.prix;
+    console.log('selectedStep avant if choisie par lutilisateur dans fonction onstepChange:', this.selectedStep);
+    if (this.selectedStep) {
+      this.selectedStep.nbPlace = numberOfPlaces;
+      console.log('selectedStep choisie par lutilisateur dans fonction onstepChange:', this.etapeSelected);
+      this.calculateTotal(); // Mettre à jour le total lorsque l'utilisateur change l'étape
+    }
+  }
+  
+ 
   close(){
     this.dialog.closeAll();
      
-    this.data.etape.forEach((etape: Etape) => {
-      etape.nbPlacesSaisies = this.numberOfPlaces;
-    });
+    if (this.selectedStep) {
+      this.selectedStep.nbPlace = this.numberOfPlaces;
+      this.etapeSelected.idTrajet = this.selectedStep.idtrajet;
+      this.etapeSelected.nbPlace = this.numberOfPlaces;
+      console.log('etape choisie par lutilisateur:', this.etapeSelected);
+    }
 
     if(this.authService.user){
-      this.festiCarService.postPanierWithConnectedUser(this.authService.user.uid,this.data.nbPlace, this.data.etape)
+      this.festiCarService.postPanierWithConnectedUser(this.authService.user.uid, [this.etapeSelected])
       .subscribe({
         next: (response) => {
           console.log('Réponse de la requête ajouter au  panier pour user connecté:', response);
@@ -59,7 +88,7 @@ export class ChoixPointDepartComponent {
       });
     }
     else{
-      this.festiCarService.postPanierWithOutConnectedUser(this.data.nbPlace, this.data.etape)
+      this.festiCarService.postPanierWithOutConnectedUser([this.etapeSelected])
       .subscribe({
         next: (response) => {
           console.log('Réponse de la requête ajouter au  panier:', response);

@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Achat } from 'src/models/Achat';
 import { Festival } from 'src/models/Festival';
 
 @Injectable({
@@ -33,16 +34,18 @@ export class FestiCarService {
     return this.http.get(url, this.httpOptions);
   }
 
-  postPanierWithOutConnectedUser(nbPlace : any, etape : any ): Observable<any> {
+  postPanierWithOutConnectedUser( etape : any ): Observable<any> {
     const url = `${this.baseUrl}/achat`; 
-    const body = { nbPlace: nbPlace, etape: etape };
+    const body = {
+      etape: etape
+    };
     return this.http.post(url, body, this.httpOptions);
   }
 
-  postPanierWithConnectedUser(userUid: string, nbPlace: number, etape: any[]): Observable<any> {
+  postPanierWithConnectedUser(userUid: string,  etape : any): Observable<any> {
     const url = `${this.baseUrl}/achat/${userUid}`;
     const body = {
-      nbPlace: nbPlace,
+      userUid: userUid,
       etape: etape
     };
     return this.http.post(url, body, this.httpOptions);

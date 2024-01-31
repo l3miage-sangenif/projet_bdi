@@ -8,5 +8,5 @@ export interface OffreCovoirage {
   couleur: string;
   conducteur: any;
   festival: any;
-  etape: Etape[];
+  etape?: Etape[];
 }

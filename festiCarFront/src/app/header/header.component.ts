@@ -41,14 +41,15 @@ export class HeaderComponent {
           console.log('Réponse de la requête get panier pour user connecté:', response);
           const panierData = response; 
           this.panierService.mettreAJourPanier(panierData);
+          console.log('panierData envoyé au service:', panierData);
+          this.router.navigate(['/panier']);
         },
         error: (error) => {
           console.error('Erreur lors de la requête get panier pour user connecté:', error);
         }
       });
     }
-    this.router.navigate(['/panier']);
-
+   
   }
 
   obtenirNombreElementsPanier() {
