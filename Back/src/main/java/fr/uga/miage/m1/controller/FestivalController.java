@@ -21,7 +21,7 @@ import fr.uga.miage.m1.service.FestivalService;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200", "https://festicar-fa572.firebaseapp.com/"})
 @RequestMapping("api/")
 public class FestivalController {
 
@@ -31,7 +31,7 @@ public class FestivalController {
     @GetMapping("/festival")
     public List<Festival> getAllFestival(
         @RequestParam(required=false) String name,
-        @RequestParam(required=false) String domain,
+        @RequestParam(required=false) String domaine,
         @RequestParam(required=false) Date dateDebut,
         @RequestParam(required=false) Date dateFin,
         @RequestParam(required=false) Float longitudeFestival,
@@ -39,8 +39,9 @@ public class FestivalController {
         @RequestParam(required=false) Float longitudeCovoiturage,
         @RequestParam(required=false) Float latitudeCovoiturage,
         @RequestParam(required=false) Integer distanceRechercheFestival,
-        @RequestParam(required=false) Integer distanceRechercheCovoiturage) {
-        return festivalService.getAllFestival(name,domain,dateDebut,dateFin,longitudeFestival,latitudeFestival,longitudeCovoiturage,latitudeCovoiturage,distanceRechercheFestival,distanceRechercheCovoiturage);
+        @RequestParam(required=false) Integer distanceRechercheCovoiturage,
+        @RequestParam(required=false) Integer nbPlace) {
+        return festivalService.getAllFestival(name,domaine,dateDebut,dateFin,longitudeFestival,latitudeFestival,longitudeCovoiturage,latitudeCovoiturage,distanceRechercheFestival,distanceRechercheCovoiturage,nbPlace);
     }
 
 

@@ -35,7 +35,9 @@ public class AchatService {
         List<Achat> newAchatList = new ArrayList();
         for (AchatEntity achatEntity : achatList) {
             if(achatEntity.getUtilisateur().getUserUid().equals(id)){
+                System.out.println(achatEntity.getEtape());
                 newAchatList.add(AchatMapper.INSTANCE.toDto(achatEntity));
+                System.out.println(AchatMapper.INSTANCE.toDto(achatEntity));
             } 
         }
         if (newAchatList.isEmpty()){
@@ -45,7 +47,11 @@ public class AchatService {
     }
 
     public Achat createAchat(CreateAchatRequest entity,String userUid) {
-        if(entity.getEtape().isEmpty() && entity.getNbPlace() ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>entity.getNbPlace()){
+        int nb_etape_total=0;
+        for (CreateEtapeAchatRequest e : entity.getEtape()) {
+            nb_etape_total=nb_etape_total+e.getNbPlace();
+        }
+        if(entity.getEtape().isEmpty() || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>nb_etape_total){
             UtilisateurEntity user = UtilisateurMapper.INSTANCE.toEntity(utilisateurService.getUtilisateurById(userUid));
             AchatEntity achat = AchatMapper.INSTANCE.toEntity(entity);
             List<EtapeAchatEntity> etapes= new ArrayList();
@@ -73,7 +79,11 @@ public class AchatService {
     }
 
     public Achat createAchatEmpty(CreateAchatRequest entity) {
-        if(entity.getEtape().isEmpty() && entity.getNbPlace() ==0){
+        int nb_etape_total=0;
+        for (CreateEtapeAchatRequest e : entity.getEtape()) {
+            nb_etape_total=nb_etape_total+e.getNbPlace();
+        }
+        if(entity.getEtape().isEmpty() && nb_etape_total ==0){
             UtilisateurEntity user = utilisateurRepository.getReferenceById("empty");
             AchatEntity achat = AchatMapper.INSTANCE.toEntity(entity);
             List<EtapeAchatEntity> etapes= new ArrayList();
@@ -89,7 +99,11 @@ public class AchatService {
     }
 
     public Achat updateAchat(UpdateAchatRequest entity, int achatId) {
-        if(entity.getEtape().isEmpty() && entity.getNbPlace() ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>entity.getNbPlace()){
+        int nb_etape_total=0;
+        for (CreateEtapeAchatRequest e : entity.getEtape()) {
+            nb_etape_total=nb_etape_total+e.getNbPlace();
+        }
+        if(entity.getEtape().isEmpty() && nb_etape_total ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>entity.getNbPlace()){
             AchatEntity achat = achatRepository.getReferenceById((long) achatId);
             UtilisateurEntity user = UtilisateurMapper.INSTANCE.toEntity(utilisateurService.getUtilisateurById(entity.getUserUid()));
             int nbPlaceDemander=0;
