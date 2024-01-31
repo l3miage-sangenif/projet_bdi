@@ -4,13 +4,18 @@
         <br /><br />
         <ul class="list-unstyled multi-steps">
           <a routerLink="/accueil"><li>Choisir un festival  </li></a>
-          <a [routerLink]="['/detailfestival/:id']" > <li> Choisir une covoiturage</li></a> 
-         <a [routerLink]="['/panier']" class="is-active"> <li   >Payer</li></a>
+          <a (click)="retournerFestival()" > <li> Choisir une covoiturage</li></a> 
+         <a  class="is-active"> <li   >Payer</li></a>
         </ul>
       </div>
     <ng-container *ngFor="let element of panier">
       <app-element [element]="element"></app-element>    
     </ng-container>
+    <div class="total-container">
+       <b>  Prix total : </b>  
+  
+      <div class="prix-total"> <b>  {{ prixTotal.toFixed(2) }} € </b>  </div>
+        </div> 
     <div class="buttons">
       <button mat-icon-button class="ajouter" (click)="alleraccueil()">Ajouter un festival</button>
       <button mat-icon-button class="payer" (click)= "onCreate()">Payer</button>

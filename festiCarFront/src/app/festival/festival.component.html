@@ -7,9 +7,9 @@
 <div class="container-fluid">
 
         <ul class="list-unstyled multi-steps">
-          <a routerLink="/accueil"><li>Choisir un festival  </li></a>
-          <a [routerLink]="['/detailfestival/:id']" class="is-active" > <li > Choisir une covoiturage</li></a> 
-         <a [routerLink]="['/panier']" > <li   >Payer</li></a>
+          <div (click)=" alleraccueil()"><li>Choisir un festival  </li></div>
+          <div  class="is-active" > <li > Choisir une covoiturage</li></div> 
+         <div (click)="allerpanier()" > <li> Payer</li></div>
           </ul>
 </div>
 
@@ -29,6 +29,7 @@
             <i><b> Date de début :</b> {{festival.dateDebut}} </i>
             <i><b> Date de fin :</b> {{festival.dateFin}} </i>
             <i><b> Lieu : </b>{{festival.commune.nomCommune}} </i>
+            <i><b> Tarif : </b>{{festival.tarif}}€ </i>
             <i><b> Site Web :</b> <a href="http://{{festival.siteWeb}}" target="_blank">{{festival.siteWeb}}</a></i>
           </ul>
           <hr>
@@ -42,26 +43,23 @@
             <mat-icon matPrefix>location_on</mat-icon>
             <input matInput  type="text" ngx-google-places-autocomplete
             [options]="options"
-            (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" />
+            (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" [(ngModel)]="AddresseFestivalier" />
         </mat-form-field>
 
         <mat-form-field class="pass-field">
             <mat-icon matPrefix>supervisor_account</mat-icon>
-          <input matInput type="text" placeholder="Nombre de pass" />
+          <input matInput type="number" placeholder="Nombre de pass" [(ngModel)]="festivalPlace" />
         </mat-form-field>
-        <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >Chercher covoiturage</button>
+        <button mat-icon-button class="search-covoiturage" (click)="getCovoituragefiltrer(festivalId)" >Chercher covoiturage</button>
       </div>
 
-
-
-    <div class="covoiturage-app" *ngIf="showCovoiturages">
+      <div class="covoiturage-app" *ngIf="showCovoiturages">
+        <app-liste-covoiturages *ngIf="covoiturageTab "></app-liste-covoiturages>
+        
+      </div>
+      <div *ngIf="showMessage && !showCovoiturages ">
+        <p class="message-container">Aucun covoiturage disponible pour le moment.</p>
+      </div>
       
-
-    <div class="covoiturage-app" *ngIf="showCovoiturages">
-    <app-liste-covoiturages  *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
-
-    </div>
-
-
-
-
+      
+     

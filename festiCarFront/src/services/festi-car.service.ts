@@ -51,7 +51,7 @@ export class FestiCarService {
     return this.http.post(url, body, this.httpOptions);
   }
 
-  getAllFestivalsFilter(name: string, domaine: string, dateDebut: string,  longitudeCovoiturage: number, latitudeCovoiturage: number, distanceRechercheCovoiturage: number): Observable<any> {
+  getAllFestivalsFilter(name: string, domaine: string, dateDebut: string,  longitudeCovoiturage: number, latitudeCovoiturage: number, longitudeFestival: number, latitudeFestival: number): Observable<any> {
     const url = `${this.baseUrl}/festival`;
     let params = new HttpParams();
     if (name) params = params.set('name', name);
@@ -60,7 +60,8 @@ export class FestiCarService {
     
     if (longitudeCovoiturage) params = params.set('longitudeCovoiturage', longitudeCovoiturage.toString());
     if (latitudeCovoiturage) params = params.set('latitudeCovoiturage', latitudeCovoiturage.toString());
-    if (distanceRechercheCovoiturage) params = params.set('distanceRechercheCovoiturage', distanceRechercheCovoiturage.toString());
+    if (longitudeFestival) params = params.set('longitudeFestival', longitudeFestival.toString());
+    if (latitudeFestival) params = params.set('latitudeFestival', latitudeFestival.toString());
     
     return this.http.get(url, { params: params });
   }
@@ -132,7 +133,26 @@ export class FestiCarService {
     }
     else if(festival.sousDomaine.domaine.nomDomaine === "Musiques classiques"){
       src="assets/images/MusiquesClassiques.jpg";
+    } else if(festival.sousDomaine.domaine.nomDomaine === "Théâtre"){
+      src="assets/images/Théâtre.jpg";
     }
     return src;
   }
+
+
+getCovoituragefiltered(idFestival: number, nbPlace: number, longitudeCovoiturage: number, latitudeCovoiturage: number): Observable<any> {
+  const url = `${this.baseUrl}/covoiturage/${idFestival}`;
+  let params = new HttpParams();
+ 
+  if (nbPlace) params = params.set('nbPlace', nbPlace);
+  
+  if (longitudeCovoiturage) params = params.set('longitudeCovoiturage', longitudeCovoiturage.toString());
+  if (latitudeCovoiturage) params = params.set('latitudeCovoiturage', latitudeCovoiturage.toString());
+
+  
+  return this.http.get(url, { params: params });
+
+}
+
+
 }

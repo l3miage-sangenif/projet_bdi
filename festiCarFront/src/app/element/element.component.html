@@ -23,17 +23,17 @@
             <ul>
                 <i>Nom de covoitureur : {{etapeAchat.etape.offreCovoiturage.conducteur.prenom }} {{etapeAchat.etape.offreCovoiturage.conducteur.nom}}</i> <br>
                 <i>Point de départ : {{etapeAchat.etape.lieuCovoiturage.adresseLieu }}</i><br>
-                <i>Point de départ : {{etapeAchat.etape.lieuCovoiturage.adresseLieu }}</i><br>
-                <i>Nombre de pass : </i>
+                <i>Point d'arrivé' : {{etapeAchat.etape.offreCovoiturage.festival.commune.nomCommune }}</i><br>
+                <i>Nombre de pass : {{etapeAchat.nbPlace }}</i>
             </ul>    
     </div>         
     <div class="prix-total-container">
         <div class="prix-passanger">
-           <b> Prix total pour 2 pass : </b>
+           <b> Prix total pour {{etapeAchat.nbPlace }} pass : </b>
         </div>
     
         <div class="prix-total">
-            <b>     94.95€ </b>
+            <b>     {{ calculTotalPass() }}€ </b>
         </div>
     </div>
 </div>   

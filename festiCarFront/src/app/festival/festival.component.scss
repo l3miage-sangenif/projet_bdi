@@ -56,7 +56,13 @@
   width: max-content;
 
 }
- 
+ .message-container{
+  margin: 20px;
+  text-align: center;
+  font-size: large;
+  font-family: Arial;
+
+ }
 
 
 
@@ -141,7 +147,7 @@ $grey-light: #ededed;
   display: table;
   table-layout: fixed;
   width: 100%;
-  > a{
+  > div{
     text-decoration: none;
     counter-increment: stepNum;
     text-align: center;
@@ -193,7 +199,7 @@ $grey-light: #ededed;
         border-color: $brand-primary;
       }
 
-      ~ a{
+      ~ div{
         color: #808080;
         @extend %remain-steps;
         &:before{

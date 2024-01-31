@@ -11,6 +11,7 @@ import { FestiCarService } from 'src/services/festi-car.service';
 })
 export class ElementComponent {
   @Input() element: Achat;
+  total:number=0;
   
   constructor(private dialog: MatDialog, public festiCarService : FestiCarService){}
 
@@ -18,5 +19,12 @@ export class ElementComponent {
     this.dialog.open(ConfirmDeleteComponent, {
       data: { numAchat: numAchat }
     });
+  }
+
+  calculTotalPass():number{
+
+    return this.element.etapeAchat.reduce((elementTotal, etapeAchat) => {
+      return elementTotal + etapeAchat.etape.prix * etapeAchat.nbPlace;
+    }, 0);
   }
 }

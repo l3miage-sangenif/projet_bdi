@@ -26,7 +26,10 @@ export class AccueilComponent implements  OnDestroy {
   festivalierAddresse: string='';
   addresseLng: number;
   addresselat: number;
-  diastanceRechere: any;
+  longitudeFestival: number;
+  latitudeFestival: number;
+
+
 
 
   domainControl = new FormControl();
@@ -44,23 +47,6 @@ export class AccueilComponent implements  OnDestroy {
   }
 
 
-  ngOnInit(): void {
-  this.getAllFestivals();
-  }
-
-
-    public getAllFestivals(): void {
-      this.festivalsSubscription = this.festivalCarService.getAllFestival().subscribe({
-        next: (data: any) => {
-          this.festivalsTab = data;
-          console.log('Festivals Data:', data);
-        },
-        error: (error: any) => {
-          console.error('Error fetching festivals:', error);
-        }
-      });
-    
-    }
 
 
     ngOnDestroy(): void {
@@ -72,29 +58,27 @@ export class AccueilComponent implements  OnDestroy {
       componentRestrictions: { country: 'FR' }
     }
   
-    handleAddressChange(address: any) {
+    FestivalierAddresse(address: any) {
       this.addresseLng=address.geometry.location.lng();
       this.addresselat=address.geometry.location.lat();
+
+      console.log(address.formatted_address)
+      console.log(this.addresseLng)
+      console.log(this.addresselat)
+     
       
-      const addressComponents = address.address_components;
-      let city = '';
-      let postalCode = '';
-
-      addressComponents.forEach((component: any) => {
-        if (component.types.includes('locality')) {
-          city = component.long_name;
-        } else if (component.types.includes('postal_code')) {
-          postalCode = component.long_name;
-        }
-      });
-    
-      this.shareDataService.updateSelectedAddressDetails({
-        address: address.formatted_address,
-        city: city,
-        postalCode: postalCode
-      });
     }
+    FestivalAddresse(address: any) {
+    
 
+      this.latitudeFestival=address.geometry.location.lat();
+      this.longitudeFestival=address.geometry.location.lng();
+      
+      console.log(address.formatted_address)
+      console.log(this.longitudeFestival)
+      console.log( this.latitudeFestival)
+      
+    }
 
 
    @ViewChild('addressText') addressText!: ElementRef;
@@ -122,7 +106,8 @@ export class AccueilComponent implements  OnDestroy {
         dateDebut: this.festivalDate,
         addresseLng: this.addresseLng,
         addresselat: this.addresselat,
-        diastancerechere: this.diastanceRechere
+        langitudeFestival: this.longitudeFestival,
+        latitudeFestival:this.latitudeFestival
 
       };
     
@@ -133,14 +118,17 @@ export class AccueilComponent implements  OnDestroy {
           searchCriteria.dateDebut,
           searchCriteria.addresseLng,
           searchCriteria.addresselat,
-          searchCriteria.diastancerechere
+          searchCriteria.langitudeFestival,
+          searchCriteria.latitudeFestival
+          
+         
         )
         .subscribe({
           next: (data: any) => {
             this.festivalsTab = data;
             console.log('Filtered Festivals:', data);
             this.shareDataService.updateFestivalTab(data);
-            this.shareDataService.updateShowFestivals(true); // Set the flag to true
+            this.shareDataService.updateShowFestivals(true); 
           },
           error: (error: any) => {
             console.error('Error searching festivals:', error);
