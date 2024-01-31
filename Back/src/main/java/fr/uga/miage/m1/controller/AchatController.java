@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.uga.miage.m1.DTO.Achat;
 
 import fr.uga.miage.m1.service.AchatService;
+import jakarta.transaction.Transactional;
 import fr.uga.miage.m1.request.CreateAchatRequest;
 import fr.uga.miage.m1.request.UpdateAchatRequest;
 
@@ -39,7 +41,7 @@ public class AchatController {
         return achatService.getPanierByUserId(userUid);
     }
     
-    @PostMapping("achat/{userUid}")
+    @PostMapping("achat/{userUid}")@Transactional
     public Achat postAchat(@PathVariable final String userUid,@RequestBody CreateAchatRequest entity) {
         return achatService.createAchat(entity,userUid);
     }
@@ -52,6 +54,16 @@ public class AchatController {
     @PutMapping("achat/{achatId}")
     public Achat putAchat(@PathVariable int achatId, @RequestBody UpdateAchatRequest entity) {        
         return achatService.updateAchat(entity,achatId);
+    }
+
+    @DeleteMapping("achat/{achatId}")
+    public void deleteById(@PathVariable Long numAchat){
+        achatService.deleteAchat(numAchat);
+    }
+
+    @PutMapping("achat/validate/{achatId}")
+    public Achat validateAchat(@PathVariable Long id){
+        return achatService.validateAchat(id);
     }
     
     

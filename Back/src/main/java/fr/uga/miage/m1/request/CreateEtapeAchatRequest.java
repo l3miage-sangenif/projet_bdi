@@ -1,5 +1,7 @@
 package fr.uga.miage.m1.request;
 
+import jakarta.transaction.TransactionScoped;
+import jakarta.transaction.Transactional;
 import lombok.Builder;
 import lombok.Data;
 
