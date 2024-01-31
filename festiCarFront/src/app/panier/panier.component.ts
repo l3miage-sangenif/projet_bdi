@@ -23,6 +23,7 @@ export class PanierComponent {
 
       this.panierService.obtenirPanier().subscribe(panierData => {
         this.panier = panierData;
+        console.log('panier partagé dans le composant panier', this.panier);
       });
     }
 

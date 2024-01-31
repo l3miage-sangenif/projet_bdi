@@ -1,6 +1,4 @@
 
-
-
 <div class="point-depart-container">
 
 <div class="cart-container">
@@ -18,7 +16,7 @@
          <div class="etapes">   
           
              <label class="radio" *ngFor="let etape of data.etape; let i = index">
-                 <input name="radio" type="radio" checked [(ngModel)]="selectedStep" [value]="etape">
+              <input name="radio" type="radio" min="1" (change)="onStepChange(etape, numberOfPlaces)" [checked]="selectedStep === etape" [value]="etape">
                   <span>  {{ data.etape[i].lieuCovoiturage.nomLieu  }} </span>
                </label>
               
@@ -47,7 +45,7 @@
 
    
     <div class="input-container">
-      <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1" max={{data.nbPlace}}  (input)="1">
+      <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1" max={{data.nbPlace}} >
     </div>
  
  </div>
