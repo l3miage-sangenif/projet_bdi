@@ -9,7 +9,7 @@ import lombok.Data;
 @Builder
 public class CreateAchatRequest {
     
-    private int nbPlace;
+    int nbPlace;
 
-    private List<CreateEtapeAchatRequest> etape;
+    List<CreateEtapeAchatRequest> etape;
 }

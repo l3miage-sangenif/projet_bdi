@@ -7,8 +7,8 @@ import lombok.Data;
 @Builder
 public class CreateEtapeAchatRequest {
 
-    private int idTrajet;
+    int idTrajet;
 
-    private int nbPlace;
+    int nbPlace;
     
 }

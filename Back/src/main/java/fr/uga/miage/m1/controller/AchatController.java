@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -52,6 +53,11 @@ public class AchatController {
     @PutMapping("achat/{achatId}")
     public Achat putAchat(@PathVariable int achatId, @RequestBody UpdateAchatRequest entity) {        
         return achatService.updateAchat(entity,achatId);
+    }
+
+    @DeleteMapping("achat/{achatId}")
+    public void deleteById(@PathVariable Long numAchat){
+        achatService.deleteAchat(numAchat);
     }
     
     

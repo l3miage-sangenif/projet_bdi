@@ -3,6 +3,8 @@ package fr.uga.miage.m1.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -22,6 +24,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Achat")
+@Transactional
 public class AchatEntity {
     @Id
     @Column(name = "numAchat")

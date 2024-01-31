@@ -2,7 +2,7 @@ package fr.uga.miage.m1.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 import fr.uga.miage.m1.DTO.Achat;
@@ -19,6 +19,7 @@ import fr.uga.miage.m1.repository.UtilisateurRepository;
 import fr.uga.miage.m1.request.CreateAchatRequest;
 import fr.uga.miage.m1.request.CreateEtapeAchatRequest;
 import fr.uga.miage.m1.request.UpdateAchatRequest;
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -45,7 +46,7 @@ public class AchatService {
     }
 
     public Achat createAchat(CreateAchatRequest entity,String userUid) {
-        if(entity.getEtape().isEmpty() && entity.getNbPlace() ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>entity.getNbPlace()){
+        if(entity.getEtape()==null && entity.getNbPlace() ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>entity.getNbPlace()){
             UtilisateurEntity user = UtilisateurMapper.INSTANCE.toEntity(utilisateurService.getUtilisateurById(userUid));
             AchatEntity achat = AchatMapper.INSTANCE.toEntity(entity);
             List<EtapeAchatEntity> etapes= new ArrayList();
@@ -115,5 +116,17 @@ public class AchatService {
             etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival()),
             etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival());
 
+    }
+
+    public void deleteAchat(Long id){
+        if(id != null ){
+             Optional<AchatEntity> achat = achatRepository.findById(id);
+        if (achat.isPresent()) {
+            achatRepository.deleteById(id);
+        } else {
+            throw new EntityNotFoundException("Achat num : " + id + " n'existe pas");
+        }
+        }
+       
     }
 }
