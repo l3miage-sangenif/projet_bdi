@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.uga.miage.m1.DTO.OffreCovoiturage;
+import fr.uga.miage.m1.dto.OffreCovoiturage;
 import fr.uga.miage.m1.service.OffreCovoiturageService;
 
 @RestController

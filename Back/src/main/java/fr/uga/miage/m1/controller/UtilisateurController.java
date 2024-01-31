@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import fr.uga.miage.m1.DTO.Utilisateur;
+import fr.uga.miage.m1.dto.Utilisateur;
 import fr.uga.miage.m1.request.CreateUserRequest;
 import fr.uga.miage.m1.service.UtilisateurService;
 

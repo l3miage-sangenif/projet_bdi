@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import fr.uga.miage.m1.models.OffreCovoiturageEntity;
 import fr.uga.miage.m1.repository.OffreCovoiturageRepository;
-import fr.uga.miage.m1.DTO.OffreCovoiturage;
+import fr.uga.miage.m1.dto.OffreCovoiturage;
 import fr.uga.miage.m1.exception.EntityNotFoundRestException;
 import fr.uga.miage.m1.mapper.OffreCovoiturageMapper;
 

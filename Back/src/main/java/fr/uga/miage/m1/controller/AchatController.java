@@ -14,10 +14,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import fr.uga.miage.m1.DTO.Achat;
 
 import fr.uga.miage.m1.service.AchatService;
 import jakarta.transaction.Transactional;
+import fr.uga.miage.m1.dto.Achat;
 import fr.uga.miage.m1.request.CreateAchatRequest;
 import fr.uga.miage.m1.request.UpdateAchatRequest;
 

@@ -3,7 +3,7 @@ package fr.uga.miage.m1.mapper;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
-import fr.uga.miage.m1.DTO.Festival;
+import fr.uga.miage.m1.dto.Festival;
 import fr.uga.miage.m1.models.FestivalEntity;
 
 @Mapper
