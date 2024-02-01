@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import fr.uga.miage.m1.models.EtapeEntity;
 import fr.uga.miage.m1.repository.EtapeRepository;
-import fr.uga.miage.m1.DTO.Etape;
+import fr.uga.miage.m1.dto.Etape;
 import fr.uga.miage.m1.exception.EntityNotFoundRestException;
 import fr.uga.miage.m1.mapper.EtapeMapper;
 

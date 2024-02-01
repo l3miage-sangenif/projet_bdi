@@ -4,9 +4,6 @@ package fr.uga.miage.m1.models;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.UuidGenerator;
-
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;

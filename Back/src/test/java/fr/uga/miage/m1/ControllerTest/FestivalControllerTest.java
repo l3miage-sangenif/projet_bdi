@@ -45,7 +45,7 @@ public class FestivalControllerTest {
     @Test
     void testGetAllFestival() throws Exception {
    
-        List<Festival> festivals = festivalService.getAllFestival();
+        List<Festival> festivals = festivalService.getAllFestival(null,null,null,null,null,null,null,null,null,null,null);
 
         mockMvc.perform(get("/api/festival"))
             .andExpect(status().isOk())

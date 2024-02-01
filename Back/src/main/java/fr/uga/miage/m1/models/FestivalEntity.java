@@ -2,12 +2,10 @@ package fr.uga.miage.m1.models;
 
 import java.math.BigDecimal;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter

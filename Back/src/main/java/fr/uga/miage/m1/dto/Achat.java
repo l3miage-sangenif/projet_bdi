@@ -1,11 +1,8 @@
-package fr.uga.miage.m1.DTO;
+package fr.uga.miage.m1.dto;
 
 
 import java.util.List;
 
-import fr.uga.miage.m1.models.UtilisateurEntity;
-import jakarta.persistence.Column;
-import jakarta.persistence.ManyToMany;
 import lombok.Builder;
 import lombok.Data;
 
@@ -22,7 +19,6 @@ public class Achat {
     Boolean achatValidee;
 
     Utilisateur utilisateur;
-
-
     
+    List<EtapeAchat> etapeAchat;
 }
