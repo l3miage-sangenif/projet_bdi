@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { AuthService } from 'src/services/auth.service';
+import { PanierServiceService } from 'src/services/panier-service.service';
 import { ShareDataService } from 'src/services/share-data.service';
 
 export class MyErrorStateMatcher implements  ErrorStateMatcher {
@@ -32,13 +33,14 @@ export class CheckoutFormComponent implements OnInit {
   cvvFormControl = new FormControl('', [Validators.required]);
   matcher = new MyErrorStateMatcher();
 
-  constructor(private authService: AuthService, private shareDataService: ShareDataService){
+  constructor(private authService: AuthService, private shareDataService: ShareDataService, private panierService:  PanierServiceService){
 
   }
 
   submitForm() {
     if (this.isFormValid()) {
       this.paymentSuccess.emit();
+      this.panierService.viderPanier();
     }
   }
 

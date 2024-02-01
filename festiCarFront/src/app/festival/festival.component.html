@@ -2,13 +2,13 @@
 
 
 
-<div class="page-title">Trouver vos covoiturage</div>
+<div class="page-title">Trouver vos covoiturages</div>
 
 <div class="container-fluid">
 
         <ul class="list-unstyled multi-steps">
           <div (click)=" alleraccueil()"><li>Choisir un festival  </li></div>
-          <div  class="is-active" > <li > Choisir une covoiturage</li></div> 
+          <div  class="is-active" > <li > Choisir un covoiturage</li></div> 
          <div (click)="allerpanier()" > <li> Payer</li></div>
           </ul>
 </div>
@@ -58,7 +58,7 @@
         
       </div>
       <div *ngIf="showMessage && !showCovoiturages ">
-        <p class="message-container">Aucun covoiturage disponible pour le moment.</p>
+        <p class="message-container">Aucun covoiturage disponible pour ce festival pour le moment.</p>
       </div>
       
       

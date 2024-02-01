@@ -1,4 +1,4 @@
-import { Component, ElementRef,  Input,  OnDestroy,  OnInit,  ViewChild } from '@angular/core';
+import { Component, ElementRef,  OnDestroy,  OnInit,  ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Festival } from 'src/models/Festival';
@@ -17,7 +17,7 @@ import { Location as AngularLocation } from '@angular/common';
   styleUrls: ['./festival.component.scss']
 })
 export class FestivalComponent implements OnInit, OnDestroy {
-  @Input() covoiturageTab? : OffreCovoirage[] = [];
+  covoiturageTab? : OffreCovoirage[] = [];
   showCovoiturages: boolean = false;
 
   festivalId: number;
@@ -44,9 +44,6 @@ export class FestivalComponent implements OnInit, OnDestroy {
   handleAddressChange(address: any) {
     this.addresseFestivalierlng=address.geometry.location.lng();
     this.addresseFestivalierlat=address.geometry.location.lat();
-    console.log(address.formatted_address)
-    console.log(this.addresseFestivalierlng)
-    console.log(this.addresseFestivalierlat)
   }
  @ViewChild('addressText') addressText!: ElementRef;
   protected placeSubscription: Subscription;
@@ -92,9 +89,7 @@ export class FestivalComponent implements OnInit, OnDestroy {
     .subscribe({
       next: (data: any) => {
         this.covoiturageTab = data;
-        console.log('covoiturages Data:', data);
         this.showCovoiturages = true;
-        console.log(this.showCovoiturages);
         this.sharedDataService.updateCovoiturageTab(data);
       },
       error: (error: any) => {
@@ -133,10 +128,8 @@ export class FestivalComponent implements OnInit, OnDestroy {
         else {
           this.showMessage = true;
           this.showCovoiturages = false;
-          console.log('No covoiturages available.');
         }
        
-      
       },
       error: (error: any) => {
         console.error('Error fetching covoiturages:', error);
@@ -146,12 +139,13 @@ export class FestivalComponent implements OnInit, OnDestroy {
 
       }
     });
-  
   }
-      allerpanier(){
-        this.router.navigate(['/panier']);
-      }
-   
+
+  allerpanier(){
+    this.router.navigate(['/panier']);
+  }
+
+
   alleraccueil(){
     this.location.back();
   }

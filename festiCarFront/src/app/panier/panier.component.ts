@@ -23,7 +23,7 @@ export class PanierComponent {
   prixTotal: number;
 
   constructor ( private dialog: MatDialog, public authService: AuthService, private location: AngularLocation ,
-    private router: Router, private panierService : PanierServiceService, private festiCarService : FestiCarService){
+    private router: Router, public panierService : PanierServiceService, private festiCarService : FestiCarService){
 
       this.panierService.getPanier().subscribe(panierData => {
         this.panier = panierData;

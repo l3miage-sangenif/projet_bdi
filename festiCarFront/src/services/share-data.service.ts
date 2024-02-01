@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Achat } from 'src/models/Achat';
 import { Festival } from 'src/models/Festival';
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
 
@@ -13,6 +14,7 @@ export class ShareDataService {
   private festivalTabSource = new BehaviorSubject<Festival[]>([]);
   private showFestivalsSource = new BehaviorSubject<boolean>(false);
   private achatIdforNotConnectedUser: string;
+  private updateAchat : Achat;
 
   constructor() { }
 
@@ -51,6 +53,14 @@ export class ShareDataService {
 
   setachatIdforNotConnectedUser(value: number) {
     this.achatIdforNotConnectedUser = value.toString();
+  }
+
+  getupdateAchat(): Achat {
+    return this.updateAchat;
+  }
+
+  setupdateAchat(value: Achat) {
+    this.updateAchat = value;
   }
 }
 

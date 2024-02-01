@@ -19,10 +19,9 @@ export class HeaderComponent {
 
 
   constructor(private festiCarService : FestiCarService, public authService: AuthService, private dialog: MatDialog, private router: Router,
-     private panierService : PanierServiceService, private shareDataService : ShareDataService,){
+     private panierService : PanierServiceService){
 
   }
-
 
   connexion(){
      this.dialog.open(ConnexionComponent, {
@@ -35,6 +34,7 @@ export class HeaderComponent {
   }
 
   allerpanier(){
+    // this.panierService.getPanier().pipe()
       this.router.navigate(['/panier']);
   }
 

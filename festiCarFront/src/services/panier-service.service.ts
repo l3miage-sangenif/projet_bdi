@@ -8,14 +8,14 @@ import { Achat } from 'src/models/Achat';
 export class PanierServiceService {
   private panier: BehaviorSubject<Achat[]> = new BehaviorSubject<Achat[]>([]);
   nombreElementsPanier: number = 0;
+   
+  showPanier = false;
   
   constructor() { }
 
   viderPanier(): void {
-    this.panier = null;
     this.nombreElementsPanier = 0;
-
-    // Autres logiques de nettoyage du panier si nécessaire
+    this.showPanier = false;
   }
 
    // Méthode pour ajouter un élément au panier
@@ -24,6 +24,7 @@ export class PanierServiceService {
     panierActuel.push(achat);
     this.panier.next(panierActuel);
     this.nombreElementsPanier++;
+    this.showPanier = true;
   }
 
   // Méthode pour retirer un élément du panier
