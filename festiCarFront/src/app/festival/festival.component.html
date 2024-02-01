@@ -55,7 +55,8 @@
 
       <div class="covoiturage-app" *ngIf="showCovoiturages">
         <app-liste-covoiturages *ngIf="covoiturageTab "></app-liste-covoiturages>
-        
+        <app-spinner></app-spinner>
+
       </div>
       <div *ngIf="showMessage && !showCovoiturages ">
         <p class="message-container">Aucun covoiturage disponible pour ce festival pour le moment.</p>

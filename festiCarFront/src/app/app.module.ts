@@ -44,7 +44,7 @@ import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.componen
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SendConfirmationSmsComponent } from './send-confirmation-sms/send-confirmation-sms.component';
 import { UpdateAchatComponent } from './update-achat/update-achat.component';
-
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 @NgModule({
@@ -65,7 +65,8 @@ import { UpdateAchatComponent } from './update-achat/update-achat.component';
     ConnexionComponent,
     ConfirmDeleteComponent,
     SendConfirmationSmsComponent,
-    UpdateAchatComponent
+    UpdateAchatComponent,
+    SpinnerComponent
 
   ],
   imports: [
