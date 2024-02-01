@@ -1,4 +1,4 @@
-<div class="panier-container" *ngIf="panierService.showPanier">
+<div class="panier-container" *ngIf="panierService.showPanier; else panierVide">
     <h1 class="panier-titre"><b> Panier</b> </h1>
     <div class="container-fluid">
         <br /><br />
@@ -19,8 +19,10 @@
     <div class="buttons">
       <button mat-icon-button class="ajouter" (click)="alleraccueil()">Ajouter un festival</button>
       <button mat-icon-button class="payer" (click)= "onCreate()">Payer</button>
-  </div>  
-       
+  </div>
 </div> 
+<ng-template  #panierVide>
+  <div class="panier-vide">Votre panier est vide.</div>
+</ng-template>
        
    

@@ -13,9 +13,11 @@ export class PanierServiceService {
   
   constructor() { }
 
+
   viderPanier(): void {
     this.nombreElementsPanier = 0;
     this.showPanier = false;
+    this.panier.next([]);
   }
 
    // Méthode pour ajouter un élément au panier
@@ -24,7 +26,6 @@ export class PanierServiceService {
     panierActuel.push(achat);
     this.panier.next(panierActuel);
     this.nombreElementsPanier++;
-    this.showPanier = true;
   }
 
   // Méthode pour retirer un élément du panier
@@ -41,6 +42,10 @@ export class PanierServiceService {
   // Méthode pour obtenir le panier actuel
   getPanier(): BehaviorSubject<Achat[]> {
     return this.panier;
+  }
+
+   updateShowPanier(): void {
+    this.showPanier = this.panier.getValue().length > 0;
   }
 
 }

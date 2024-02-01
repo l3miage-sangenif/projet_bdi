@@ -6,6 +6,7 @@ import { FestiCarService } from 'src/services/festi-car.service';
 import { PanierServiceService } from 'src/services/panier-service.service';
 import { AuthService } from 'src/services/auth.service';
 import { ShareDataService } from 'src/services/share-data.service';
+import { MessageDialogService } from 'src/services/message-dialog.service';
 
 
 interface EtapeSelected {
@@ -34,7 +35,7 @@ export class ChoixPointDepartComponent implements OnInit {
   }
 
   constructor(private dialog: MatDialog, private authService : AuthService, private shareDataService : ShareDataService,  
-    private panierService : PanierServiceService, private festiCarService : FestiCarService,
+    private panierService : PanierServiceService, private festiCarService : FestiCarService, private messageDialogService: MessageDialogService,
      @Inject(MAT_DIALOG_DATA) public data: any){
     console.log('Data reçue dans le dialogue : ', data);
     console.log('Data reçue dans le dialogue nbPlace: ', data.nbPlace);
@@ -54,6 +55,15 @@ export class ChoixPointDepartComponent implements OnInit {
       this.totalPrice = 0;
     }
     return this.totalPrice;
+  }
+
+  showAndCloseMessageDialog(): void {
+    this.messageDialogService.openDialog('Votre choix a bien été ajouté à votre panier.');
+
+    // Fermer le dialogue après 3 secondes (3000 millisecondes)
+    setTimeout(() => {
+      this.messageDialogService.closeDialog();
+    }, 1050);
   }
   
 
@@ -77,16 +87,16 @@ export class ChoixPointDepartComponent implements OnInit {
       this.selectedStep.nbPlace = this.numberOfPlaces;
       this.etapeSelected.idTrajet = this.selectedStep.idtrajet;
       this.etapeSelected.nbPlace = this.numberOfPlaces;
-      console.log('etape choisie par lutilisateur:', this.etapeSelected);
+     
     }
 
     if(this.authService.user){
       this.festiCarService.postPanierWithConnectedUser(this.authService.user.uid, [this.etapeSelected])
       .subscribe({
         next: (achat) => {
-          console.log('Réponse de la requête ajouter au  panier pour user connecté:', achat);
-          // Autres actions à effectuer avec la réponse si nécessaire
           this.panierService.ajouterElementAuPanier(achat);
+          this.panierService.updateShowPanier();
+          this.showAndCloseMessageDialog();
         },
         error: (error) => {
           console.error('Erreur lors de la requête ajouter au panier pour user connecté:', error);
@@ -97,25 +107,23 @@ export class ChoixPointDepartComponent implements OnInit {
       this.festiCarService.postPanierWithOutConnectedUser([])
       .subscribe({
         next: (response) => {
-          console.log('Réponse de la requête ajouter au  panier:', response);
-          // Autres actions à effectuer avec la réponse si nécessaire
+    
           const achatIdforNotConnectedUser = response.numAchat;
           this.shareDataService.setachatIdforNotConnectedUser(response.numAchat)
 
           this.festiCarService.putPanierByAchatId(achatIdforNotConnectedUser, [this.etapeSelected]).subscribe(
             achat => {
-              console.log('panier response put requete : ', achat);
-              this.panierService.ajouterElementAuPanier(achat)
+              this.panierService.ajouterElementAuPanier(achat);
+              this.panierService.updateShowPanier();
+              this.showAndCloseMessageDialog();
             }
           
           );
 
         },
         error: (error) => {
-          console.error('Erreur lors de la requête ajouter au panier:', error);
         }
       });
     }
-    console.log('ajouté au panier');
   }
   }

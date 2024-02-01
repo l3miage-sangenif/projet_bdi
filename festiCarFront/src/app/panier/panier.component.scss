@@ -18,6 +18,15 @@ span{
     text-align: center;
 
 }
+.panier-vide{
+  justify-content: center;
+  text-align: center;
+  font-size: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 100px;
+}
+
 .prix-total-container {
     display: flex;
     justify-content: space-between;

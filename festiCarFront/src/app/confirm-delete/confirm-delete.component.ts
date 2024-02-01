@@ -29,6 +29,7 @@ export class ConfirmDeleteComponent {
    this.festiCarService.deleteAchatById(this.data.numAchat).subscribe({
     next: (response) => {
       this.panierService.retirerElementDuPanier(this.data.numAchat);
+      this.panierService.viderPanier();
       this.close(); 
     },
     error: (error) => {

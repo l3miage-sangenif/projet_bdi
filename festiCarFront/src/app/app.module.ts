@@ -46,6 +46,7 @@ import { SendConfirmationSmsComponent } from './send-confirmation-sms/send-confi
 import { UpdateAchatComponent } from './update-achat/update-achat.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfirmUpdateComponent } from './confirm-update/confirm-update.component';
+import { MassageDialogComponent } from './massage-dialog/massage-dialog.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import { ConfirmUpdateComponent } from './confirm-update/confirm-update.componen
     SendConfirmationSmsComponent,
     UpdateAchatComponent,
     SpinnerComponent,
-    ConfirmUpdateComponent
+    ConfirmUpdateComponent,
+    MassageDialogComponent
 
   ],
   imports: [

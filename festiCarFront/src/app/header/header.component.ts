@@ -34,7 +34,6 @@ export class HeaderComponent {
   }
 
   allerpanier(){
-    // this.panierService.getPanier().pipe()
       this.router.navigate(['/panier']);
   }
 
