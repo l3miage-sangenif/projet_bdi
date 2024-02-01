@@ -7,6 +7,8 @@ import { AuthService } from 'src/services/auth.service';
 import { ConnexionComponent } from '../connexion/connexion.component';
 import { Router } from '@angular/router';
 import { PanierServiceService } from 'src/services/panier-service.service';
+import { FestiCarService } from 'src/services/festi-car.service';
+import { forkJoin } from 'rxjs';
 
 
 @Component({
@@ -21,7 +23,7 @@ export class PanierComponent {
   prixTotal: number;
 
   constructor ( private dialog: MatDialog, public authService: AuthService, private location: AngularLocation ,
-    private router: Router, private panierService : PanierServiceService){
+    private router: Router, private panierService : PanierServiceService, private festiCarService : FestiCarService){
 
       this.panierService.getPanier().subscribe(panierData => {
         this.panier = panierData;
@@ -34,8 +36,21 @@ export class PanierComponent {
 
   onCreate(){
     if(this.authService.user){
-      this.dialog.open(PaymentDialogComponent, { 
-      });
+      this.festiCarService.validateAchatById(this.panier[0].numAchat).subscribe(
+        {
+          next: (response) => {
+            console.error('element panier bien valider:', response);
+            this.dialog.open(PaymentDialogComponent, { 
+            });
+          
+          },
+          error: (error: any) => {
+            console.error('Error validation element panier:', error);
+          
+          }
+        }
+      );
+      
     }
     else{
       this.dialog.open(ConnexionComponent, { 
@@ -60,9 +75,9 @@ export class PanierComponent {
     this.router.navigate(['/accueil']);
   }
   
-retournerFestival(){
-  this.location.back();
+  retournerFestival(){
+    this.location.back();
 
-}
+  }
 }
 

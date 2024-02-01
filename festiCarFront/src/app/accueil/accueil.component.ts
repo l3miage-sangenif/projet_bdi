@@ -126,7 +126,6 @@ export class AccueilComponent implements  OnDestroy {
         .subscribe({
           next: (data: any) => {
             this.festivalsTab = data;
-            console.log('Filtered Festivals:', data);
             this.shareDataService.updateFestivalTab(data);
             this.shareDataService.updateShowFestivals(true); 
           },

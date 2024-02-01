@@ -9,7 +9,7 @@ import { Festival } from 'src/models/Festival';
 })
 export class FestiCarService {
 
-  baseUrl = ' http://129.88.210.61:8080/api';
+  baseUrl = ' https://129.88.210.69:8080/api';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -92,11 +92,13 @@ export class FestiCarService {
 
   deleteAchatById(achatId: string): Observable<any> {
     const url = `${this.baseUrl}/achat/${achatId}`;
-    return this.http.get(url, this.httpOptions);
+    return this.http.delete(url, this.httpOptions);
   }
 
-
-
+  validateAchatById(achatId: string): Observable<any> {
+    const url = `${this.baseUrl}/achat/validate/${achatId}`;
+    return this.http.put(url, this.httpOptions);
+  }
 
 
   getUrl(festival : Festival): string{
