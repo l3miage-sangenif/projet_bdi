@@ -1,4 +1,4 @@
-package fr.uga.miage.m1.DTO;
+package fr.uga.miage.m1.dto;
 
 import java.util.List;
 

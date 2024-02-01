@@ -1,11 +1,10 @@
-package fr.uga.miage.m1.DTO;
+package fr.uga.miage.m1.dto;
 
 import java.math.BigDecimal;
 import java.sql.Date;
 
 import fr.uga.miage.m1.models.CommuneEntity;
 import fr.uga.miage.m1.models.SousDomaineEntity;
-import jakarta.persistence.Column;
 import lombok.Builder;
 import lombok.Data;
 
@@ -25,7 +24,7 @@ public class Festival {
 
     int nbPlace;
 
-    BigDecimal tarif;
+    double tarif;
 
     int nbPlaceRestante;
 

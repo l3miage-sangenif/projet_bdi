@@ -1,9 +1,6 @@
 package fr.uga.miage.m1.models;
 
-import java.math.BigDecimal;
-import java.security.Timestamp;
 import java.time.Instant;
-import java.util.List;
 
 import jakarta.persistence.*;
 import lombok.*;
