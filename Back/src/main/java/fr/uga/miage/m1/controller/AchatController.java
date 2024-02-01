@@ -63,13 +63,13 @@ public class AchatController {
     }
 
     @DeleteMapping("achat/{achatId}")
-    public void deleteById(@PathVariable Long numAchat){
-        achatService.deleteAchat(numAchat);
+    public void deleteById(@PathVariable Long achatId){
+        achatService.deleteAchat(achatId);
     }
 
     @PutMapping("achat/validate/{achatId}")
-    public Achat validateAchat(@PathVariable Long id){
-        return achatService.validateAchat(id);
+    public Achat validateAchat(@PathVariable Long achatId){
+        return achatService.validateAchat(achatId);
     }
     
     
