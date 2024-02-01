@@ -45,6 +45,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { SendConfirmationSmsComponent } from './send-confirmation-sms/send-confirmation-sms.component';
 import { UpdateAchatComponent } from './update-achat/update-achat.component';
 import { SpinnerComponent } from './spinner/spinner.component';
+import { ConfirmUpdateComponent } from './confirm-update/confirm-update.component';
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { SpinnerComponent } from './spinner/spinner.component';
     ConfirmDeleteComponent,
     SendConfirmationSmsComponent,
     UpdateAchatComponent,
-    SpinnerComponent
+    SpinnerComponent,
+    ConfirmUpdateComponent
 
   ],
   imports: [
