@@ -23,7 +23,7 @@ import fr.uga.miage.m1.service.UtilisateurService;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin(origins = {"http://localhost:4200", "https://festicar-fa572.firebaseapp.com/"})
+@CrossOrigin(origins = {"http://localhost:4200", "https://festicar-fa572.firebaseapp.com/", "https://festi-car-5e104311db52.herokuapp.com/"})
 @RequestMapping("api/")
 public class UtilisateurController {
 

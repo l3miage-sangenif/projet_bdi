@@ -40,7 +40,7 @@ public class AchatService {
         List<AchatEntity> achatList = achatRepository.findAll();
         List<Achat> newAchatList = new ArrayList();
         for (AchatEntity achatEntity : achatList) {
-            if(achatEntity.getUtilisateur().getUserUid().equals(id)&&!achatEntity.getAchatValidee()){
+            if(achatEntity.getUtilisateur().getUserUid().equals(id)&&Boolean.FALSE.equals(achatEntity.getAchatValidee())){
                 newAchatList.add(AchatMapper.INSTANCE.toDto(achatEntity));
             } 
         }
@@ -60,11 +60,11 @@ public class AchatService {
 
     @Transactional
     public Achat createAchat(CreateAchatRequest entity,String userUid) {
-        int nb_etape_total=0;
+        int nbEtapeTotal=0;
         for (CreateEtapeAchatRequest e : entity.getEtape()) {
-            nb_etape_total=nb_etape_total+e.getNbPlace();
+            nbEtapeTotal=nbEtapeTotal+e.getNbPlace();
         }
-        if(entity.getEtape().isEmpty() || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>nb_etape_total){
+        if(entity.getEtape().isEmpty() || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>nbEtapeTotal){
             UtilisateurEntity user = UtilisateurMapper.INSTANCE.toEntity(utilisateurService.getUtilisateurById(userUid));
             AchatEntity achat = AchatMapper.INSTANCE.toEntity(entity);
             List<EtapeAchatEntity> etapes= new ArrayList();
@@ -79,7 +79,7 @@ public class AchatService {
                 nbPlaceDemander+=etape.getNbPlace();
             }
             achat.setEtape(etapes);
-            achat.setNbPlace(nb_etape_total);
+            achat.setNbPlace(nbEtapeTotal);
             if(nbPlaceDemander==achat.getNbPlace()){
                 return AchatMapper.INSTANCE.toDto(achatRepository.save(achat));
             }
@@ -93,11 +93,11 @@ public class AchatService {
     }
 
     public Achat createAchatEmpty(CreateAchatRequest entity) {
-        int nb_etape_total=0;
+        int nbEtapeTotal=0;
         for (CreateEtapeAchatRequest e : entity.getEtape()) {
-            nb_etape_total=nb_etape_total+e.getNbPlace();
+            nbEtapeTotal=nbEtapeTotal+e.getNbPlace();
         }
-        if(entity.getEtape().isEmpty() && nb_etape_total ==0){
+        if(entity.getEtape().isEmpty() && nbEtapeTotal ==0){
             UtilisateurEntity user = utilisateurRepository.getReferenceById("empty");
             AchatEntity achat = AchatMapper.INSTANCE.toEntity(entity);
             List<EtapeAchatEntity> etapes= new ArrayList();
@@ -113,14 +113,14 @@ public class AchatService {
     }
 
     public Achat updateAchat(UpdateAchatRequest entity, int achatId) {
-        int nb_etape_total=0;
+        int nbEtapeTotal=0;
         for (CreateEtapeAchatRequest e : entity.getEtape()) {
-            nb_etape_total=nb_etape_total+e.getNbPlace();
+            nbEtapeTotal=nbEtapeTotal+e.getNbPlace();
         }
         if (entity.getUserUid()==null){
             entity.setUserUid("empty");
         }
-        if(entity.getEtape().isEmpty() && nb_etape_total ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>nb_etape_total){
+        if(entity.getEtape().isEmpty() && nbEtapeTotal ==0 || etapeRepository.getReferenceById((long) entity.getEtape().get(0).getIdTrajet()).getOffreCovoiturage().getFestival().getNbPlaceRestante()>nbEtapeTotal){
             AchatEntity achat = achatRepository.getReferenceById((long) achatId);
             UtilisateurEntity user = UtilisateurMapper.INSTANCE.toEntity(utilisateurService.getUtilisateurById(entity.getUserUid()));
             List<EtapeAchatEntity> etapes= new ArrayList();
@@ -129,16 +129,16 @@ public class AchatService {
                 e.setAchat(achat);
                 e.setEtape(etapeRepository.getReferenceById((long) etape.getIdTrajet()));
 
-                EtapeAchatEntity old_e = etapeAchatRepository.findById(new EtapeAchatIdEntity(achat.getNumAchat(),e.getEtape().getIdtrajet())).orElse(null);
-                if(old_e!=null) {
-                    old_e.setNbPlace(e.getNbPlace());
-                    etapes.add(old_e);
+                EtapeAchatEntity oldEtape = etapeAchatRepository.findById(new EtapeAchatIdEntity(achat.getNumAchat(),e.getEtape().getIdtrajet())).orElse(null);
+                if(oldEtape!=null) {
+                    oldEtape.setNbPlace(e.getNbPlace());
+                    etapes.add(oldEtape);
                 }
                 else {
                     etapes.add(e);
                 }
             }
-            achat.setNbPlace(nb_etape_total);
+            achat.setNbPlace(nbEtapeTotal);
             achat.setUtilisateur(user);
             achat.setEtape(etapes);
             return AchatMapper.INSTANCE.toDto(achatRepository.saveAndFlush(achat));
@@ -157,7 +157,7 @@ public class AchatService {
         }
         AchatEntity achatEntity = achatRepository.findById(achatId)
             .orElseThrow(() -> new EntityNotFoundException("Achat non trouvé: " + achatId));
-        if (!achatEntity.getAchatValidee()) {
+        if (Boolean.FALSE.equals(achatEntity.getAchatValidee())) {
             achatEntity.setAchatValidee(true);
             achatRepository.save(achatEntity);
         } else {
