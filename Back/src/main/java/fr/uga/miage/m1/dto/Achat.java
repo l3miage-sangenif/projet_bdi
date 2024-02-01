@@ -1,4 +1,6 @@
-package fr.uga.miage.m1.DTO;
+package fr.uga.miage.m1.dto;
+
+import java.util.List;
 
 
 import lombok.Builder;
@@ -17,7 +19,6 @@ public class Achat {
     Boolean achatValidee;
 
     Utilisateur utilisateur;
-
-
     
+    List<EtapeAchat> etapeAchat;
 }

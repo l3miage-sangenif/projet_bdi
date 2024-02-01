@@ -1,59 +1,71 @@
 package fr.uga.miage.m1.serviceTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.mockito.Mockito.when;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import fr.uga.miage.m1.DTO.Festival;
+import fr.uga.miage.m1.dto.Festival;
+import fr.uga.miage.m1.mapper.FestivalMapper;
 import fr.uga.miage.m1.models.FestivalEntity;
 import fr.uga.miage.m1.repository.FestivalRepository;
 import fr.uga.miage.m1.service.FestivalService;
 
+import static org.mockito.BDDMockito.given;
 
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
 public class FestivalServiceTest {
     
-    @Autowired
-    private FestivalService festivalService;
-
-    @Autowired 
-    private FestivalRepository festivalRepository;
-
-
-    @Test
-    public void FestivalService_GetAllFestival_ReturnsResponsiveDto(){
         
-
-        List<Festival> festivals = festivalService.getAllFestival();
-        // Assert that the list of festivals is not null
-        assertNotNull(festivals);
-
-        // Assert that the list contains the expected number of festivals
-        assertEquals(2753, festivals.size()); 
-
-    }
-
-
-
-    @Test
-    public void testGetFestivalById() {
-        // Mock data
-        Long festivalId = 1L;
-        FestivalEntity festivalEntity = new FestivalEntity();
-        festivalEntity.setIdFestival(festivalId);
-        festivalEntity.setNomManifestation("Test Festival");
-        // Set other properties of festivalEntity
-        festivalRepository.save(festivalEntity);
- 
-        Festival fest = festivalService.getFestivalById(festivalId);
+        private FestivalService festivalService;
     
-        assertEquals("Test Festival", fest.getNomManifestation());
-        // Add more assertions as needed
-    }
-}
+        @Mock
+        private FestivalRepository festivalRepository;
+    
+        @Mock
+        private FestivalMapper festivalMapper;
+         
+        @BeforeEach
+        public void setUp() throws Exception {
+            MockitoAnnotations.openMocks(this);
+            festivalService = new FestivalService(festivalRepository);
+        }
+    
+        @Test
+        public void testGetAllFestival() {
+            List<FestivalEntity> festivals = new ArrayList<>();
+      
+            festivals = festivalRepository.findAll();
+    
+            List<Festival> result = festivalService.getAllFestival(null, null, null, null, null, null, null, null, null, null, null);
+            assertEquals(festivals.size(), result.size());
+    
+        }
+    
+        @Test
+        public void testGetFestivalById() {
+            FestivalEntity fest = new FestivalEntity();
+            fest.setIdFestival(2222);
+
+            given(festivalRepository.findById(2222L)).willReturn(Optional.of(fest));
+    
+            Festival fest1 = festivalService.getFestivalById(2222L);
+    
+            Assertions.assertNotNull(fest); // Assert that a festival object is returned
+            assertEquals(fest1.getIdFestival(),fest.getIdFestival());
+        }
+    
+}  

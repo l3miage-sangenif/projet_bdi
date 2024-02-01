@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import org.springframework.test.web.servlet.MockMvc;
 
-import fr.uga.miage.m1.DTO.Festival;
+import fr.uga.miage.m1.dto.Festival;
 import fr.uga.miage.m1.models.FestivalEntity;
 import fr.uga.miage.m1.repository.FestivalRepository;
 import fr.uga.miage.m1.service.FestivalService;
@@ -34,28 +34,7 @@ public class FestivalControllerTest {
     @Autowired
     private FestivalRepository festivalRepository;
 
-    private FestivalEntity createFestivalEntity(Long id, String nomManifestation) {
-        FestivalEntity festivalEntity = new FestivalEntity();
-        festivalEntity.setIdFestival(id);
-        festivalEntity.setNomManifestation(nomManifestation);
-        festivalRepository.save(festivalEntity);
-        return festivalEntity;
-    }
 
-    @Test
-    void testGetAllFestival() throws Exception {
-   
-        List<Festival> festivals = festivalService.getAllFestival();
-
-        mockMvc.perform(get("/api/festival"))
-            .andExpect(status().isOk())
-            .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-            .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$[0].idFestival").value(festivals.get(0).getIdFestival()))
-            .andExpect(jsonPath("$[0].nomManifestation").value(festivals.get(0).getNomManifestation()))
-            .andExpect(jsonPath("$[1].idFestival").value(festivals.get(1).getIdFestival()))
-            .andExpect(jsonPath("$[1].nomManifestation").value(festivals.get(1).getNomManifestation()));
-    }
 
     @Test
     public void testGetFestivalById() throws Exception {

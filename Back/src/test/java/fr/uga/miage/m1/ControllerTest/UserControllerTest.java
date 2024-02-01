@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
-import fr.uga.miage.m1.DTO.Utilisateur;
+import fr.uga.miage.m1.dto.Utilisateur;
 import fr.uga.miage.m1.models.UtilisateurEntity;
 import fr.uga.miage.m1.repository.UtilisateurRepository;
 import fr.uga.miage.m1.service.UtilisateurService;

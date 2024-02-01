@@ -12,8 +12,6 @@ public class UpdateAchatRequest {
     @Builder.Default
     private String userUid = "empty";
 
-    private int nbPlace;
-
     private List<CreateEtapeAchatRequest> etape;
     
 }
