@@ -22,6 +22,8 @@ interface EtapeSelected {
 })
 
 export class ChoixPointDepartComponent implements OnInit {
+  panelOpenState = false;
+
   selectedStep: Etape;
   selectedPrice: number =0;
   numberOfPlaces: number ;
@@ -60,7 +62,6 @@ export class ChoixPointDepartComponent implements OnInit {
   showAndCloseMessageDialog(): void {
     this.messageDialogService.openDialog('Votre choix a bien été ajouté à votre panier.');
 
-    // Fermer le dialogue après 3 secondes (3000 millisecondes)
     setTimeout(() => {
       this.messageDialogService.closeDialog();
     }, 1050);

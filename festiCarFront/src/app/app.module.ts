@@ -47,6 +47,7 @@ import { UpdateAchatComponent } from './update-achat/update-achat.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { ConfirmUpdateComponent } from './confirm-update/confirm-update.component';
 import { MassageDialogComponent } from './massage-dialog/massage-dialog.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -98,7 +99,8 @@ import { MassageDialogComponent } from './massage-dialog/massage-dialog.componen
     MatDialogModule,
     ReactiveFormsModule,
     CommonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatExpansionModule
   ],
   providers: [
     AuthService,
