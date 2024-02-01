@@ -8,6 +8,9 @@ import { ListeFestivalsComponent } from './liste-festivals/liste-festivals.compo
 import { ChoixPointDepartComponent } from './choix-point-depart/choix-point-depart.component';
 import { PanierComponent } from './panier/panier.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { ElementComponent } from './element/element.component';
+import { CheckoutFormComponent } from './checkout-form/checkout-form.component';
+import { UpdateAchatComponent } from './update-achat/update-achat.component';
 
 
 const routes: Routes = [
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'pointDepart', component: ChoixPointDepartComponent},
   { path: 'panier', component: PanierComponent},
   { path: 'connexion', component: ConnexionComponent},
+  { path: 'element', component: ElementComponent},
+  { path: 'payment', component: CheckoutFormComponent},
+  { path: 'updating/:id', component: UpdateAchatComponent},
 
   { path: '**', redirectTo: '/accueil', pathMatch: 'full' },
 

@@ -2,6 +2,13 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: 'Open Sans Semi-Bold';
+    font-size: large;
+  }
+  p {
+    font-family: 'Open Sans Semi-Bold';
+    font-size: large;
+    margin: 10px;
   }
 .row {
     display: -ms-flexbox; /* IE10 */
