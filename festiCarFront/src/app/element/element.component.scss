@@ -7,26 +7,59 @@
     -webkit-box-shadow: 2px 2px 15px -4px #000000; 
     box-shadow: 2px 2px 15px -4px #000000;
     margin: 20px;
+    font-family: Arial;
+    font-size: medium;
+  } 
+  ul{
+    padding-left: 0px;
+  }
+  .festival-title{
+    font-family:  'Open Sans Semi-Bold';
+    font-size: x-large;
+    font-weight: bold;
+    
   }
   .festival-container {
       text-align: left;
       display: flex;
    
+  }
+    div .mat-icon{
+      color: red;
+    }
+    .festival-delete{
+      display: flex;
+      justify-content: space-between;
     }
     .festivalImage{
-      flex: 0 0 auto;
-      margin-right: -373px; 
+      margin-right: 20px;
    
     }
     .festivalImage img {
-      max-width: 30%; 
+      max-width: 200px;
       height: auto; 
+      border-radius: 10px; 
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
-    ul, li {
+
+    .covoiturage-details {
+      font-family: Arial;
       font-style: normal;
     }
     .prix-total-container {
         display: flex;
         justify-content: space-between;
-    
+        font-family: Arial;
+        font-style: normal;
+        font-size: medium;
       }
+
+  ul, li {
+    font-style: normal;
+  }
+  .prix-total-container {
+      display: flex;
+      justify-content: space-between;
+  
+    }
+

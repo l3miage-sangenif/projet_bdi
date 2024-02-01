@@ -1,0 +1,36 @@
+<p>{{shareData.getupdateAchat().numAchat}}</p>
+
+<div class="page-title">Modifier vos covoiturages</div>
+
+<div class="container-fluid">
+
+        <ul class="list-unstyled multi-steps">
+          <div (click)=" alleraccueil()"><li>Choisir un festival  </li></div>
+          <div  class="is-active" > <li > Choisir un covoiturage</li></div> 
+         <div (click)="allerpanier()" > <li> Payer</li></div>
+          </ul>
+</div>
+
+<div class="festival-container">
+    <div class="festivalImage" *ngIf="festival">
+        <a href="http://{{festival.siteWeb}}" target="_blank">
+          <img [src]="festiCarService.getUrl(festival)" >
+        </a>
+      </div>
+      <div class="festivalDetails">
+                <h1 class="event-title"> {{ festival.nomManifestation }} </h1>
+                <ul>
+    
+                <i> <b> Domain :</b>  {{festival.sousDomaine.domaine.nomDomaine}} </i>
+                <i><b> Date de début :</b> {{festival.dateDebut}} </i>
+                <i><b> Date de fin :</b> {{festival.dateFin}} </i>
+                <i><b> Lieu : </b>{{festival.commune.nomCommune}} </i>
+                <i><b> Tarif : </b>{{festival.tarif}}€ </i>
+                <i><b> Site Web :</b> <a href="http://{{festival.siteWeb}}" target="_blank">{{festival.siteWeb}}</a></i>
+              </ul>
+              <hr>
+             <div  class="places-restantes"> <mat-icon>whatshot</mat-icon><span> {{festival.nbPlaceRestante}} places restantes</span> </div>
+           </div>
+</div>
+
+
