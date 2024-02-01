@@ -9,6 +9,8 @@ import org.springframework.stereotype.Service;
 import fr.uga.miage.m1.DTO.Festival;
 import fr.uga.miage.m1.models.FestivalEntity;
 import fr.uga.miage.m1.repository.FestivalRepository;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import fr.uga.miage.m1.exception.EntityNotFoundRestException;
 import fr.uga.miage.m1.mapper.FestivalMapper;
 
@@ -69,6 +71,9 @@ public class FestivalService {
     }
 
     public Festival getFestivalById(final Long id) {
+        if (id==null) {
+            throw new EntityNotFoundException("festival  : " + id + " n'existe pas");
+        }
         return FestivalMapper.INSTANCE.toDto(repository.findById(id)
             .orElseThrow(() -> new EntityNotFoundRestException(String.format("Aucune entité n'a été trouvée pour festival [%s]", id),id.intValue()))
         );

@@ -134,22 +134,22 @@ public class AchatService {
 
     }
 
-     @Transactional
-    public Achat validateAchat(Long achatId) {
-        if (achatId == null) {
-            throw new IllegalArgumentException("Id Achat est nul");
-        }
-        AchatEntity achatEntity = achatRepository.findById(achatId)
+     
+    public Achat validateAchat(int achatId) {
+        
+        AchatEntity achatEntity = achatRepository.findById((long) achatId)
             .orElseThrow(() -> new EntityNotFoundException("Achat non trouvé: " + achatId));
         if (!achatEntity.getAchatValidee()) {
             achatEntity.setAchatValidee(true);
             achatRepository.save(achatEntity);
+            return AchatMapper.INSTANCE.toDto(achatRepository.save(achatEntity));
         } else {
             throw new IllegalStateException("Achat avec id " + achatId + " est déjà validé.");
         }
-        return AchatMapper.INSTANCE.toDto(achatRepository.save(achatEntity));
+        
     }
 
+    @Transactional
     public void deleteAchat(Long id){
         if(id != null ){
              Optional<AchatEntity> achat = achatRepository.findById(id);

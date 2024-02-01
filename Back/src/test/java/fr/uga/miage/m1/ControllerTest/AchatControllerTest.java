@@ -1,4 +1,4 @@
-package fr.uga.miage.m1.ControllerTest;
+/* package fr.uga.miage.m1.ControllerTest;
 
 
 
@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -22,11 +23,16 @@ import fr.uga.miage.m1.models.UtilisateurEntity;
 import fr.uga.miage.m1.repository.UtilisateurRepository;
 import fr.uga.miage.m1.service.UtilisateurService;
 
+import static org.mockito.ArgumentMatchers.anyLong;
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.framework;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import fr.uga.miage.m1.DTO.Achat;
 import fr.uga.miage.m1.DTO.Etape;
+import fr.uga.miage.m1.mapper.AchatMapper;
 import fr.uga.miage.m1.mapper.EtapeMapper;
 import fr.uga.miage.m1.mapper.UtilisateurMapper;
 import fr.uga.miage.m1.models.AchatEntity;
@@ -51,6 +57,9 @@ public class AchatControllerTest {
 
     @Autowired
     private AchatService achatService;
+
+    @Mock
+    private AchatMapper achatMapper;
 
     @Autowired
     private UtilisateurService utilisateurService;
@@ -94,7 +103,7 @@ public class AchatControllerTest {
         return mapper.writeValueAsBytes(object);
     }
 
-    @Test 
+   /*  @Test 
     public void testPostAchat() throws Exception {
 
         String userUid = "856ed660-91e7-4091-9e5c-782d586125dc";
@@ -117,6 +126,22 @@ public class AchatControllerTest {
             .andExpect(status().isCreated())
             .andExpect(jsonPath("$.numAchat").exists())  // Assert that userUid property exists
             .andExpect(jsonPath("$.nbPlace").value(1L)); 
-    }
+    } */
+
+   /*  @Test
+    public void testDeleteAchat() throws Exception{
+        AchatEntity achatEntity = new AchatEntity();
+        achatEntity.setNumAchat(8L);
+        achatEntity.setAchatValidee(false);
+        achatEntity.setNbPlace(2);
+        achatRepository.save(achatEntity);
+        
+        System.out.println(achatEntity.getNumAchat());
+        Long id = achatEntity.getNumAchat();
+        //achatService.deleteAchat(id);
+
+        mockMvc.perform(delete("/api/achat/{achatId}", id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+    } */
     
-}

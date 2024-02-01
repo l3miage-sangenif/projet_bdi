@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import fr.uga.miage.m1.DTO.Festival;
 
 import fr.uga.miage.m1.service.FestivalService;
+import jakarta.transaction.Transactional;
 
 @RestController
 @RequiredArgsConstructor
@@ -28,7 +29,7 @@ public class FestivalController {
     private final FestivalService festivalService;
 
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/festival")
+    @GetMapping("/festival")@Transactional
     public List<Festival> getAllFestival(
         @RequestParam(required=false) String name,
         @RequestParam(required=false) String domaine,
