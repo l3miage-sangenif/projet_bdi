@@ -1,76 +1,78 @@
 
 <div class="point-depart-container">
 
-<div class="cart-container">
-
-  <button class="close" (click)="close()">✖</button>
-
-    <h1 class="festival-date"><b> Choisir un point de départ</b> </h1>
-   
- <div class="trajet-container">
+  <div class="cart-container">
+  
+    <button class="close" (click)="close()">✖</button>
+  
+      <h1 class="festival-date"><b> Choisir un point de départ</b> </h1>
      
-         <div class="box-location">
-             <div class="Point-depart">
-               Choisir point de départ :
+   <div class="trajet-container">
+       
+           <div class="box-location">
+               <div class="Point-depart">
+                 Choisir point de départ :
+               </div>
+           <div class="etapes">   
+            
+               <label class="radio" *ngFor="let etape of data.etape; let i = index">
+                <input name="radio" type="radio" min="1" (change)="onStepChange(etape, numberOfPlaces)" [checked]="selectedStep === etape" [value]="etape">
+                    <span>  {{ data.etape[i].lieuCovoiturage.nomLieu  }} </span>
+                 </label>
+                
+            </div> 
+            <div class="Point-arrive">
+               Point d' arriver : {{data.festival.commune.nomCommune }}
              </div>
-         <div class="etapes">   
           
-             <label class="radio" *ngFor="let etape of data.etape; let i = index">
-              <input name="radio" type="radio" min="1" (change)="onStepChange(etape, numberOfPlaces)" [checked]="selectedStep === etape" [value]="etape">
-                  <span>  {{ data.etape[i].lieuCovoiturage.nomLieu  }} </span>
-               </label>
-              
-          </div> 
-          <div class="Point-arrive">
-             Point d' arriver : {{data.festival.commune.nomCommune }}
-           </div>
-        
+              </div>
+          
+     
+   </div>
+            <div class="prix-container">
+               <div class="prix-passanger">
+                Prix par passager : 
+               </div>
+               <div [(ngModel)]="selectedPrice" class="prix">
+              {{ prix() }}€
+                 </div>
+           
+              </div>
+   <div class="place-container">
+       <div  class="prix-passanger">
+           Nombre de places : 
+       </div>
+      
+      <div class="input-container">
+        <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1" max={{data.nbPlace}} >
+      </div>
+   
+   </div>
+  
+        <div class="tarif-container">
+          <div class="prix-passanger">
+         Tarif de festival : 
+          </div>
+          <div [(ngModel)]="selectedPrice" class="prix">
+        {{  data.festival.tarif  }} €
             </div>
+  
+        </div>
+   <div class="prix-total-container">
+       <div class="prix-passanger">
+           Prix total : 
+       </div>
+   
+       <div class="prix-total">
+        {{ calculateTotal() }}€
+         </div>
+   </div>
+   
         
    
- </div>
-          <div class="prix-container">
-             <div class="prix-passanger">
-              Prix par passager : 
-             </div>
-             <div [(ngModel)]="selectedPrice" class="prix">
-            {{ prix() }}€
-               </div>
-         
-            </div>
- <div class="place-container">
-     <div  class="prix-passanger">
-         Nombre de places : 
-     </div>
-    
-    <div class="input-container">
-      <input [(ngModel)]="numberOfPlaces" type="number" id="nombreDePlaces" value="1" min="1" max={{data.nbPlace}} >
-    </div>
- 
- </div>
-
-      <div class="tarif-container">
-        <div class="prix-passanger">
-       Tarif de festival : 
-        </div>
-        <div [(ngModel)]="selectedPrice" class="prix">
-      {{  data.festival.tarif  }} €
-          </div>
-
-      </div>
- <div class="prix-total-container">
-     <div class="prix-passanger">
-         Prix total : 
-     </div>
- 
-     <div class="prix-total">
-      {{ calculateTotal() }}€
-       </div>
- </div>
- 
- <div class="button">
-     <button mat-icon-button class="ajouter" (click)="close()" >Ajouter au panier</button>
- </div>
- 
- </div>
- 
+   <div class="button">
+       <button mat-icon-button class="ajouter" (click)="close()" >Ajouter au panier</button>
+   </div>
+   
+   </div>
+   
