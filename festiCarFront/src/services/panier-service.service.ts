@@ -1,41 +1,52 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Achat } from 'src/models/Achat';
+import { Festival } from 'src/models/Festival';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PanierServiceService {
   private panier: BehaviorSubject<Achat[]> = new BehaviorSubject<Achat[]>([]);
+  private panierGroupe : BehaviorSubject<{ festival: Festival, achats: any[], numAchats: number[] }[]> =  new BehaviorSubject< { festival: Festival, achats: any[], numAchats: number[] }[]>([]);
   nombreElementsPanier: number = 0;
    
   showPanier = false;
   
-  constructor() { }
-
+  constructor() { 
+    const storedPanier = localStorage.getItem('panier');
+    this.panier = new BehaviorSubject<Achat[]>(storedPanier ? JSON.parse(storedPanier) : []);
+    this.panierGroupe = new BehaviorSubject<{ festival: Festival, achats: any[], numAchats: number[] }[]>([]);
+    this.nombreElementsPanier = this.panier.getValue().length;
+    this.updateShowPanier();
+  }
 
   viderPanier(): void {
     this.nombreElementsPanier = 0;
-    this.showPanier = false;
     this.panier.next([]);
+    localStorage.removeItem('panier'); // Supprimer le panier du stockage local
+    this.updateShowPanier();
   }
 
    
-   ajouterElementAuPanier(achat: Achat): void {
+  ajouterElementAuPanier(achat: Achat): void {
     const panierActuel = this.panier.value;
     panierActuel.push(achat);
     this.panier.next(panierActuel);
     this.nombreElementsPanier++;
+    localStorage.setItem('panier', JSON.stringify(panierActuel)); 
+    this.updateShowPanier();
   }
 
   
-  retirerElementDuPanier(numAchat: number): void {
-    const panierActuel = this.panier.value;
-    const index = panierActuel.findIndex(element => element.numAchat === numAchat);
+  retirerElementDuPanier(idFestival: number): void {
+    const panierActuel = this.panierGroupe.value;
+    const index = panierActuel.findIndex(element => element.festival.idFestival === idFestival);
     if (index !== -1) {
       panierActuel.splice(index, 1);
-      this.panier.next(panierActuel);
+      this.panierGroupe.next(panierActuel);
       this.nombreElementsPanier--;
+      this.updateShowPanier();
     }
   }
 
@@ -49,34 +60,38 @@ export class PanierServiceService {
   }
 
 
+  regrouperParFestival(): { festival: Festival, achats: any[], numAchats: number[] }[] {
+    const panier = this.getPanier().getValue();
+    const festivalsMap = new Map<number, { festival: Festival, achats: any[], numAchats: number[] }>();
 
-
-
-
-  // Fonction pour agréger les étapes d'achat pour les festivals ayant le même idFestival
-  aggregerEtapesAchat(): any[] {
-    const panierActuel = this.panier.getValue();
-
-    // Utiliser un objet pour stocker les étapes d'achat agrégées par idFestival
-    const festivals: { [idFestival: number]: any } = {};
-
-    // Parcourir le panier et agréger les étapes d'achat
-    panierActuel.forEach(achat => {
-      const idFestival = achat.etapeAchat[0]?.etape?.offreCovoiturage?.festival?.idFestival;
-      if (idFestival && achat.etapeAchat.length > 0) {
-        if (!festivals[idFestival]) {
-          festivals[idFestival] = { ...achat }; // Initialiser avec les données du premier achat
-        } else {
-          // Ajouter les étapes d'achat de l'achat actuel à l'achat agrégé existant
-          festivals[idFestival].etapeAchat.push(...achat.etapeAchat);
-        }
-      }
+    panier.forEach(achat => {
+        achat.etapeAchat.forEach(etapeAchat => {
+            const festivalId = etapeAchat.etape.offreCovoiturage.festival.idFestival;
+            if (!festivalsMap.has(festivalId)) {
+                festivalsMap.set(festivalId, { 
+                    festival: etapeAchat.etape.offreCovoiturage.festival, 
+                    achats: [], 
+                    numAchats: [] 
+                });
+            }
+            festivalsMap.get(festivalId).achats.push(etapeAchat);
+            festivalsMap.get(festivalId).numAchats.push(achat.numAchat); 
+        });
     });
 
-    // Convertir l'objet en tableau
-    const result = Object.keys(festivals).map(key => festivals[key]);
-    return result;
-  }
+    return Array.from(festivalsMap.values());
+}
+
+
+getPanierGroupe(): BehaviorSubject<{ festival: Festival, achats: any[], numAchats: number[] }[]> {
+  return this.panierGroupe;
+}
+
+setPanierGroupe(panierGroupe : { festival: Festival, achats: any[], numAchats: number[] }[]){
+  this.panierGroupe.next(panierGroupe);
+}
+
+
 
 
 

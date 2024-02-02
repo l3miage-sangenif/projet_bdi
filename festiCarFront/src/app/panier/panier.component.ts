@@ -8,7 +8,8 @@ import { ConnexionComponent } from '../connexion/connexion.component';
 import { Router } from '@angular/router';
 import { PanierServiceService } from 'src/services/panier-service.service';
 import { FestiCarService } from 'src/services/festi-car.service';
-import { forkJoin } from 'rxjs';
+import { Festival } from 'src/models/Festival';
+import { MessageDialogService } from 'src/services/message-dialog.service';
 
 
 @Component({
@@ -20,36 +21,41 @@ export class PanierComponent {
 
   panier: any[] = [];
   item: any
-  prixTotal: number;
+  prixTotal: number = 0;
+  panierGroupe : { festival: Festival, achats: any[], numAchats: number[] }[];
 
-  constructor ( private dialog: MatDialog, public authService: AuthService, private location: AngularLocation ,
+  constructor (private messageDialog : MessageDialogService, private dialog: MatDialog, public authService: AuthService, private location: AngularLocation ,
     private router: Router, public panierService : PanierServiceService, private festiCarService : FestiCarService){
 
-      this.panierService.getPanier().subscribe(panierData => {
-        this.panier = panierData;
-        console.log('panier partagé dans le composant panier', this.panier);
+      this.panierService.getPanierGroupe().subscribe(panierGroupeData =>{
+        this.panierGroupe = panierGroupeData;
+        console.log('paniergroupe partagé dans le composant panier', this.panierGroupe);
       });
+
+   
     }
+
     ngOnInit(): void {
       this.calculeTotal();
     }
 
   onCreate(){
     if(this.authService.user){
-      this.festiCarService.validateAchatById(this.panier[0].numAchat).subscribe(
-        {
-          next: (response) => {
-            console.error('element panier bien valider:', response);
-            this.dialog.open(PaymentDialogComponent, { 
-            });
-          
-          },
-          error: (error: any) => {
-            console.error('Error validation element panier:', error);
-          
-          }
-        }
-      );
+      this.panierGroupe.forEach(element => {
+        element.numAchats.forEach(numAchat => {
+          this.festiCarService.validateAchatById(numAchat.toString()).subscribe({
+            next: (response) => {
+              console.log('Achat validé avec succès:', response);
+                    this.dialog.open(PaymentDialogComponent, { });
+                    this.panierService.viderPanier();
+            },
+            error: (error) => {
+              console.error('Erreur lors de la validation de l\'achat:', error);
+              // Traitez l'erreur si nécessaire
+            }
+          });
+        });
+      });
       
     }
     else{
@@ -60,16 +66,31 @@ export class PanierComponent {
     }
   }
 
+  showAndCloseMessageDialog(): void {
+    this.messageDialog.openDialog('Désolé, il y a des places qui ne sont plus disponibles.\nVeuillez revoir vos choix svp.');
+    // Fermer le dialogue après 3 secondes (3000 millisecondes)
+    setTimeout(() => {
+      this.messageDialog.closeDialog();
+      this.router.navigate(['/accueil']);
+    }, 2050);
+  }
+
   calculeTotal(): void{
-    this.prixTotal = this.panier.reduce((total, element) => {
-      return total + this.calculeElementTotal(element);
-    }, 0);
+    this.panierGroupe.forEach(element => {
+      element.achats.forEach(achat => {
+        this.prixTotal = this.prixTotal + this.calculPassAchat(achat, element.festival)
+      })
+    })
   }
   calculeElementTotal(element: any): number {
     return element.etapeAchat.reduce((elementTotal, etapeAchat) => {
       return elementTotal + (etapeAchat.nbPlace * etapeAchat.etape.prix);
     }, 0);
   }
+
+  calculPassAchat(achat : any, festival):number{
+    return  (achat.etape.prix + festival.tarif )* achat.nbPlace ;
+}
 
   alleraccueil(){
     this.router.navigate(['/accueil']);

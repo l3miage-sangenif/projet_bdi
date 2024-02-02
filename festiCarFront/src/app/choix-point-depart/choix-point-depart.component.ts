@@ -50,7 +50,7 @@ export class ChoixPointDepartComponent implements OnInit {
   calculateTotal(): number {
     if (this.numberOfPlaces && this.selectedStep) {
       this.selectedPrice = this.prix();
-      this.totalPrice = this.selectedPrice * this.numberOfPlaces + this.data.festival.tarif ;
+      this.totalPrice = (this.selectedPrice + this.data.festival.tarif) * this.numberOfPlaces ;
     } else {
       this.totalPrice = 0;
     }
