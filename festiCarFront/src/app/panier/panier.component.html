@@ -4,12 +4,12 @@
         <br /><br />
         <ul class="list-unstyled multi-steps">
           <a routerLink="/accueil"><li>Choisir un festival  </li></a>
-          <a (click)="retournerFestival()" > <li> Choisir une covoiturage</li></a> 
+          <a (click)="retournerFestival()" > <li> Choisir un covoiturage</li></a> 
          <a  class="is-active"> <li   >Payer</li></a>
         </ul>
       </div>
-    <ng-container *ngFor="let element of panier">
-      <app-element [element]="element"></app-element>    
+    <ng-container *ngFor="let element of panierGroupe">
+      <app-element [elementDuPanierGroupe]="element"></app-element>    
     </ng-container>
     <div class="total-container">
        <b>  Prix total : </b>  
@@ -24,5 +24,6 @@
 <ng-template  #panierVide>
   <div class="panier-vide">Votre panier est vide.</div>
 </ng-template>
+
        
    
