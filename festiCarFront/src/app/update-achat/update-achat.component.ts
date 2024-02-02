@@ -5,6 +5,7 @@ import { ShareDataService } from 'src/services/share-data.service';
 import { Location as AngularLocation } from '@angular/common';
 import { FestiCarService } from 'src/services/festi-car.service';
 import { Festival } from 'src/models/Festival';
+import { EtapeAchat } from 'src/models/EtapeAchat';
 
 
 @Component({
@@ -16,7 +17,8 @@ export class UpdateAchatComponent {
   achatToUpdate : Achat;
   festivalId: number;
   festival: Festival;
-
+  etapeAchat: EtapeAchat;
+  
   constructor(public festiCarService : FestiCarService, private route: ActivatedRoute, public shareData : ShareDataService, private router : Router,private location: AngularLocation, public festicarService : FestiCarService){
     this.achatToUpdate = this.shareData.getupdateAchat();
     console.log('achatToUpdate: ', this.achatToUpdate);
@@ -29,6 +31,7 @@ export class UpdateAchatComponent {
 
   alleraccueil(){
     this.location.back();
+
   }
 
   ngOnInit(): void {
@@ -51,5 +54,8 @@ export class UpdateAchatComponent {
     );
   }
 
+ 
+  
+  
 
 }

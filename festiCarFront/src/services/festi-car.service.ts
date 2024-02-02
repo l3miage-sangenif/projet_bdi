@@ -142,12 +142,12 @@ export class FestiCarService {
   }
 
 
-getCovoituragefiltered(idFestival: number, nbPlace: number, longitudeCovoiturage: number, latitudeCovoiturage: number): Observable<any> {
+getCovoituragefiltered(idFestival: number, nbPlace: number, modele: string ,longitudeCovoiturage: number, latitudeCovoiturage: number): Observable<any> {
   const url = `${this.baseUrl}/covoiturage/${idFestival}`;
   let params = new HttpParams();
  
   if (nbPlace) params = params.set('nbPlace', nbPlace);
-  
+  if (modele) params = params.set('modele', modele);
   if (longitudeCovoiturage) params = params.set('longitudeCovoiturage', longitudeCovoiturage.toString());
   if (latitudeCovoiturage) params = params.set('latitudeCovoiturage', latitudeCovoiturage.toString());
 
