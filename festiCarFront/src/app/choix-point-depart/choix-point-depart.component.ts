@@ -22,6 +22,8 @@ interface EtapeSelected {
 })
 
 export class ChoixPointDepartComponent implements OnInit {
+  panelOpenState = false;
+
   selectedStep: Etape;
   selectedPrice: number =0;
   numberOfPlaces: number ;
@@ -50,7 +52,7 @@ export class ChoixPointDepartComponent implements OnInit {
   calculateTotal(): number {
     if (this.numberOfPlaces && this.selectedStep) {
       this.selectedPrice = this.prix();
-      this.totalPrice = this.selectedPrice * this.numberOfPlaces + this.data.festival.tarif ;
+      this.totalPrice = (this.selectedPrice + this.data.festival.tarif) * this.numberOfPlaces ;
     } else {
       this.totalPrice = 0;
     }
@@ -60,7 +62,6 @@ export class ChoixPointDepartComponent implements OnInit {
   showAndCloseMessageDialog(): void {
     this.messageDialogService.openDialog('Votre choix a bien été ajouté à votre panier.');
 
-    // Fermer le dialogue après 3 secondes (3000 millisecondes)
     setTimeout(() => {
       this.messageDialogService.closeDialog();
     }, 1050);
@@ -71,10 +72,8 @@ export class ChoixPointDepartComponent implements OnInit {
     this.selectedStep = etape;
     console.log('etape choisie par lutilisateur dans fonction onstepChange:', etape);
     this.selectedPrice = etape.prix;
-    console.log('selectedStep avant if choisie par lutilisateur dans fonction onstepChange:', this.selectedStep);
     if (this.selectedStep) {
       this.selectedStep.nbPlace = numberOfPlaces;
-      console.log('selectedStep choisie par lutilisateur dans fonction onstepChange:', this.etapeSelected);
       this.calculateTotal(); // Mettre à jour le total lorsque l'utilisateur change l'étape
     }
   }

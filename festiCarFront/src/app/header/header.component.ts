@@ -34,6 +34,8 @@ export class HeaderComponent {
   }
 
   allerpanier(){
+      console.log('panier traité: ' , [this.panierService.regrouperParFestival()]);
+      this.panierService.setPanierGroupe(this.panierService.regrouperParFestival());
       this.router.navigate(['/panier']);
   }
 

@@ -1,42 +1,44 @@
-<div class="details" *ngFor="let etapeAchat of element.etapeAchat">
+<div class="details" >
 
     <div class="festival-delete" >
         <div class="festival-container">
             <div class="festivalImage">
-                <img [src]="festiCarService.getUrl(etapeAchat.etape.offreCovoiturage.festival)" >
+                <img [src]="festiCarService.getUrl(elementDuPanierGroupe.festival)" >
             </div>
             <div class="festival-titre">
-                <h3><b> {{etapeAchat.etape.offreCovoiturage.festival.nomManifestation}} </b></h3> 
+                <h3><b> {{elementDuPanierGroupe.festival.nomManifestation}} </b></h3> 
                 <ul>
-                    <i>date : {{etapeAchat.etape.offreCovoiturage.festival.dateDebut}}</i> <br>
-                    <i>Lieu: {{etapeAchat.etape.offreCovoiturage.festival.commune.nomCommune}}</i>
+                    <i>date : {{elementDuPanierGroupe.festival.dateDebut}}</i> <br>
+                    <i>Lieu: {{elementDuPanierGroupe.festival.commune.nomCommune}}</i>
                 </ul>    
             </div>
         </div>
-        <div class="updatePass" (click)="OpenUpdateconfirmer(etapeAchat.etape.offreCovoiturage.festival.idFestival,element.numAchat)">
+        <!-- <div class="updatePass" (click)="OpenUpdateconfirmer(etapeAchat.etape.offreCovoiturage.festival.idFestival,element.numAchat)">
             <mat-icon>update</mat-icon>
-        </div>
-        <div (click)="Openconfirmer(element.numAchat)"><mat-icon>delete</mat-icon></div> 
+        </div>-->
+        <div (click)="Openconfirmer(elementDuPanierGroupe.achats, elementDuPanierGroupe.festival)"><mat-icon>delete</mat-icon></div> 
     </div> 
         
 
    <hr>
-   <div class="covoiturage-details">
-     <h3><b> Détail de couvoiturage </b></h3> 
-            <ul>
-                <i>Nom de covoitureur : {{etapeAchat.etape.offreCovoiturage.conducteur.prenom }} {{etapeAchat.etape.offreCovoiturage.conducteur.nom}}</i> <br>
-                <i>Point de départ : {{etapeAchat.etape.lieuCovoiturage.adresseLieu }}</i><br>
-                <i>Point d'arrivé' : {{etapeAchat.etape.offreCovoiturage.festival.commune.nomCommune }}</i><br>
-                <i>Nombre de pass : {{etapeAchat.nbPlace }}</i>
-            </ul>    
-    </div>         
-    <div class="prix-total-container">
-        <div class="prix-passanger">
-           <b> Prix total pour {{etapeAchat.nbPlace }} pass : </b>
-        </div>
-    
-        <div class="prix-total">
-            <b>     {{ calculTotalPass() }}€ </b>
-        </div>
-    </div>
+   <ng-container *ngFor="let achat of elementDuPanierGroupe.achats">
+        <div class="covoiturage-details" >
+            <h3><b> Détail de couvoiturage </b></h3>
+                <ul>
+                    <i>Conducteur :   {{achat.etape.offreCovoiturage.conducteur.prenom }}  {{achat.etape.offreCovoiturage.conducteur.nom}}</i> <br>
+                    <i>Point de départ :   {{achat.etape.lieuCovoiturage.nomLieu }}</i><br>
+                    <i>Point d'arrivé' :   {{achat.etape.offreCovoiturage.festival.commune.nomCommune }}</i><br>
+                    <i>Nombre de pass :   {{achat.nbPlace }}</i>
+                </ul>    
+        </div>         
+        <div class="prix-total-container">
+            <div class="prix-passanger">
+                <b> Prix total pour {{achat.nbPlace  }} pass : </b>
+            </div>
+        
+            <div class="prix-total">
+                <b>     {{ calculTotalPass(achat) }}€ </b>
+            </div>
+        </div><br>
+   </ng-container>
 </div>   

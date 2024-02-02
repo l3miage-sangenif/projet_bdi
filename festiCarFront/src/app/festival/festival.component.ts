@@ -29,6 +29,7 @@ export class FestivalComponent implements OnInit, OnDestroy {
   distanceRechercheCovoiturage: any;
   festivalsSubscription: Subscription;
   showMessage: boolean =false;
+  modele: string='';
 
    constructor(private route: ActivatedRoute, public festiCarService : FestiCarService, private sharedDataService: ShareDataService,
      private cdr: ChangeDetectorRef,  public authService: AuthService, private panierService : PanierServiceService, 
@@ -108,15 +109,20 @@ export class FestivalComponent implements OnInit, OnDestroy {
       festivalId: this.festivalId,
       pass: this.festivalPlace,
       addresseFestivalierlng: this.addresseFestivalierlng,
-      addresseFestivalierlat:  this.addresseFestivalierlat
+      addresseFestivalierlat:  this.addresseFestivalierlat,
+      modele: this.modele
   
     };
+    this.addresseFestivalierlng=0;
+    this.addresseFestivalierlat= 0;
     this.festivalsSubscription = this.festiCarService.getCovoituragefiltered(
       searchCriteria.festivalId,
       searchCriteria.pass,
+      searchCriteria.modele,
       searchCriteria.addresseFestivalierlng,
       searchCriteria.addresseFestivalierlat
     )
+
     .subscribe({
       next: (data: any) => {
         if (data && data.length > 0){

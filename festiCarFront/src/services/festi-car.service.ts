@@ -9,7 +9,7 @@ import { Festival } from 'src/models/Festival';
 })
 export class FestiCarService {
 
-  baseUrl = ' http://129.88.210.61:8080/api';
+  baseUrl = ' https://129.88.210.69:8080/api';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -142,12 +142,12 @@ export class FestiCarService {
   }
 
 
-getCovoituragefiltered(idFestival: number, nbPlace: number, longitudeCovoiturage: number, latitudeCovoiturage: number): Observable<any> {
+getCovoituragefiltered(idFestival: number, nbPlace: number, modele: string ,longitudeCovoiturage: number, latitudeCovoiturage: number): Observable<any> {
   const url = `${this.baseUrl}/covoiturage/${idFestival}`;
   let params = new HttpParams();
  
   if (nbPlace) params = params.set('nbPlace', nbPlace);
-  
+  if (modele) params = params.set('modele', modele);
   if (longitudeCovoiturage) params = params.set('longitudeCovoiturage', longitudeCovoiturage.toString());
   if (latitudeCovoiturage) params = params.set('latitudeCovoiturage', latitudeCovoiturage.toString());
 

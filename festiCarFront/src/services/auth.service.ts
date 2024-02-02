@@ -1,5 +1,5 @@
 import { Injectable} from '@angular/core';
-import {FacebookAuthProvider, GoogleAuthProvider, User, getAuth, signInWithPopup, signOut} from 'firebase/auth';
+import {FacebookAuthProvider, GoogleAuthProvider, User, browserSessionPersistence, getAuth, signInWithPopup, signOut} from 'firebase/auth';
 import { PanierServiceService } from './panier-service.service';
 
 interface UserInfoForPayment {
@@ -13,14 +13,28 @@ interface UserInfoForPayment {
 })
 export class AuthService {
 
-  
+   
   user?: User;
   photo : string | null = "";
   userId : string | undefined;
   userName : string | undefined;
 
+  constructor(private panierService: PanierServiceService) {
+    const auth = getAuth();
+    auth.setPersistence(browserSessionPersistence); 
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.user = user;
+        this.photo = this.user.photoURL;
+        this.userId = this.user.uid;
+        this.userName = this.user.displayName;
+      } else {
+        this.user = null;
+      }
+    });
+  }
 
-  constructor(private panierService: PanierServiceService) {}
+ 
 
   async facebookAuth() {
     const auth = getAuth();
