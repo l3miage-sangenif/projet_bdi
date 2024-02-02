@@ -49,19 +49,31 @@ export class ConfirmDeleteComponent {
   //   });
   // }
   delete(){
-    const { numAchat, festival } = this.data;
+    // const { numAchat, festival } = this.data;
 
-    numAchat.forEach(num => {
-      this.festiCarService.deleteAchatById(num.toString()).subscribe({
-        next: (response) => {
-          console.log('Suppression réussie pour le numAchat:', num);
-          // Vous pouvez ajouter ici d'autres logiques après la suppression réussie
-        },
-        error: (error) => {
-          console.error('Erreur lors de la suppression pour le numAchat:', num, error);
-          // Vous pouvez gérer ici les erreurs lors de la suppression
-        }
-      });
-    });
+    // numAchat.forEach(num => {
+    //   this.festiCarService.deleteAchatById(num.toString()).subscribe({
+    //     next: (response) => {
+    //       console.log('Suppression réussie pour le numAchat:', num);
+    //       // Vous pouvez ajouter ici d'autres logiques après la suppression réussie
+    //     },
+    //     error: (error) => {
+    //       console.error('Erreur lors de la suppression pour le numAchat:', num, error);
+    //       // Vous pouvez gérer ici les erreurs lors de la suppression
+    //     }
+    //   });
+    // });
+
+    // this.festiCarService.deleteAchatById(this.data.numAchat[0].toString()).subscribe({
+    //       next: (response) => {
+    //         console.log('Suppression réussie pour le numAchat:', response);
+    //         // Vous pouvez ajouter ici d'autres logiques après la suppression réussie
+    //       },
+    //       error: (error) => {
+    //         console.error('Erreur lors de la suppression pour le numAchat:', error);
+    //         // Vous pouvez gérer ici les erreurs lors de la suppression
+    //       }
+    //     });
+
   }
 }
