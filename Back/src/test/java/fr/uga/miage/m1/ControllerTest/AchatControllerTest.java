@@ -87,7 +87,7 @@ public class AchatControllerTest {
                .andExpect(status().isOk())
                .andExpect(content().contentType(MediaType.APPLICATION_JSON));
          
-    } */ //TU PEUX FAIRE L ID D'UN USER QUI A DES ACHAT DANS TA BASE
+    } */
 
     public static byte[] convertObjectToJsonBytes(Object object)
             throws IOException {
