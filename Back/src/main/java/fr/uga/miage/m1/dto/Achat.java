@@ -1,7 +1,7 @@
 package fr.uga.miage.m1.dto;
 
-import java.util.List;
 
+import java.util.List;
 
 import lombok.Builder;
 import lombok.Data;

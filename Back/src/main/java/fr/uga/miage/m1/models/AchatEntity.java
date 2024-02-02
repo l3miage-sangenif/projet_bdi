@@ -22,6 +22,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "Achat")
+
 public class AchatEntity {
     @Id
     @Column(name = "numAchat")

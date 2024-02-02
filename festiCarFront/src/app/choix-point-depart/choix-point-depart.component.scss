@@ -13,7 +13,7 @@
     text-align: left;
     display: flex;
     width: 700px;
-    height: 200px;
+    height: max-content;
     justify-content: space-between;
     padding: 15px;
     border-radius: 5px;
@@ -33,6 +33,17 @@
     box-shadow: 2px 2px 15px -4px #000000;
     margin: 10px;
 
+  }
+   .tarif-container{
+    display: flex;
+    width: 700px;
+    height: 50px;
+    justify-content: space-between;
+    padding: 15px;
+    border-radius: 5px;
+    -webkit-box-shadow: 2px 2px 15px -4px #000000; 
+    box-shadow: 2px 2px 15px -4px #000000;
+    margin: 10px;
   }
   .place-container {
     display: flex;
@@ -58,7 +69,7 @@
     margin: 10px;
 
   }
-
+  
   
   .ajouter{
     height: 56px;
@@ -68,6 +79,7 @@
     border-radius: 50px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     border: none;
+    margin: 10px;
   }
  
   

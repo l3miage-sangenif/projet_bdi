@@ -23,6 +23,7 @@ import fr.uga.miage.m1.request.CreateAchatRequest;
 import fr.uga.miage.m1.request.CreateEtapeAchatRequest;
 import fr.uga.miage.m1.request.UpdateAchatRequest;
 import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -57,7 +58,7 @@ public class AchatService {
         throw new EntityNotFoundRestException(String.format("Aucun achat n'a été trouvée pour l'id [%s]", id),id);
     }
 
-
+    @Transactional
     public Achat createAchat(CreateAchatRequest entity,String userUid) {
         int nbEtapeTotal=0;
         for (CreateEtapeAchatRequest e : entity.getEtape()) {
@@ -149,6 +150,7 @@ public class AchatService {
 
     }
 
+     @Transactional
     public Achat validateAchat(Long achatId) {
         if (achatId == null) {
             throw new IllegalArgumentException("Id Achat est nul");

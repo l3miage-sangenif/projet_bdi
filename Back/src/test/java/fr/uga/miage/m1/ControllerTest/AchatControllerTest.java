@@ -2,15 +2,10 @@ package fr.uga.miage.m1.ControllerTest;
 
 
 
-import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -27,49 +22,19 @@ import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import fr.uga.miage.m1.dto.Utilisateur;
 import fr.uga.miage.m1.models.UtilisateurEntity;
 import fr.uga.miage.m1.repository.UtilisateurRepository;
-import fr.uga.miage.m1.service.UtilisateurService;
-import fr.uga.miage.m1.dto.Achat;
-import fr.uga.miage.m1.dto.Etape;
-import fr.uga.miage.m1.mapper.EtapeMapper;
 import fr.uga.miage.m1.mapper.UtilisateurMapper;
-import fr.uga.miage.m1.models.AchatEntity;
-import fr.uga.miage.m1.models.EtapeAchatEntity;
-import fr.uga.miage.m1.models.EtapeEntity;
-import fr.uga.miage.m1.repository.AchatRepository;
-import fr.uga.miage.m1.repository.EtapeAchatRepository;
 import fr.uga.miage.m1.request.CreateAchatRequest;
 import fr.uga.miage.m1.request.CreateEtapeAchatRequest;
 
-import fr.uga.miage.m1.service.AchatService;
-import fr.uga.miage.m1.service.EtapeService;
-
-
-import org.springframework.http.*;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
 
 @SpringBootTest
 @AutoConfigureMockMvc
 public class AchatControllerTest {
 
-    @Autowired
-    private AchatService achatService;
-
-    @Autowired
-    private EtapeAchatRepository etapeAchatRepository;
-
-
-    @Autowired
-    private UtilisateurService utilisateurService;
 
     @Mock
     private UtilisateurMapper mapper;
-
-    @Autowired
-    private AchatRepository achatRepository;
 
     @Autowired private ObjectMapper objectMapper;
 

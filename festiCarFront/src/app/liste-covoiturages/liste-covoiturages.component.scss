@@ -1,3 +1,7 @@
+.liste-des-covoiturages{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+}
 .box-container {
   
     width: max-content;
@@ -8,6 +12,7 @@
     -webkit-box-shadow: 2px 2px 15px -4px #000000;
     box-shadow: 2px 2px 15px -4px #000000;
     margin: 40px;
+    font-family: Arial;
 
   }
   .time {
@@ -35,7 +40,9 @@
     margin-right: 10px;
 
   }
-
+  .point-arrive{
+    margin-left:3px;
+  }
   .trajet {
     display: flex;
     flex-direction: row;

@@ -39,7 +39,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { PaiementEffectueeComponent } from './paiement-effectuee/paiement-effectuee.component';
 import { PaymentDialogComponent } from './payment-dialog/payment-dialog.component';
 import { ConnexionComponent } from './connexion/connexion.component';
-
+import { CommonModule } from '@angular/common';
+import { ConfirmDeleteComponent } from './confirm-delete/confirm-delete.component';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { SendConfirmationSmsComponent } from './send-confirmation-sms/send-confirmation-sms.component';
+import { UpdateAchatComponent } from './update-achat/update-achat.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { ConfirmUpdateComponent } from './confirm-update/confirm-update.component';
+import { MassageDialogComponent } from './massage-dialog/massage-dialog.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -57,7 +65,13 @@ import { ConnexionComponent } from './connexion/connexion.component';
     CheckoutFormComponent,
     PaiementEffectueeComponent,
     PaymentDialogComponent,
-    ConnexionComponent
+    ConnexionComponent,
+    ConfirmDeleteComponent,
+    SendConfirmationSmsComponent,
+    UpdateAchatComponent,
+    SpinnerComponent,
+    ConfirmUpdateComponent,
+    MassageDialogComponent
 
   ],
   imports: [
@@ -83,9 +97,10 @@ import { ConnexionComponent } from './connexion/connexion.component';
     MatPaginatorModule,
     MatListModule,
     MatDialogModule,
-    ReactiveFormsModule
-
-
+    ReactiveFormsModule,
+    CommonModule,
+    MatAutocompleteModule,
+    MatExpansionModule
   ],
   providers: [
     AuthService,

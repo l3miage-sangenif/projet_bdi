@@ -2,8 +2,6 @@ package fr.uga.miage.m1.models;
 
 import java.time.Instant;
 
-import org.springframework.transaction.annotation.Transactional;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -11,7 +9,6 @@ import lombok.*;
 @Getter
 @Setter
 @Table(name = "Etape")
-@Transactional
 public class EtapeEntity {
 
     @Id

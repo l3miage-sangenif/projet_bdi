@@ -1,31 +1,44 @@
-<div class="details">
-    <div class="festival-container">
-        <div class="festivalImage">
-            <img src="/assets/images/festival1.png" >
+<div class="details" >
+
+    <div class="festival-delete" >
+        <div class="festival-container">
+            <div class="festivalImage">
+                <img [src]="festiCarService.getUrl(elementDuPanierGroupe.festival)" >
+            </div>
+            <div class="festival-titre">
+                <h3><b> {{elementDuPanierGroupe.festival.nomManifestation}} </b></h3> 
+                <ul>
+                    <i>date : {{elementDuPanierGroupe.festival.dateDebut}}</i> <br>
+                    <i>Lieu: {{elementDuPanierGroupe.festival.commune.nomCommune}}</i>
+                </ul>    
+            </div>
         </div>
-        <div class="festival-titre">
-             <h3><b> Worldwide Concert Lyon </b></h3> 
-            <ul>
-                <i>date : 12/06/2024</i> <br>
-                <i>Lieu: Lille</i>
-            </ul>    
-       </div>
-       
-   </div>
+        <!-- <div class="updatePass" (click)="OpenUpdateconfirmer(etapeAchat.etape.offreCovoiturage.festival.idFestival,element.numAchat)">
+            <mat-icon>update</mat-icon>
+        </div>-->
+        <div (click)="Openconfirmer(elementDuPanierGroupe.achats, elementDuPanierGroupe.festival)"><mat-icon>delete</mat-icon></div> 
+    </div> 
+        
+
    <hr>
-   <h3><b> Détail de couvoiturage </b></h3> 
-            <ul>
-                <i>Nom de covoitureur :</i> <br>
-                <i>Point de départ : </i><br>
-                <i>Nombre de pass : </i>
-            </ul>    
-    <div class="prix-total-container">
-        <div class="prix-passanger">
-           <b> Prix total pour 2 pass : </b>
-        </div>
-    
-        <div class="prix-total">
-            <b>     94.95€ </b>
-          </div>
-        </div>
-    </div>  
+   <ng-container *ngFor="let achat of elementDuPanierGroupe.achats">
+        <div class="covoiturage-details" >
+            <h3><b> Détail de couvoiturage </b></h3>
+                <ul>
+                    <i>Conducteur :   {{achat.etape.offreCovoiturage.conducteur.prenom }}  {{achat.etape.offreCovoiturage.conducteur.nom}}</i> <br>
+                    <i>Point de départ :   {{achat.etape.lieuCovoiturage.nomLieu }}</i><br>
+                    <i>Point d'arrivé' :   {{achat.etape.offreCovoiturage.festival.commune.nomCommune }}</i><br>
+                    <i>Nombre de pass :   {{achat.nbPlace }}</i>
+                </ul>    
+        </div>         
+        <div class="prix-total-container">
+            <div class="prix-passanger">
+                <b> Prix total pour {{achat.nbPlace  }} pass : </b>
+            </div>
+        
+            <div class="prix-total">
+                <b>     {{ calculTotalPass(achat) }}€ </b>
+            </div>
+        </div><br>
+   </ng-container>
+</div>   

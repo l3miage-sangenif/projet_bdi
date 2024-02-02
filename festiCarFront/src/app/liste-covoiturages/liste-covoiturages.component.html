@@ -1,5 +1,6 @@
-<div class="liste-des-covoiturages"  >
-  <div class="box-container" *ngFor="let offreCovoiturage of covoiturageTab" (click)="ouvrirCovoiturage()" >
+
+<div class="liste-des-covoiturages" *ngIf="covoiturageTab.length > 0" >
+  <div class="box-container" *ngFor="let offreCovoiturage of covoiturageTab" (click)="ouvrirCovoiturage(offreCovoiturage )" >
 
     <div class="box-location" *ngFor="let item of offreCovoiturage.etape">
       <div class="trajet-time">
@@ -9,21 +10,22 @@
         <div class="trajet">
           <ul>
   
-            <i ><mat-icon matPrefix>location_on</mat-icon>{{ item.lieuCovoiturage.adresseLieu  }}</i><br>
+            <i ><mat-icon matPrefix>location_on</mat-icon>{{ item.lieuCovoiturage.nomLieu  }}</i><br>
             <div class="vertical-line"></div>
-  
+            
           </ul>
         </div>
       </div>
         <div class="price" >
           <strong fxLayout="row" fxLayoutAlign="end center">{{ item.prix }} €</strong>
         </div>
-     
+       
     </div>
+  <i>Arrivé</i>  <i ><mat-icon class="point-arrive" matPrefix>location_on</mat-icon>{{ offreCovoiturage.festival.commune.nomCommune  }}</i><br>
     <hr>
     <div class="driver">
       <p>{{ offreCovoiturage.conducteur.prenom }} {{ offreCovoiturage.conducteur.nom }}</p>
-      <p>{{ offreCovoiturage.nbPlace }}</p>
+      <p>Places disonibles: {{ offreCovoiturage.nbPlace }}</p>
     </div>
   </div>
 </div>
