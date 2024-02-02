@@ -1,0 +1,13 @@
+INSERT INTO Domaine (nom_domaine) VALUES ('Musiques actuelles');
+INSERT INTO Domaine (nom_domaine) VALUES ('Transdisciplinaire');
+INSERT INTO Domaine (nom_domaine) VALUES ('Pluridisciplinaire Spectacle vivant');
+INSERT INTO Domaine (nom_domaine) VALUES ('Cirque et Arts de la rue');
+INSERT INTO Domaine (nom_domaine) VALUES ('Pluridisciplinaire Musique');
+INSERT INTO Domaine (nom_domaine) VALUES ('Musiques classiques');
+INSERT INTO Domaine (nom_domaine) VALUES ('Livre et littérature');
+INSERT INTO Domaine (nom_domaine) VALUES ('Arts plastiques et visuels');
+INSERT INTO Domaine (nom_domaine) VALUES ('Danse');
+INSERT INTO Domaine (nom_domaine) VALUES ('Cinéma et audiovisuel');
+INSERT INTO Domaine (nom_domaine) VALUES ('Domaines divers');
+INSERT INTO Domaine (nom_domaine) VALUES ('Théâtre');
+INSERT INTO Domaine (nom_domaine) VALUES ('Divers spectacle vivant');

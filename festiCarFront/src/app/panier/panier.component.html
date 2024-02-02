@@ -1,31 +1,28 @@
-<div class="panier-container">
-    <h1 class="festival-date"><b> Panier</b> </h1>
+<div class="panier-container" *ngIf="panierService.showPanier; else panierVide">
+    <h1 class="panier-titre"><b> Panier</b> </h1>
     <div class="container-fluid">
         <br /><br />
         <ul class="list-unstyled multi-steps">
-          <li>Choisir un festival</li>
-          <li>Choisir une covoiturage</li>
-          <li >Choisir point de départ</li>
-          <li  class="is-active" >Payer</li>
+          <a routerLink="/accueil"><li>Choisir un festival  </li></a>
+          <a (click)="retournerFestival()" > <li> Choisir une covoiturage</li></a> 
+         <a  class="is-active"> <li   >Payer</li></a>
         </ul>
       </div>
- 
-<app-element></app-element>
-
+    <ng-container *ngFor="let element of panier">
+      <app-element [element]="element"></app-element>    
+    </ng-container>
     <div class="total-container">
-        <div class="prix-passanger">
-          <b>  Prix total : </b>
-        </div>
-    
-        <div class="prix-total">
-            <b>     94.95€ </b>
-          </div>
-    
-    </div> 
+       <b>  Prix total : </b>  
+  
+      <div class="prix-total"> <b>  {{ prixTotal.toFixed(2) }} € </b>  </div>
+        </div> 
     <div class="buttons">
-        <button mat-icon-button class="ajouter" >Ajouter un festival</button>
-        <button mat-icon-button class="payer" (click)= "onCreate()">Payer</button>
-    </div>     
+      <button mat-icon-button class="ajouter" (click)="alleraccueil()">Ajouter un festival</button>
+      <button mat-icon-button class="payer" (click)= "onCreate()">Payer</button>
+  </div>
 </div> 
+<ng-template  #panierVide>
+  <div class="panier-vide">Votre panier est vide.</div>
+</ng-template>
        
    

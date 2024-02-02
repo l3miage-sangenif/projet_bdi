@@ -1,30 +1,26 @@
 
+<mat-toolbar class="full-width-toolbar" >
+  <button mat-icon-button class="logoFesticar" aria-label="Example icon-button with menu icon">
+    <img src="assets/images/logo-with-shadow.png" class="logoFesticar" alt="" (click)="alleraccueil()">
+  </button>
+  <span class="example-spacer"></span>
 
   <div class="header-elements">
-    <button mat-icon-button class="logoFesticar" aria-label="Example icon-button with menu icon">
-      <img src="assets/images/logo-with-shadow.png" class="logoFesticar" alt="">
-    </button>
-    <div class="custom-tab" >About us</div>
-    <div class="custom-tab" >Contact</div>
-    <mat-icon (click)="allerpanier()" >shopping_cart</mat-icon>
 
-    <div class="user-infos" *ngIf="!authService.user">
-      <button mat-icon-button class="example-icon" (click)="connexion()">Connecter</button>
-    <div class="custom-tab" >About us</div>
+    <div class="custom-tab" >Histoire</div>
     <div class="custom-tab" >Contact</div>
-    <mat-icon >shopping_cart</mat-icon>
+    <div class="panier" (click)="allerpanier()">
+      <div class="nombre-articles">{{ obtenirNombreElementsPanier() }}</div>
+      <mat-icon class="cart">shopping_cart</mat-icon>
+    </div>
+
+
     <div class="user-infos" *ngIf="!authService.user" >
-      <button mat-icon-button class="example-icon" (click)="authService.facebookAuth()" >
-        <img src="assets/images/facebook.png" class="connexionlogo" alt="" fxLayoutAlign="start end">
-        <span class="text-connexion">Connexion avec Facebook</span>
-      </button>
-      <button mat-icon-button class="example-icon" (click)="authService.googleConnection()">
-        <img src="assets/images/google.png" class="connexionlogo" alt="">
-        <span class="text-connexion">Connexion avec Google</span>
-      </button>
+      <button mat-icon-button class="example-icon" (click)="connexion()">Connexion</button>
     </div>
 
     <ng-container class="user-connected-infos" *ngIf="authService.user">
+
         <div>{{ authService.user.displayName }}</div>
         <button [matMenuTriggerFor]="menu" title="Afficher les options">
           <img mat-card-image referrerpolicy=“no-referrer” [src]="authService.photo" alt="Image" class="profil">
@@ -36,6 +32,24 @@
         </mat-menu>
     </ng-container>
   </div>
+
+
+     <div  class="img-name">  
+      
+      <button class="img-container" [matMenuTriggerFor]="menu" title="Afficher les options">
+        <img mat-card-image referrerpolicy=“no-referrer” [src]="authService.photo" alt="Image" class="profil">
+      </button>
+      <div class="name">{{ authService.user.displayName }}</div>
+     </div>
+     
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Paramètres</button>
+          <!--Pour se déconnecter-->
+        <button mat-menu-item (click)="authService.logOut()">Déconnexion</button>
+      </mat-menu>
+    </ng-container>
+  </div>
+  
 
 
 

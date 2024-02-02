@@ -1,9 +1,10 @@
 import { Component, OnDestroy } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { MatDialog} from '@angular/material/dialog';
 
 import { OffreCovoirage } from 'src/models/OffreCovoiturage';
-import { FestiCarService } from 'src/services/festi-car.service';
+import { ShareDataService } from 'src/services/share-data.service';
+import { ChoixPointDepartComponent } from '../choix-point-depart/choix-point-depart.component';
 
 @Component({
   selector: 'app-liste-covoiturages',
@@ -13,22 +14,12 @@ import { FestiCarService } from 'src/services/festi-car.service';
 export class ListeCovoituragesComponent implements OnDestroy {
   covoiturageTab? : OffreCovoirage[] = [];
   festivalsSubscription: Subscription;
-  festivalId: number;
+ 
 
-  constructor( private festiCarService : FestiCarService, private route: ActivatedRoute,){}
-
-
-  public getAllCovoiturageByFestivalId(festivalId : number): void {
-    this.festivalsSubscription = this.festiCarService.getAllCovoituragesByFestivalId(festivalId)
-    .subscribe({
-      next: (data: any) => {
+  constructor(private sharedDataService: ShareDataService, private dialog: MatDialog){
+    this.festivalsSubscription = this.sharedDataService.covoiturageTab$.subscribe((data) => {
         this.covoiturageTab = data;
-        console.log('covoiturages111 Data:', data);
-      },
-      error: (error: any) => {
-        console.error('Error fetching festivals:', error);
-      }
-    });
+      });
   }
 
   ngOnDestroy(): void {
@@ -37,15 +28,22 @@ export class ListeCovoituragesComponent implements OnDestroy {
     }
   }
 
-  ngOnInit(): void {
-    this.route.params.subscribe({
-      next: (params) => {
-        this.festivalId = +params['id'];
-        this.getAllCovoiturageByFestivalId(this.festivalId);
-      },
-      error: (error) => {
-        console.error('Error fetching festival ID:', error);
-      }
+  public extractHourFromDate(dateString: string): string {
+    const date = new Date(dateString);
+    const utcHour = date.getUTCHours().toString().padStart(2, '0');
+    const utcMinutes = date.getUTCMinutes().toString().padStart(2, '0');
+  
+    return `${utcHour}:${utcMinutes}`;
+ }
+
+
+
+  public ouvrirCovoiturage(offreCovoiturage: OffreCovoirage): void {
+    this.dialog.open(ChoixPointDepartComponent, {
+      data: offreCovoiturage ,
+      
     });
   }
+
+
 }

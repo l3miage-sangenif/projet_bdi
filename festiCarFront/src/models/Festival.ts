@@ -5,8 +5,8 @@ import { SousDomaine } from "./SousDomaine";
 export interface Festival {
   idFestival: number;
   nomManifestation: string;
-  dateDebut: Date;
-  dateFin: Date;
+  dateDebut: string;
+  dateFin: string;
   siteWeb: string;
   nbPlace: number;
   tarif: any;

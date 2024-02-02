@@ -1,0 +1,223 @@
+.page-container{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center;
+  }
+  
+  .page-title{
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: 'Open Sans Semi-Bold';
+    margin-top: -10px;
+  
+    
+  }
+  .container-fluid{
+    padding-top: 40px;
+  }
+  .festival-container {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+      margin-top: 50px;
+   
+    }
+  
+    .festivalImage {
+      flex: 0 0 40%;
+      margin-right: 20px;
+      margin-left: 40px;
+    }
+  
+    .festivalImage img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px; 
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  
+    }
+  
+    .festivalDetails {
+      flex: 1;
+    }
+  
+  .places-restantes{
+    background-color: #F1CE53; 
+    color: #fff; 
+    padding: 3px 8px; 
+    border-radius: 5px; 
+    display: flex;
+    align-items: center; 
+    width: max-content;
+  
+  }
+   .message-container{
+    margin: 20px;
+    text-align: center;
+    font-size: large;
+    font-family: Arial;
+  
+   }
+  
+  
+  
+  
+    .event-title {
+      font-size: 40px;
+      text-transform: uppercase;
+      font-family: 'Open Sans Semi-Bold';
+      margin-top: -100px;
+  
+    }
+  
+    .festivalDetails ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 50px;
+      font-family: Arial;
+      font-style: normal;
+      font-size: medium;
+    }
+    hr{
+      width: 50%;
+    }
+  
+    .festivalDetails ul i {
+      display: block;
+      margin-bottom: 8px;
+    }
+  
+    .search-container {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+      gap: 10px; 
+    }
+  
+    mat-form-field {
+      width: fit-content;
+  
+    }
+  
+    .liste-des-covoiturages ng-star-inserted{
+      display: flex;
+  
+    }
+  
+  
+    .search-covoiturage{
+      height: 56px;
+      width: max-content;
+      background-color:#4AD3B8;
+      color: white;
+      border-radius: 50px;
+      box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      border: none;
+    }
+  
+   .places-restantes .mat-icon{
+    color: rgb(243, 134, 0);
+    
+   }
+   
+    .mat-icon{
+      color: #4AD3B8;
+    }
+    
+  
+  $brand-primary: #4AD3B8;
+  $white: #fff;
+  $grey-light: #ededed;
+  %remain-steps{
+    &:before {
+      content: counter(stepNum);
+      font-family: inherit;
+      font-weight: 700;
+    }
+    &:after{
+      background-color: $grey-light;
+    }
+  }
+  .multi-steps{
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    > div{
+      text-decoration: none;
+      counter-increment: stepNum;
+      text-align: center;
+      display: table-cell;
+      position: relative;
+      color: $brand-primary;
+  
+      &:before{
+        content: '\f00c';
+        content: '\2713;';
+        content: '\10003';
+        content: '\10004';
+        content: '\2713';
+        display: block;
+        margin: 0 auto 4px;
+        background-color: $white;
+        width: 36px;
+        height: 36px;
+        line-height: 32px;
+        text-align: center;
+        font-weight: bold;
+        border: {
+          width: 2px;
+          style: solid;
+          color: $brand-primary;
+          radius: 50%;
+        }
+      }
+      &:after{
+        content: '';
+        height: 2px;
+        width: 100%;
+        background-color: $brand-primary;
+        position: absolute;
+        top: 16px;
+        left: 50%;
+        z-index: -1;
+      }
+      &:last-child{
+        &:after{
+          display: none;
+        }
+      }
+  
+      &.is-active{
+        @extend %remain-steps;
+        &:before{
+          background-color: $white;
+          border-color: $brand-primary;
+        }
+  
+        ~ div{
+          color: #808080;
+          @extend %remain-steps;
+          &:before{
+            background-color: $grey-light;
+            border-color: $grey-light;
+          }
+        }
+      }
+    }
+  }
+  
+  
+    .mat-icon{
+      color: #4AD3B8;
+    }
+  
+    .covoiturage-app{
+      margin-top: 30px;
+    }
+  
+  

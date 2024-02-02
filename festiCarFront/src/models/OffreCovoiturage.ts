@@ -1,6 +1,4 @@
 import { Etape } from "./Etape";
-import { Festival } from "./Festival";
-import { Utilisateur } from "./Utilisateur";
 
 export interface OffreCovoirage {
   idOffreCovoiturage: number;
@@ -8,7 +6,7 @@ export interface OffreCovoirage {
   numImmatriculation: string;
   modele: string;
   couleur: string;
-  conducteur: Utilisateur;
-  festival: Festival;
-  etape: Etape[];
+  conducteur: any;
+  festival: any;
+  etape?: Etape[];
 }

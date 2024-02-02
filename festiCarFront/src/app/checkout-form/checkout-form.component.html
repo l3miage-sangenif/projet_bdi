@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row">
         <div class="col-50">
-          <h3>Adresse de livraison</h3>
+         <p> Vos informations</p>
           <mat-form-field class="example-full-width">
             <mat-label>Nom et Prénom</mat-label>
             <input type="text" matInput [formControl]="nameFormControl" placeholder="John M. Doe">
@@ -23,27 +23,27 @@
             </mat-error>
           </mat-form-field>
           <mat-form-field class="example-full-width">
+            <mat-label>Numéro de téléphone</mat-label>
+            <input type="text" matInput [formControl]="nameFormControl" placeholder="06.19.82.55.36">
+            <mat-error *ngIf="nameFormControl.hasError('required')">
+              un numéro de téléphone <strong>requis</strong>
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
             <mat-label>Ligne d'addresse</mat-label>
             <input type="text" matInput [formControl]="addressFormControl" placeholder="05 impasse Arnaud">
             <mat-error *ngIf="addressFormControl.hasError('required')">
               Ligne d'addresse est <strong>requis</strong>
             </mat-error>
           </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <mat-label>Ville</mat-label>
-            <input type="text" matInput [formControl]="cityFormControl" placeholder="Grenoble">
-            <mat-error *ngIf="cityFormControl.hasError('required')">
-              Ville est <strong>requis</strong>
-            </mat-error>
-          </mat-form-field>
 
           <div class="row">
             <div class="col-50">
               <mat-form-field class="example-full-width">
-                <mat-label>Comté/Région</mat-label>
-                <input type="text" matInput [formControl]="regionFormControl" placeholder="Grenoble">
-                <mat-error *ngIf="regionFormControl.hasError('required')">
-                  Comté/Région est <strong>requis</strong>
+                <mat-label>Ville</mat-label>
+                <input type="text" matInput [formControl]="cityFormControl" placeholder="Grenoble">
+                <mat-error *ngIf="cityFormControl.hasError('required')">
+                  Ville est est <strong>requis</strong>
                 </mat-error>
               </mat-form-field>
             </div>
@@ -60,7 +60,7 @@
         </div>
 
         <div class="col-50">
-          <h3>Payment</h3>
+          <p>Payment</p> <br>
           <label for="fname">cartes acceptées</label>
           <div class="icon-container">
             <img src="/assets/images/cards.png">

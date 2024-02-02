@@ -1,6 +1,24 @@
+.page-container{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center; 
+  text-align: center;
+}
 
+.page-title{
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Open Sans Semi-Bold';
+  margin-top: -10px;
+
+  
+}
 .container-fluid{
- padding-top: 20px;
+  padding-top: 40px;
 }
 .festival-container {
     display: flex;
@@ -11,14 +29,17 @@
   }
 
   .festivalImage {
-    flex: 0 0 auto;
-    margin-right: 72px;
-    margin-left: 72px;
+    flex: 0 0 40%;
+    margin-right: 20px;
+    margin-left: 40px;
   }
 
   .festivalImage img {
     max-width: 100%;
     height: auto;
+    border-radius: 10px; 
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
   }
 
   .festivalDetails {
@@ -35,16 +56,22 @@
   width: max-content;
 
 }
- 
+ .message-container{
+  margin: 20px;
+  text-align: center;
+  font-size: large;
+  font-family: Arial;
+
+ }
 
 
 
 
   .event-title {
-    font-size: 24px;
-    font-size: 50px;
-    font-weight: bold;
+    font-size: 40px;
     text-transform: uppercase;
+    font-family: 'Open Sans Semi-Bold';
+    margin-top: -100px;
 
   }
 
@@ -52,6 +79,12 @@
     list-style: none;
     padding: 0;
     margin-top: 50px;
+    font-family: Arial;
+    font-style: normal;
+    font-size: medium;
+  }
+  hr{
+    width: 50%;
   }
 
   .festivalDetails ul i {
@@ -71,6 +104,10 @@
 
   }
 
+  .liste-des-covoiturages ng-star-inserted{
+    display: flex;
+
+  }
 
 
   .search-covoiturage{
@@ -91,9 +128,7 @@
   .mat-icon{
     color: #4AD3B8;
   }
-  .container-fluid{
-    margin-top: -42px;
-  }
+  
 
 $brand-primary: #4AD3B8;
 $white: #fff;
@@ -112,7 +147,8 @@ $grey-light: #ededed;
   display: table;
   table-layout: fixed;
   width: 100%;
-  > li{
+  > div{
+    text-decoration: none;
     counter-increment: stepNum;
     text-align: center;
     display: table-cell;
@@ -163,7 +199,7 @@ $grey-light: #ededed;
         border-color: $brand-primary;
       }
 
-      ~ li{
+      ~ div{
         color: #808080;
         @extend %remain-steps;
         &:before{

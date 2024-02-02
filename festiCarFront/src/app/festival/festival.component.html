@@ -1,31 +1,38 @@
+<div class="page-container">
+
+
+
+<div class="page-title">Trouver vos covoiturages</div>
 
 <div class="container-fluid">
 
         <ul class="list-unstyled multi-steps">
-          <li >Choisir un festival</li>
-          <li class="is-active">Choisir une covoiturage</li>
-          <li >Choisir point de départ</li>
-          <li>Payer</li>
+          <div (click)=" alleraccueil()"><li>Choisir un festival  </li></div>
+          <div  class="is-active" > <li > Choisir un covoiturage</li></div> 
+         <div (click)="allerpanier()" > <li> Payer</li></div>
           </ul>
 </div>
+
+</div>
+
 <div class="festival-container">
   <div class="festivalImage" *ngIf="festival">
-    <a [href]="festival.siteWeb" target="_blank">
+    <a href="http://{{festival.siteWeb}}" target="_blank">
       <img [src]="festiCarService.getUrl(festival)" >
     </a>
-    {{festival.siteWeb}}
   </div>
   <div class="festivalDetails">
             <h1 class="event-title"> {{ festival.nomManifestation }} </h1>
             <ul>
 
-            <i>Domain: {{festival.sousDomaine.domaine.nomDomaine}} </i>
-            <i>Date de début: {{festival.dateDebut}} </i>
-            <i>Date de fin: {{festival.dateFin}} </i>
-            <i>Lieu: {{festival.commune.nomCommune}} </i>
-            <i>Site Web: {{festival.siteWeb}} </i>
-            </ul>
-            <hr>
+            <i> <b> Domain :</b>  {{festival.sousDomaine.domaine.nomDomaine}} </i>
+            <i><b> Date de début :</b> {{festival.dateDebut}} </i>
+            <i><b> Date de fin :</b> {{festival.dateFin}} </i>
+            <i><b> Lieu : </b>{{festival.commune.nomCommune}} </i>
+            <i><b> Tarif : </b>{{festival.tarif}}€ </i>
+            <i><b> Site Web :</b> <a href="http://{{festival.siteWeb}}" target="_blank">{{festival.siteWeb}}</a></i>
+          </ul>
+          <hr>
          <div  class="places-restantes"> <mat-icon>whatshot</mat-icon><span> {{festival.nbPlaceRestante}} places restantes</span> </div>
        </div>
 
@@ -36,23 +43,24 @@
             <mat-icon matPrefix>location_on</mat-icon>
             <input matInput  type="text" ngx-google-places-autocomplete
             [options]="options"
-            (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" />
+            (onAddressChange)="handleAddressChange($event)" placeholder="Votre addresse" [(ngModel)]="AddresseFestivalier" />
         </mat-form-field>
 
         <mat-form-field class="pass-field">
             <mat-icon matPrefix>supervisor_account</mat-icon>
-          <input matInput type="text" placeholder="Nombre de pass" />
+          <input matInput type="number" placeholder="Nombre de pass" [(ngModel)]="festivalPlace" />
         </mat-form-field>
-        <button mat-icon-button class="search-covoiturage" (click)="getAllCovoiturageByFestivalId(festivalId)" >Trouver covoiturage</button>
+        <button mat-icon-button class="search-covoiturage" (click)="getCovoituragefiltrer(festivalId)" >Chercher covoiturage</button>
       </div>
 
+      <div class="covoiturage-app" *ngIf="showCovoiturages">
+        <app-liste-covoiturages *ngIf="covoiturageTab "></app-liste-covoiturages>
+        <app-spinner></app-spinner>
 
-    <app-liste-covoiturages></app-liste-covoiturages>
-    <div class="covoiturage-app" *ngIf="showCovoiturages">
-    <app-liste-covoiturages [covoiturageTab]="covoiturageTab" *ngIf="covoiturageTab && covoiturageTab.length > 0"></app-liste-covoiturages>
-    </div>
-
-
-
-
-
+      </div>
+      <div *ngIf="showMessage && !showCovoiturages ">
+        <p class="message-container">Aucun covoiturage disponible pour ce festival pour le moment.</p>
+      </div>
+      
+      
+     

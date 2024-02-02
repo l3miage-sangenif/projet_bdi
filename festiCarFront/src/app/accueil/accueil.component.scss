@@ -1,18 +1,12 @@
-
 .accueil-title{
   text-align: center;
-  font-size: 50px;
+  font-size: 40px;
   font-weight: bold;
   text-transform: uppercase;
-  top:0;
-  left: 0;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
+  font-family: 'Open Sans Semi-Bold';
+  
 }
+
 
 .search-container {
   margin-top: 40px;
@@ -20,11 +14,12 @@
   justify-content: center;
   gap: 10px;
 
+
 }
 
 
 .search-button {
-
+  font-size: 11pt;
   height: 56px;
   width: 80px;
   background-color:#4AD3B8;
