@@ -1,4 +1,4 @@
-<mat-toolbar >
+
 
   <div class="header-elements">
     <button mat-icon-button class="logoFesticar" aria-label="Example icon-button with menu icon">
@@ -25,25 +25,18 @@
     </div>
 
     <ng-container class="user-connected-infos" *ngIf="authService.user">
-      <div>{{ authService.user.displayName }}</div>
-      <button [matMenuTriggerFor]="menu" title="Afficher les options">
-        <img mat-card-image referrerpolicy=“no-referrer” [src]="authService.photo" alt="Image" class="profil">
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Paramètres</button>
-          <!--Pour se déconnecter-->
-        <button mat-menu-item (click)="authService.logOut()">Déconnexion</button>
-      </mat-menu>
+        <div>{{ authService.user.displayName }}</div>
+        <button [matMenuTriggerFor]="menu" title="Afficher les options">
+          <img mat-card-image referrerpolicy=“no-referrer” [src]="authService.photo" alt="Image" class="profil">
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>Paramètres</button>
+            <!--Pour se déconnecter-->
+          <button mat-menu-item (click)="authService.logOut()">Déconnexion</button>
+        </mat-menu>
     </ng-container>
-
-
-      <!--div  class="profil-image"!-->
-
-      <!--div-->
-
-
   </div>
-</mat-toolbar>
+
 
 
 
